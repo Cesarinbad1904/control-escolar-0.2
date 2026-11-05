@@ -15,7 +15,7 @@
 
 <div class="form-group">
         <label for="grado"><b style="color: red;">*</b> GRADO AL QUE SE INSCRIBIRÁ:</label>
-            <select class="form-control" id="grado" name="grado" style="width: 100px;" required>
+            <select class="form-control" id="grado" name="grado" style="width: 100px;" >
                   <option value="<?php  ?>" selected="selected"><?php  ?>°</option>
                   <option value="1">1°</option>
                   <option value="2">2°</option>
@@ -81,7 +81,7 @@
 
         <div class="form-group">
       <label for="municipio_dom"><b style="color: red;">*</b> MUNICIPIO:</label>
-          <select class="form-control" id="municipio_dom" name="municipio_dom" required>
+          <select class="form-control" id="municipio_dom" name="municipio_dom" >
                 <option value="">SELECCIONAR</option>
                 <option value="TEXCOCO">TEXCOCO</option>
                 <option value="ATENCO">ATENCO</option>
@@ -116,7 +116,7 @@
     <div class="form-group">
         <label for="colonia_dom"><b style="color: red;">*</b>COLONIA:</label>
             <input type="text" class="form-control" id="colonia_dom" name="colonia_dom" placeholder="COLONIA" 
-            required
+            
             data-parsley-required-message="Por favor, ingrese el nombre de su colonia." 
             data-parsley-maxlength="50"
             data-parsley-maxlength-message="No debe ser mayor a 50 caracteres"
@@ -127,7 +127,7 @@
      <div class="form-group">
         <label for="calle_num_dom"><b style="color: red;">*</b> CALLE y NÚMERO:</label>
         <input class="form-control" type="text" id="calle_num_dom" name="calle_num_dom" placeholder="NOMBRE DE LA CALLE Y NÚMERO" 
-        required
+        
         data-parsley-required-message="Por favor, ingrese el nombre de la calle y el número" 
         data-parsley-maxlength="60"
         data-parsley-maxlength-message="No debe exceder los 60 caracteres"
@@ -138,7 +138,7 @@
     <div class="form-group">
         <label for="entre_calle_1"><b style="color: red;">*</b> ENTRE CALLE:</label>
         <input class="form-control" type="text" id="entre_calle_1" name="entre_calle_1" 
-        required
+        
         data-parsley-maxlength="40"
         data-parsley-maxlength-message="No debe exceder los 40 caracteres"
         data-parsley-trigger="keyup" />
@@ -147,7 +147,7 @@
     <div class="form-group">
         <label for="entre_calle_2"><b style="color: red;">*</b> Y CALLE:</label>
         <input class="form-control" type="text" id="entre_calle_2" name="entre_calle_2" 
-        required
+        
         data-parsley-maxlength="40"
         data-parsley-maxlength-message="No debe exceder los 40 caracteres"
         data-parsley-trigger="keyup" />
@@ -163,7 +163,7 @@
     <div class="form-group">
         <label for="referencia_dom"><b style="color: red;">*</b> REFERENCIA DOMICILIARIA (BREVE):</label>
         <input class="form-control" type="text" id="referencia_dom" name="referencia_dom" placeholder="REFERENCIA DOMICILIARIA" 
-        required
+        
         data-parsley-required-message="Por favor, ingrese una referencia domiciliaria muy breve." 
         data-parsley-maxlength="50"
         data-parsley-maxlength-message="No debe exceder los 50 caracteres"
@@ -178,7 +178,7 @@
 <div class="form-group">
     <label for="telefono_1"><b style="color: red;">*</b> NÚM. DE TELÉFONO (10 DÍGITOS):</label>
     <input class="form-control" type="tel" id="telefono_1" name="telefono_1" style="width: 200px;" 
-    required 
+     
 
     data-parsley-pattern-message="Debe ser un número de 10 dígitos." />   
 </div>
@@ -186,7 +186,7 @@
 <div class="form-group">
     <label for="telefono_2"><b style="color: red;">*</b> NÚM. DE TELÉFONO 2 (10 DÍGITOS):</label>
     <input class="form-control" type="tel" id="telefono_2" name="telefono_2" style="width: 200px;"
-    required 
+     
     
     data-parsley-pattern-message="Debe ser un número de 10 dígitos." 
     data-parsley-notequalto="#telefono_1" 
@@ -196,7 +196,7 @@
 <div class="form-group">
     <label for="telefono_emer">NÚM. DE TELÉFONO EMERGENCIAS (10 DÍGITOS):</label>
     <input class="form-control" type="tel" id="telefono_emer" name="telefono_emer" style="width: 200px;"
-    required 
+     
     
     data-parsley-pattern-message="Debe ser un número de 10 dígitos." 
     data-parsley-notequalto="#telefono_2" 
@@ -206,13 +206,13 @@
 <div class="form-group">
     <label for="email_alumno"><b style="color: red;">*</b> CORREO ELECTRÓNICO:</label>
     <input class="form-control" type="text" id="email_alumno" name="email_alumno" style="text-transform: lowercase; width: 300px;"
-    required 
+     
     data-parsley-type="email" />
 </div>
 
 <div class="form-group">
     <label for="rs_alumno"><b style="color: red;">*</b> RED SOCIAL:</label>
-        <select style="width: 200px;" class="form-control" id="rs_alumno" name="rs_alumno" required>
+        <select style="width: 200px;" class="form-control" id="rs_alumno" name="rs_alumno" >
               <option></option>
               <option>FACEBOOK</option>
               <option>INSTAGRAM</option>
@@ -223,7 +223,7 @@
     <div class="form-group">
         <label for="rs_user_alumno"><b style="color: red;">*</b> NOMBRE DE USUARIO DE LA RED SOCIAL:</label>
         <input style="width: 300px;" class="form-control" type="text" id="rs_user_alumno" name="rs_user_alumno" 
-        required
+        
         data-parsley-maxlength="20"
         data-parsley-maxlength-message="No debe exceder los 20 caracteres" 
         data-parsley-trigger="keyup" />
@@ -237,7 +237,7 @@
         <label for="num_personas">¿CUÁNTAS PERSONAS VIVEN EN SU CASA?</label>
         <input style="width: 100px;" class="form-control" type="number" min="1" id="num_personas" 
         name="num_personas" 
-        required
+        
         data-parsley-type="number" 
         data-parsley-number-message="Debe ser un número." />
     </div>
@@ -246,7 +246,7 @@
 
     <div class="form-group">
       <label for="vive_con"><b style="color: red;">*</b>¿CON QUIÉN VIVE?</label>
-          <select style="width: 150px;" class="form-control" id="vive_con" name="vive_con" required>
+          <select style="width: 150px;" class="form-control" id="vive_con" name="vive_con" >
                 <option></option>
                 <option>MAMA</option>
                 <option>PAPA</option>
@@ -257,7 +257,7 @@
 
     <div class="form-group">
       <label for="sosten_econ"><b style="color: red;">*</b> ¿QUIÉN SOSTIENE ECONÓMICAMENTE LA CASA?</label>
-          <select style="width: 150px;" class="form-control" id="sosten_econ" name="sosten_econ" required>
+          <select style="width: 150px;" class="form-control" id="sosten_econ" name="sosten_econ" >
                 <option></option>
                 <option>MAMA</option>
                 <option>PAPA</option>
@@ -270,7 +270,7 @@
      <div class="form-group">
         <label for="nombre_escuela_procedencia">NOMBRE DE LA ESCUELA DE PROCEDENCIA:</label>
         <input class="form-control" type="text" id="nombre_escuela_procedencia" name="nombre_escuela_procedencia" value=""
-        required
+        
         data-parsley-maxlength="50"
         data-parsley-maxlength-message="No debe exceder los 50 caracteres" 
         data-parsley-trigger="keyup" />
@@ -377,7 +377,7 @@
   <div class="form-group">
     <label for="ocupacion_tutor"><b style="color: red;">*</b> OCUPACIÓN:</label>
     <input style="width: 400px;" class="form-control" type="text" id="ocupacion_tutor" name="ocupacion_tutor" 
-    required
+    
     data-parsley-maxlength="30"
     data-parsley-maxlength-message="No debe exceder los 30 caracteres" 
     data-parsley-trigger="keyup" />
@@ -386,7 +386,7 @@
 
 <div class="form-group">
     <label for="estudios_tutor"><b style="color: red;">*</b> GRADO MÁXIMO DE ESTUDIOS:</label>
-        <select style="width: 300px;" class="form-control" id="estudios_tutor" name="estudios_tutor" required>
+        <select style="width: 300px;" class="form-control" id="estudios_tutor" name="estudios_tutor" >
               <option></option>
               <option>NINGUNO</option>
               <option>PRIMARIA</option>
@@ -402,7 +402,7 @@
 
     <div class="form-group">
       <label for="parentesco_tutor"><b style="color: red;">*</b> PARENTESCO:</label>
-          <select style="width: 200px;" class="form-control" id="parentesco_tutor" name="parentesco_tutor" required>
+          <select style="width: 200px;" class="form-control" id="parentesco_tutor" name="parentesco_tutor" >
                 <option></option>
                 <option>MADRE</option>
                 <option>PADRE</option>
@@ -428,7 +428,7 @@
 
 <div class="form-group">
     <label for="salario_tutor"><b style="color: red;">*</b> INGRESO MENSUAL:</label>
-        <select style="width: 300px;" class="form-control" id="salario_tutor" name="salario_tutor" required>
+        <select style="width: 300px;" class="form-control" id="salario_tutor" name="salario_tutor" >
             <option></option>
             <option>NINGUNO</option>
             <option>MENOS DE UN SALARIO MÍNIMO</option>
@@ -442,7 +442,7 @@
 
 <div class="form-group">
     <label for="estado_civil_tutor"><b style="color: red;">*</b> ESTADO CIVIL:</label>
-        <select style="width: 300px;" class="form-control" id="estado_civil_tutor" name="estado_civil_tutor" required>
+        <select style="width: 300px;" class="form-control" id="estado_civil_tutor" name="estado_civil_tutor" >
             <option></option>
             <option>CASADO</option>
             <option>CASADA</option>
@@ -461,14 +461,14 @@
 <div class="form-group">
     <label for="email_tutor"><b style="color: red;">*</b> CORREO ELECTRÓNICO:</label>
         <input class="form-control" type="text" id="email_tutor" name="email_tutor" style="text-transform: lowercase; width: 300px;"
-           required 
+            
            data-parsley-type="email" />
 </div>
 
 
 <div class="form-group">
     <label for="rs_tutor"><b style="color: red;">*</b> RED SOCIAL:</label>
-        <select style="width: 250px;" class="form-control" id="rs_tutor" name="rs_tutor" required >
+        <select style="width: 250px;" class="form-control" id="rs_tutor" name="rs_tutor" >
             <option></option>
             <option>FACEBOOK</option>
             <option>INSTAGRAM</option>
@@ -480,7 +480,7 @@
 <div class="form-group">
             <label for="rs_user_tutor"><b style="color: red;">*</b> NOMBRE DE USUARIO DE LA RED SOCIAL:</label>
             <input style="width: 300px;" class="form-control" type="text" id="rs_user_tutor" name="rs_user_tutor" 
-            required
+            
             data-parsley-maxlength="20"
             data-parsley-maxlength-message="No debe exceder los 20 caracteres" 
             data-parsley-trigger="keyup" /> 
@@ -499,26 +499,26 @@
 
 <div class="form-group">
   <label for="nombre_tutor2"><b style="color: red;">*</b> NOMBRE(S):</label>
-  <input style="width: 300px;" class="form-control" type="text" id="nombre_tutor2" name="nombre_tutor2" required />
+  <input style="width: 300px;" class="form-control" type="text" id="nombre_tutor2" name="nombre_tutor2"  />
 </div>
 
 
 <div class="form-group">
   <label for="primer_apellido_tutor2"><b style="color: red;">*</b> PRIMER APELLIDO:</label>
-  <input style="width: 300px;" class="form-control" type="text" id="primer_apellido_tutor2" name="primer_apellido_tutor2" required />
+  <input style="width: 300px;" class="form-control" type="text" id="primer_apellido_tutor2" name="primer_apellido_tutor2"  />
 </div>
 
 
 <div class="form-group">
   <label for="segundo_apellido_tutor2"><b style="color: red;">*</b> SEGUNDO APELLIDO:</label>
-  <input style="width: 300px;" class="form-control" type="text" id="segundo_apellido_tutor2" name="segundo_apellido_tutor2" required />
+  <input style="width: 300px;" class="form-control" type="text" id="segundo_apellido_tutor2" name="segundo_apellido_tutor2"  />
 </div>
 
 
 <div class="form-group">
     <label for="ocupacion_tutor2"><b style="color: red;">*</b> OCUPACIÓN:</label>
     <input style="width: 400px;" class="form-control" type="text" id="ocupacion_tutor2" name="ocupacion_tutor2" 
-    required
+    
     data-parsley-maxlength="30"
     data-parsley-maxlength-message="No debe exceder los 30 caracteres" 
     data-parsley-trigger="keyup" />
@@ -527,7 +527,7 @@
 
 <div class="form-group">
     <label for="estudios_tutor2"><b style="color: red;">*</b> GRADO MÁXIMO DE ESTUDIOS:</label>
-        <select style="width: 300px;" class="form-control" id="estudios_tutor2" name="estudios_tutor2" required>
+        <select style="width: 300px;" class="form-control" id="estudios_tutor2" name="estudios_tutor2" >
               <option></option>
               <option>NINGUNO</option>
               <option>PRIMARIA</option>
@@ -543,7 +543,7 @@
 
  <div class="form-group">
       <label for="parentesco_tutor2"><b style="color: red;">*</b> PARENTESCO:</label>
-          <select style="width: 200px;" class="form-control" id="parentesco_tutor2" name="parentesco_tutor2" required>
+          <select style="width: 200px;" class="form-control" id="parentesco_tutor2" name="parentesco_tutor2" >
                 <option></option>
                 <option>MADRE</option>
                 <option>PADRE</option>
@@ -569,7 +569,7 @@
 
 <div class="form-group">
     <label for="salario_tutor2"><b style="color: red;">*</b> INGRESO MENSUAL:</label>
-        <select style="width: 300px;" class="form-control" id="salario_tutor2" name="salario_tutor2" required>
+        <select style="width: 300px;" class="form-control" id="salario_tutor2" name="salario_tutor2" >
             <option></option>
             <option>NINGUNO</option>
             <option>MENOS DE UN SALARIO MÍNIMO</option>
@@ -582,7 +582,7 @@
 
 <div class="form-group">
     <label for="estado_civil_tutor2"><b style="color: red;">*</b> ESTADO CIVIL:</label>
-        <select style="width: 300px;" class="form-control" id="estado_civil_tutor2" name="estado_civil_tutor2" required>
+        <select style="width: 300px;" class="form-control" id="estado_civil_tutor2" name="estado_civil_tutor2" >
             <option></option>
             <option>CASADO</option>
             <option>CASADA</option>
@@ -601,13 +601,13 @@
 <div class="form-group">
     <label for="email_tutor2"><b style="color: red;">*</b> CORREO ELECTRÓNICO:</label>
         <input class="form-control" type="text" id="email_tutor2" name="email_tutor2" style="text-transform: lowercase; width: 300px;"
-           required 
+            
            data-parsley-type="email" />
 </div>
 
 <div class="form-group">
     <label for="responsabilidad"><b style="color: red;">*</b> RESPONSABILIDAD DEL MENOR:</label>
-        <select class="form-control" id="responsabilidad" name="responsabilidad" style="width: 100px;" required>
+        <select class="form-control" id="responsabilidad" name="responsabilidad" style="width: 100px;" >
               <option value="SI" selected="selected">SI</option>
               <option value="SI">SI</option>
               <option value="NO">NO</option>
@@ -616,7 +616,7 @@
 
 <div class="form-group">
     <label for="recoge"><b style="color: red;">*</b> ¿RECOGE AL MENOR?</label>
-        <select class="form-control" id="recoge" name="recoge" style="width: 100px;" required>
+        <select class="form-control" id="recoge" name="recoge" style="width: 100px;" >
               <option value="SI" selected="selected">SI</option>
               <option value="SI">SI</option>
               <option value="NO">NO</option>
@@ -663,7 +663,7 @@
  <div class="form-group">
     <label for="talla_zapato"><b style="color: red;">*</b> TALLA DE ZAPATO EN CENTÍMETROS: </label>
     <input style="width: 100px;" class="form-control" type="number" min="10" max="30" step="1" 
-    id="talla_zapato" name="talla_zapato" required />
+    id="talla_zapato" name="talla_zapato"  />
 </div>
 <br />
 
@@ -696,7 +696,7 @@
 
 <div class="form-group">
      <label for="vacunas">VACUNAS:</label>
-      <select class="form-control" id="vacunas" name="vacunas" required>
+      <select class="form-control" id="vacunas" name="vacunas" >
         <option value="" selected="selected">SELECCIONAR</option>
         <option value="COMPLETAS HASTA LOS 3 AÑOS">COMPLETAS HASTA LOS 3 AÑOS</option>
         <option value="COMPLETAS HASTA LOS 6 AÑOS">COMPLETAS HASTA LOS 6 AÑOS</option>
@@ -800,7 +800,7 @@
 
 <div class="form-group">
     <label for="institucion_dh">INSTITUCIÓN DE DERECHOHABIENCIA DEL ALUMNO(A):</label>
-        <select style="width: 200px;" class="form-control" id="institucion_dh" name="institucion_dh" required >
+        <select style="width: 200px;" class="form-control" id="institucion_dh" name="institucion_dh"  >
             <option value="" selected="selected">SELECCIONAR</option>
             <option value="ISSEMYM">ISSEMYM</option>
             <option value="ISSSTE">ISSSTE</option>
