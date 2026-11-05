@@ -258,7 +258,7 @@ class Validation extends BaseConfig
             ],
             'errors' => [
                 'required'    => 'El campo {field} es obligatorio.',
-                'valid_email' => 'Por favor, introduce una dirección de correo válida.',
+                'valid_email' => 'Por favor, introduzca una dirección de correo válida.',
                 'max_length'  => 'El {field} no puede exceder los 50 caracteres.'
             ]
         ], 
@@ -330,10 +330,480 @@ class Validation extends BaseConfig
             ]
         ], 
 
-        
+        // ================ Datos del primer tutor ================================================
+
+        'curp_tutor' => [ 
+            'label' => 'CURP del tutor', 
+            'rules' => [
+                'required',
+                'regex_match[/^[A-Z]{1}[XAEIOU]{1}[A-Z]{2}[0-9]{2}(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])[HM]{1}(AS|BC|BS|CC|CS|CH|CL|CM|DF|DG|GT|GR|HG|JC|MC|MN|MS|NT|NL|OC|PL|QT|QR|SP|SL|SR|TC|TS|TL|VZ|YN|ZS|NE)[B-DF-HJ-NP-TV-Z]{3}[0-9A-Z]{1}[0-9]{1}$/i]' 
+            ],
+            'errors' => [
+                'required'    => 'El campo {field} es obligatorio.',
+                'regex_match' => 'Formato de CURP inválido.'
+            ]
+        ], 
+
+        'nombre_tutor' => [ // Nombre del campo del formulario
+            'label' => 'Nombre del tutor', // Cualquier nombre para referirse a este campo en los errores
+            'rules' => [
+                'required',
+                'alpha_space',
+                'max_length[22]'
+            ],
+            'errors' => [
+                'required'    => 'El campo {field} es obligatorio.',
+                'alpha_space' => 'El campo {field} solo puede contener letras y espacios.',
+                'max_length' => 'El campo {field} no puede exceder los 22 caracteres.'
+            ]
+        ],
+
+        'primer_apellido_tutor' => [ 
+            'label' => 'Primer apellido del tutor', 
+            'rules' => [
+                'required',
+                'alpha_space',
+                'max_length[22]'
+            ],
+            'errors' => [
+                'required'    => 'El campo {field} es obligatorio.',
+                'alpha_space' => 'El campo {field} solo puede contener letras y espacios.',
+                'max_length' => 'El campo {field} no puede exceder los 22 caracteres.'
+            ]
+        ], 
 
 
+        'segundo_apellido_tutor' => [ 
+            'label' => 'Segundo apellido del tutor', 
+            'rules' => [
+                'required',
+                'alpha_space',
+                'max_length[22]'
+            ],
+            'errors' => [
+                'required'    => 'El campo {field} es obligatorio.',
+                'alpha_space' => 'El campo {field} solo puede contener letras y espacios.',
+                'max_length' => 'El campo {field} no puede exceder los 22 caracteres.'
+            ]
+        ], 
 
+        'nacionalidad_tutor' => [ 
+            'label' => 'Nacionalidad del tutor', 
+            'rules' => [
+                'required',
+                'max_length[20]'
+            ],
+            'errors' => [
+                'required'    => 'El campo {field} es obligatorio.',
+                'max_length' => 'El campo {field} no puede exceder los 20 caracteres.'
+            ]
+        ], 
+
+        'ocupacion_tutor' => [ 
+            'label' => 'Ocupación del tutor', 
+            'rules' => [
+                'required',
+                'max_length[30]'
+            ],
+            'errors' => [
+                'required'    => 'El campo {field} es obligatorio.',
+                'max_length' => 'El campo {field} no puede exceder los 30 caracteres.'
+            ]
+        ], 
+
+        'estudios_tutor' => [ 
+            'label' => 'Grado máximo de estudios del tutor', 
+            'rules' => [
+                'required'
+            ],
+            'errors' => [
+                'required'    => 'El campo {field} es obligatorio.'
+            ]
+        ], 
+
+        'parentesco_tutor' => [ 
+            'label' => 'Parentesco del tutor con el alumno', 
+            'rules' => [
+                'required'
+            ],
+            'errors' => [
+                'required'    => 'El campo {field} es obligatorio.'
+            ]
+        ], 
+
+        'salario_tutor' => [ 
+            'label' => 'Ingreso mensual del tutor', 
+            'rules' => [
+                'required'
+            ],
+            'errors' => [
+                'required'    => 'El campo {field} es obligatorio.'
+            ]
+        ], 
+
+        'estado_civil_tutor' => [ 
+            'label' => 'Estado civil del tutor', 
+            'rules' => [
+                'required'
+            ],
+            'errors' => [
+                'required'    => 'El campo {field} es obligatorio.'
+            ]
+        ], 
+
+
+        'email_tutor' => [
+            'label' => 'Correo electrónico del tutor',
+            'rules' => [
+                'required',
+                'valid_email', // Verifica la estructura correcta del correo (PHP filter_var)
+                'max_length[50]' // Longitud máxima estándar para correos en bases de datos
+            ],
+            'errors' => [
+                'required'    => 'El campo {field} es obligatorio.',
+                'valid_email' => 'Por favor, introduzca una dirección de correo válida.',
+                'max_length'  => 'El {field} no puede exceder los 50 caracteres.'
+            ]
+        ], 
+
+        'rs_tutor' => [ 
+            'label' => 'Red social del tutor', 
+            'rules' => [
+                'required'
+            ],
+            'errors' => [
+                'required'    => 'El campo {field} es obligatorio.'
+            ]
+        ], 
+
+        'rs_tutor' => [ 
+            'label' => 'Nombre de usuario de la red social del tutor', 
+            'rules' => [
+                'required',
+                'alpha_space',
+                'max_length[20]'
+            ],
+            'errors' => [
+                'required'    => 'El campo {field} es obligatorio.',
+                'alpha_space' => 'El campo {field} solo puede contener letras y espacios.',
+                'max_length' => 'El campo {field} no puede exceder los 20 caracteres.'
+            ]
+        ], 
+
+        // ================= Datos del segundo tutor ============================
+
+        'curp_tutor2' => [ 
+            'label' => 'CURP del segundo tutor', 
+            'rules' => [
+                'required',
+                'regex_match[/^[A-Z]{1}[XAEIOU]{1}[A-Z]{2}[0-9]{2}(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])[HM]{1}(AS|BC|BS|CC|CS|CH|CL|CM|DF|DG|GT|GR|HG|JC|MC|MN|MS|NT|NL|OC|PL|QT|QR|SP|SL|SR|TC|TS|TL|VZ|YN|ZS|NE)[B-DF-HJ-NP-TV-Z]{3}[0-9A-Z]{1}[0-9]{1}$/i]' 
+            ],
+            'errors' => [
+                'required'    => 'El campo {field} es obligatorio.',
+                'regex_match' => 'Formato de CURP inválido.'
+            ]
+        ], 
+
+        'nombre_tutor2' => [ // Nombre del campo del formulario
+            'label' => 'Nombre del segundo tutor', // Cualquier nombre para referirse a este campo en los errores
+            'rules' => [
+                'required',
+                'alpha_space',
+                'max_length[22]'
+            ],
+            'errors' => [
+                'required'    => 'El campo {field} es obligatorio.',
+                'alpha_space' => 'El campo {field} solo puede contener letras y espacios.',
+                'max_length' => 'El campo {field} no puede exceder los 22 caracteres.'
+            ]
+        ],
+
+        'primer_apellido_tutor2' => [ 
+            'label' => 'Primer apellido del segundo tutor', 
+            'rules' => [
+                'required',
+                'alpha_space',
+                'max_length[22]'
+            ],
+            'errors' => [
+                'required'    => 'El campo {field} es obligatorio.',
+                'alpha_space' => 'El campo {field} solo puede contener letras y espacios.',
+                'max_length' => 'El campo {field} no puede exceder los 22 caracteres.'
+            ]
+        ], 
+
+
+        'segundo_apellido_tutor2' => [ 
+            'label' => 'Segundo apellido del segundo tutor', 
+            'rules' => [
+                'required',
+                'alpha_space',
+                'max_length[22]'
+            ],
+            'errors' => [
+                'required'    => 'El campo {field} es obligatorio.',
+                'alpha_space' => 'El campo {field} solo puede contener letras y espacios.',
+                'max_length' => 'El campo {field} no puede exceder los 22 caracteres.'
+            ]
+        ], 
+
+        'ocupacion_tutor2' => [ 
+            'label' => 'Ocupación del segundo tutor', 
+            'rules' => [
+                'required',
+                'max_length[30]'
+            ],
+            'errors' => [
+                'required'    => 'El campo {field} es obligatorio.',
+                'max_length' => 'El campo {field} no puede exceder los 30 caracteres.'
+            ]
+        ], 
+
+        'estudios_tutor2' => [ 
+            'label' => 'Grado máximo de estudios del segundo tutor', 
+            'rules' => [
+                'required'
+            ],
+            'errors' => [
+                'required'    => 'El campo {field} es obligatorio.'
+            ]
+        ], 
+
+        'parentesco_tutor2' => [ 
+            'label' => 'Parentesco del segundo tutor con el alumno', 
+            'rules' => [
+                'required'
+            ],
+            'errors' => [
+                'required'    => 'El campo {field} es obligatorio.'
+            ]
+        ], 
+
+         'salario_tutor2' => [ 
+            'label' => 'Ingreso mensual del segundo tutor', 
+            'rules' => [
+                'required'
+            ],
+            'errors' => [
+                'required'    => 'El campo {field} es obligatorio.'
+            ]
+        ], 
+
+        'estado_civil_tutor2' => [ 
+            'label' => 'Estado civil del segundo tutor', 
+            'rules' => [
+                'required'
+            ],
+            'errors' => [
+                'required'    => 'El campo {field} es obligatorio.'
+            ]
+        ], 
+
+
+        'email_tutor2' => [
+            'label' => 'Correo electrónico del segundo tutor',
+            'rules' => [
+                'required',
+                'valid_email', // Verifica la estructura correcta del correo (PHP filter_var)
+                'max_length[50]' // Longitud máxima 
+            ],
+            'errors' => [
+                'required'    => 'El campo {field} es obligatorio.',
+                'valid_email' => 'Por favor, introduzca una dirección de correo válida.',
+                'max_length'  => 'El {field} no puede exceder los 50 caracteres.'
+            ]
+        ], 
+
+    // ====== Validación para la sección del historial médico =============
+
+            'estatura' => [
+            'label' => 'Estatura',
+            'rules' => [
+                'required',
+                'integer',                     // Garantiza que sea un número entero (sin decimales)
+                'greater_than_equal_to[100]',  // Límite mínimo: 100 cm
+                'less_than_equal_to[165]',     // Límite máximo: 165 cm
+            ],
+            'errors' => [
+                'required'              => 'El campo {field} es obligatorio.',
+                'integer'               => 'La {field} debe ser un número entero (en centímetros).',
+                'greater_than_equal_to' => 'La {field} mínima permitida es de 100 cm.',
+                'less_than_equal_to'    => 'La {field} máxima permitida es de 165 cm.'
+            ]
+        ],
+
+
+        'peso' => [
+            'label' => 'Peso',
+            'rules' => [
+                'required',
+                'integer',                     // Garantiza que sea un número entero (sin decimales)
+                'greater_than_equal_to[15]',  // Límite mínimo: 100 cm
+                'less_than_equal_to[65]',     // Límite máximo: 165 cm
+            ],
+            'errors' => [
+                'required'              => 'El campo {field} es obligatorio.',
+                'integer'               => 'La {field} debe ser un número entero (en kilogramos).',
+                'greater_than_equal_to' => 'La {field} mínima permitida es de 15 kg.',
+                'less_than_equal_to'    => 'La {field} máxima permitida es de 65 kg.'
+            ]
+        ],
+
+
+        'talla_zapato' => [
+            'label' => 'Talla de zapato en centímetros',
+            'rules' => [
+                'required',
+                'integer',                     // Garantiza que sea un número entero (sin decimales)
+                'greater_than_equal_to[18]',  // Límite mínimo: 100 cm
+                'less_than_equal_to[25]',     // Límite máximo: 165 cm
+            ],
+            'errors' => [
+                'required'              => 'El campo {field} es obligatorio.',
+                'integer'               => 'La {field} debe ser un número entero.',
+                'greater_than_equal_to' => 'La {field} mínima permitida es de 15 cm.',
+                'less_than_equal_to'    => 'La {field} máxima permitida es de 25 cm.'
+            ]
+        ],
+
+        'vacunas' => [ 
+            'label' => 'Vacunas', 
+            'rules' => [
+                'required'
+            ],
+            'errors' => [
+                'required'    => 'El campo {field} es obligatorio.'
+            ]
+        ], 
+
+        'otro_apoyo' => [ // Null
+            'label' => 'Otro apoyo', 
+            'rules' => [
+                'max_length[40]'
+            ],
+            'errors' => [
+                'max_length' => 'El campo {field} no puede exceder los 40 caracteres.'
+            ]
+        ], 
+
+
+        'discapacidad' => [ // Null
+            'label' => 'Discapacidad', 
+            'rules' => [
+                'max_length[60]'
+            ],
+            'errors' => [
+                'max_length' => 'El campo {field} no puede exceder los 60 caracteres.'
+            ]
+        ], 
+
+
+        'ultimas_enfermedades' => [ 
+            'label' => 'Últimas enfermedades', 
+            'rules' => [
+                'required',
+                'max_length[150]'
+            ],
+            'errors' => [
+                'required'    => 'El campo {field} es obligatorio.',
+                'max_length' => 'El campo {field} no puede exceder los 150 caracteres.'
+            ]
+        ], 
+
+
+        'enfermedades_frecuentes' => [ 
+            'label' => 'Enfermedades frecuentes', 
+            'rules' => [
+                'required',
+                'max_length[150]'
+            ],
+            'errors' => [
+                'required'    => 'El campo {field} es obligatorio.',
+                'max_length' => 'El campo {field} no puede exceder los 150 caracteres.'
+            ]
+        ], 
+
+        'nombre_medico' => [ // Null
+            'label' => 'Nombre del médico familiar', 
+            'rules' => [
+                'max_length[50]'
+            ],
+            'errors' => [
+                'max_length' => 'El campo {field} no puede exceder los 50 caracteres.'
+            ]
+        ], 
+
+
+        'tel_medico' => [ // Null
+            'label' => 'Teléfono del médico familiar',
+            'rules' => [
+                'numeric',          // Garantiza que solo entren números del 0 al 9
+                'exact_length[10]'  // Fuerza a que sean exactamente 10 caracteres
+            ],
+            'errors' => [
+                'numeric'      => 'El campo {field} solo debe contener números.',
+                'exact_length' => 'El campo {field} debe tener exactamente 10 dígitos.'
+            ]
+        ], 
+
+        'institucion_dh' => [ 
+            'label' => 'Institucion de derechohabiencia', 
+            'rules' => [
+                'required'
+            ],
+            'errors' => [
+                'required'    => 'El campo {field} es obligatorio.'
+            ]
+        ], 
+
+        'recomendaciones' => [ 
+            'label' => 'Recomendaciones especiales', 
+            'rules' => [
+                'required',
+                'max_length[200]'
+            ],
+            'errors' => [
+                'required'    => 'El campo {field} es obligatorio.',
+                'max_length' => 'El campo {field} no puede exceder los 200 caracteres.'
+            ]
+        ], 
+
+        'enfermedad_cronica' => [ 
+            'label' => 'Enfermedad crónica', 
+            'rules' => [
+                'required',
+                'max_length[200]'
+            ],
+            'errors' => [
+                'required'    => 'El campo {field} es obligatorio.',
+                'max_length' => 'El campo {field} no puede exceder los 200 caracteres.'
+            ]
+        ], 
+
+
+        'alergia_medicamento' => [ 
+            'label' => 'Alergia a medicamento', 
+            'rules' => [
+                'required',
+                'max_length[150]'
+            ],
+            'errors' => [
+                'required'    => 'El campo {field} es obligatorio.',
+                'max_length' => 'El campo {field} no puede exceder los 150 caracteres.'
+            ]
+        ], 
+
+        'alergia_alimento' => [ 
+            'label' => 'Alergia a alimento', 
+            'rules' => [
+                'required',
+                'max_length[150]'
+            ],
+            'errors' => [
+                'required'    => 'El campo {field} es obligatorio.',
+                'max_length' => 'El campo {field} no puede exceder los 150 caracteres.'
+            ]
+        ]
 
 
     ];
