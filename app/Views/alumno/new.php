@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro</title>
-</head>
-<body>
-    <h1>Crear alumno</h1>
+<?= $this->extend('layouts/main_layout') ?>
 
 <?= view('partials/_form-error'); ?>
 
@@ -67,7 +59,7 @@
 
     <div class="form-group">
         <label for="nacionalidad_alumno">NACIONALIDAD:</label>
-        <input type="text" id="nacionalidad_alumno" name="nacionalidad_alumno" size="10" value="MEXICANA" />
+        <input type="text" id="nacionalidad_alumno" name="nacionalidad_alumno" size="10" placeholder="MEXICANA" value="MEXICANA" />
     </div>
 
 <!-- ========= Domicilio del alumno  ================== -->
@@ -353,18 +345,18 @@
 
 <div class="form-group">
         <label for="nombre_tutor">NOMBRE(S):</label>
-        <input class="form-control" type="text" id="nombre_tutor" name="nombre_tutor" value="" />
+        <input class="form-control" type="text" id="nombre_tutor" name="nombre_tutor" value="<?= old('nombre_tutor') ?>" />
 </div>
 
 
 <div class="form-group">
         <label for="primer_apellido_tutor">PRIMER APELLIDO:</label>
-        <input class="form-control" type="text" id="primer_apellido_tutor" name="primer_apellido_tutor" value="" />
+        <input class="form-control" type="text" id="primer_apellido_tutor" name="primer_apellido_tutor" value="<?= old('primer_apellido_tutor') ?>" />
 </div>
 
 <div class="form-group">
         <label for="segundo_apellido_tutor">SEGUNDO APELLIDO:</label>
-        <input class="form-control" type="text" id="segundo_apellido_tutor" name="segundo_apellido_tutor" value="" />
+        <input class="form-control" type="text" id="segundo_apellido_tutor" name="segundo_apellido_tutor" value="<?= old('segundo_apellido_tutor') ?>" />
 </div>
 
 
@@ -499,19 +491,19 @@
 
 <div class="form-group">
   <label for="nombre_tutor2"><b style="color: red;">*</b> NOMBRE(S):</label>
-  <input style="width: 300px;" class="form-control" type="text" id="nombre_tutor2" name="nombre_tutor2"  />
+  <input style="width: 300px;" class="form-control" type="text" id="nombre_tutor2" name="nombre_tutor2" value="<?= old('nombre_tutor2') ?>" />
 </div>
 
 
 <div class="form-group">
   <label for="primer_apellido_tutor2"><b style="color: red;">*</b> PRIMER APELLIDO:</label>
-  <input style="width: 300px;" class="form-control" type="text" id="primer_apellido_tutor2" name="primer_apellido_tutor2"  />
+  <input style="width: 300px;" class="form-control" type="text" id="primer_apellido_tutor2" name="primer_apellido_tutor2" value="<?= old('primer_apellido_tutor2') ?>" />
 </div>
 
 
 <div class="form-group">
   <label for="segundo_apellido_tutor2"><b style="color: red;">*</b> SEGUNDO APELLIDO:</label>
-  <input style="width: 300px;" class="form-control" type="text" id="segundo_apellido_tutor2" name="segundo_apellido_tutor2"  />
+  <input style="width: 300px;" class="form-control" type="text" id="segundo_apellido_tutor2" name="segundo_apellido_tutor2" value="<?= old('segundo_apellido_tutor2') ?>" />
 </div>
 
 
@@ -1056,8 +1048,9 @@
     </form>
 <br />
     <a href="../" >Regresar</a>
-</body>
-</html>
+
+
+<?= $thi->endSection() ?>
 
 
 

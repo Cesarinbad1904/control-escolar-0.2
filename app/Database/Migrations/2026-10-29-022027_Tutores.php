@@ -31,19 +31,19 @@ class Tutores extends Migration
 
                 'nombre_tutor' => [
                     'type'       => 'VARCHAR',
-                    'constraint' => 22,
+                    'constraint' => 25,
                     'null'       => FALSE
                 ],
 
                 'primer_apellido_tutor' => [
                     'type'       => 'VARCHAR',
-                    'constraint' => 22,
+                    'constraint' => 25,
                     'null'       => FALSE
                 ],
 
                 'segundo_apellido_tutor' => [
                     'type'       => 'VARCHAR',
-                    'constraint' => 22,
+                    'constraint' => 25,
                     'null'       => FALSE
                 ],
 
@@ -129,19 +129,19 @@ class Tutores extends Migration
 
                 'nombre_tutor2' => [
                     'type'       => 'VARCHAR',
-                    'constraint' => 22,
+                    'constraint' => 25,
                     'null'       => FALSE
                 ],
 
                 'primer_apellido_tutor2' => [
                     'type'       => 'VARCHAR',
-                    'constraint' => 22,
+                    'constraint' => 25,
                     'null'       => FALSE
                 ],
 
                 'segundo_apellido_tutor2' => [
                     'type'       => 'VARCHAR',
-                    'constraint' => 22,
+                    'constraint' => 25,
                     'null'       => FALSE
                 ],
 

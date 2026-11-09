@@ -34,8 +34,8 @@ class Database extends Config
         'DBPrefix'     => '',
         'pConnect'     => false,
         'DBDebug'      => true,
-        'charset'      => 'utf8mb4',
-        'DBCollat'     => 'utf8mb4_general_ci',
+        'charset'      => 'utf8mb4', // Para guardar correctamente las 'ñ' 'Ñ'
+        'DBCollat'     => 'utf8mb4_general_ci', // Para guardar correctamente las 'ñ' 'Ñ'
         'swapPre'      => '',
         'encrypt'      => false,
         'compress'     => false,

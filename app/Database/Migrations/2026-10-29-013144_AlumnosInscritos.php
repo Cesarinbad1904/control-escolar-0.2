@@ -25,19 +25,19 @@ class AlumnosInscritos extends Migration
 
                 'nombre_alumno' => [
                     'type'       => 'VARCHAR',
-                    'constraint' => 22,
+                    'constraint' => 25,
                     'null'       => FALSE
                 ],
 
                 'primer_apellido_alumno' => [
                     'type'       => 'VARCHAR',
-                    'constraint' => 22,
+                    'constraint' => 25,
                     'null'       => FALSE
                 ],
 
                 'segundo_apellido_alumno' => [
                     'type'       => 'VARCHAR',
-                    'constraint' => 22,
+                    'constraint' => 25,
                     'null'       => FALSE
                 ],
 

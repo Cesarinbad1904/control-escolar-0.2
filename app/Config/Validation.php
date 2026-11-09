@@ -44,48 +44,53 @@ class Validation extends BaseConfig
     // GRUPO DE VALIDACIÓN PERSONALIZADO
     public array $registroAlumno = [
 
-        'nombre_alumno' => [ // Nombre del campo del formulario
-            'label' => 'Nombre del alumno', // Cualquier nombre para referirse a este campo en los errores
+        'nombre_alumno' => [ 
+            'label' => 'Nombre(s) del alumno', 
             'rules' => [
                 'required',
-                'alpha_space',
-                'max_length[22]'
+                // Este regex acepta letras, eñes, tildes y espacios
+                'regex_match[/^[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ\s]+$/u]',
+                'max_length[25]'
             ],
             'errors' => [
                 'required'    => 'El campo {field} es obligatorio.',
-                'alpha_space' => 'El campo {field} solo puede contener letras y espacios.',
-                'max_length' => 'El campo {field} no puede exceder los 22 caracteres.'
+                'regex_match' => 'El campo {field} solo puede contener letras y espacios.', 
+                'max_length'  => 'El campo {field} no puede exceder los 25 caracteres.'
             ]
         ],
+
 
         'primer_apellido_alumno' => [ 
             'label' => 'Primer apellido del alumno', 
             'rules' => [
                 'required',
-                'alpha_space',
-                'max_length[22]'
+                // Este regex acepta letras, eñes, tildes y espacios
+                'regex_match[/^[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ\s]+$/u]',
+                'max_length[25]'
             ],
             'errors' => [
                 'required'    => 'El campo {field} es obligatorio.',
-                'alpha_space' => 'El campo {field} solo puede contener letras y espacios.',
-                'max_length' => 'El campo {field} no puede exceder los 22 caracteres.'
+                'regex_match' => 'El campo {field} solo puede contener letras y espacios.', 
+                'max_length'  => 'El campo {field} no puede exceder los 25 caracteres.'
             ]
-        ], 
+        ],
 
 
         'segundo_apellido_alumno' => [ 
             'label' => 'Segundo apellido del alumno', 
             'rules' => [
                 'required',
-                'alpha_space',
-                'max_length[22]'
+                // Este regex acepta letras, eñes, tildes y espacios
+                'regex_match[/^[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ\s]+$/u]',
+                'max_length[25]'
             ],
             'errors' => [
                 'required'    => 'El campo {field} es obligatorio.',
-                'alpha_space' => 'El campo {field} solo puede contener letras y espacios.',
-                'max_length' => 'El campo {field} no puede exceder los 22 caracteres.'
+                'regex_match' => 'El campo {field} solo puede contener letras y espacios.', 
+                'max_length'  => 'El campo {field} no puede exceder los 25 caracteres.'
             ]
-        ], 
+        ],
+
 
         'nacionalidad_alumno' => [ 
             'label' => 'Nacionalidad del alumno', 
@@ -138,12 +143,10 @@ class Validation extends BaseConfig
             'label' => 'Calle y número', 
             'rules' => [
                 'required', 
-                'alpha_numeric_punct', 
                 'max_length[60]'
             ],
             'errors' => [
                 'required'    => 'El campo {field} es obligatorio.',
-                'alpha_numeric_punct' => 'El campo {field} solo puede contener letras, números, espacios y signos como #, -, . o : .',
                 'max_length' => 'El campo {field} no puede exceder los 60 caracteres.'
             ]
         ], 
@@ -153,12 +156,10 @@ class Validation extends BaseConfig
             'label' => 'Entre calle', 
             'rules' => [
                 'required',
-                'alpha_space',
                 'max_length[40]'
             ],
             'errors' => [
                 'required'    => 'El campo {field} es obligatorio.',
-                'alpha_space' => 'El campo {field} solo puede contener letras y espacios.',
                 'max_length' => 'El campo {field} no puede exceder los 40 caracteres.'
             ]
         ], 
@@ -168,12 +169,10 @@ class Validation extends BaseConfig
             'label' => 'Y calle', 
             'rules' => [
                 'required',
-                'alpha_space',
                 'max_length[40]'
             ],
             'errors' => [
                 'required'    => 'El campo {field} es obligatorio.',
-                'alpha_space' => 'El campo {field} solo puede contener letras y espacios.',
                 'max_length' => 'El campo {field} no puede exceder los 40 caracteres.'
             ]
         ], 
@@ -195,12 +194,10 @@ class Validation extends BaseConfig
             'label' => 'Referencia domiciliaria', 
             'rules' => [
                 'required',
-                'alpha_space',
                 'max_length[50]'
             ],
             'errors' => [
                 'required'    => 'El campo {field} es obligatorio.',
-                'alpha_space' => 'El campo {field} solo puede contener letras y espacios.',
                 'max_length' => 'El campo {field} no puede exceder los 50 caracteres.'
             ]
         ], 
@@ -277,12 +274,10 @@ class Validation extends BaseConfig
             'label' => 'Nombre de usuario de la red social del alumno', 
             'rules' => [
                 'required',
-                'alpha_space',
                 'max_length[20]'
             ],
             'errors' => [
                 'required'    => 'El campo {field} es obligatorio.',
-                'alpha_space' => 'El campo {field} solo puede contener letras y espacios.',
                 'max_length' => 'El campo {field} no puede exceder los 20 caracteres.'
             ]
         ], 
@@ -340,52 +335,57 @@ class Validation extends BaseConfig
             ],
             'errors' => [
                 'required'    => 'El campo {field} es obligatorio.',
-                'regex_match' => 'Formato de CURP inválido.'
+                'regex_match' => 'Formato de CURP inválido en {field}.'
             ]
         ], 
 
-        'nombre_tutor' => [ // Nombre del campo del formulario
-            'label' => 'Nombre del tutor', // Cualquier nombre para referirse a este campo en los errores
+        'nombre_tutor' => [ 
+            'label' => 'Nombre del tutor', 
             'rules' => [
                 'required',
-                'alpha_space',
-                'max_length[22]'
+                // Este regex acepta letras, eñes, tildes y espacios
+                'regex_match[/^[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ\s]+$/u]',
+                'max_length[25]'
             ],
             'errors' => [
                 'required'    => 'El campo {field} es obligatorio.',
-                'alpha_space' => 'El campo {field} solo puede contener letras y espacios.',
-                'max_length' => 'El campo {field} no puede exceder los 22 caracteres.'
+                'regex_match' => 'El campo {field} solo puede contener letras y espacios.', 
+                'max_length'  => 'El campo {field} no puede exceder los 25 caracteres.'
             ]
         ],
+
 
         'primer_apellido_tutor' => [ 
             'label' => 'Primer apellido del tutor', 
             'rules' => [
                 'required',
-                'alpha_space',
-                'max_length[22]'
+                // Este regex acepta letras, eñes, tildes y espacios
+                'regex_match[/^[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ\s]+$/u]',
+                'max_length[25]'
             ],
             'errors' => [
                 'required'    => 'El campo {field} es obligatorio.',
-                'alpha_space' => 'El campo {field} solo puede contener letras y espacios.',
-                'max_length' => 'El campo {field} no puede exceder los 22 caracteres.'
+                'regex_match' => 'El campo {field} solo puede contener letras y espacios.', 
+                'max_length'  => 'El campo {field} no puede exceder los 25 caracteres.'
             ]
-        ], 
+        ],
 
 
         'segundo_apellido_tutor' => [ 
             'label' => 'Segundo apellido del tutor', 
             'rules' => [
                 'required',
-                'alpha_space',
-                'max_length[22]'
+                // Este regex acepta letras, eñes, tildes y espacios
+                'regex_match[/^[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ\s]+$/u]',
+                'max_length[25]'
             ],
             'errors' => [
                 'required'    => 'El campo {field} es obligatorio.',
-                'alpha_space' => 'El campo {field} solo puede contener letras y espacios.',
-                'max_length' => 'El campo {field} no puede exceder los 22 caracteres.'
+                'regex_match' => 'El campo {field} solo puede contener letras y espacios.', 
+                'max_length'  => 'El campo {field} no puede exceder los 25 caracteres.'
             ]
-        ], 
+        ],
+
 
         'nacionalidad_tutor' => [ 
             'label' => 'Nacionalidad del tutor', 
@@ -480,12 +480,10 @@ class Validation extends BaseConfig
             'label' => 'Nombre de usuario de la red social del tutor', 
             'rules' => [
                 'required',
-                'alpha_space',
                 'max_length[20]'
             ],
             'errors' => [
                 'required'    => 'El campo {field} es obligatorio.',
-                'alpha_space' => 'El campo {field} solo puede contener letras y espacios.',
                 'max_length' => 'El campo {field} no puede exceder los 20 caracteres.'
             ]
         ], 
@@ -500,52 +498,57 @@ class Validation extends BaseConfig
             ],
             'errors' => [
                 'required'    => 'El campo {field} es obligatorio.',
-                'regex_match' => 'Formato de CURP inválido.'
+                'regex_match' => 'Formato de CURP inválido en {field}.'
             ]
         ], 
 
-        'nombre_tutor2' => [ // Nombre del campo del formulario
-            'label' => 'Nombre del segundo tutor', // Cualquier nombre para referirse a este campo en los errores
+        'nombre_tutor2' => [ 
+            'label' => 'Nombre(s) del segundo tutor', 
             'rules' => [
                 'required',
-                'alpha_space',
-                'max_length[22]'
+                // Este regex acepta letras, eñes, tildes y espacios
+                'regex_match[/^[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ\s]+$/u]',
+                'max_length[25]'
             ],
             'errors' => [
                 'required'    => 'El campo {field} es obligatorio.',
-                'alpha_space' => 'El campo {field} solo puede contener letras y espacios.',
-                'max_length' => 'El campo {field} no puede exceder los 22 caracteres.'
+                'regex_match' => 'El campo {field} solo puede contener letras y espacios.', 
+                'max_length'  => 'El campo {field} no puede exceder los 25 caracteres.'
             ]
         ],
+
 
         'primer_apellido_tutor2' => [ 
             'label' => 'Primer apellido del segundo tutor', 
             'rules' => [
                 'required',
-                'alpha_space',
-                'max_length[22]'
+                // Este regex acepta letras, eñes, tildes y espacios
+                'regex_match[/^[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ\s]+$/u]',
+                'max_length[25]'
             ],
             'errors' => [
                 'required'    => 'El campo {field} es obligatorio.',
-                'alpha_space' => 'El campo {field} solo puede contener letras y espacios.',
-                'max_length' => 'El campo {field} no puede exceder los 22 caracteres.'
+                'regex_match' => 'El campo {field} solo puede contener letras y espacios.', 
+                'max_length'  => 'El campo {field} no puede exceder los 25 caracteres.'
             ]
-        ], 
+        ],
 
 
         'segundo_apellido_tutor2' => [ 
             'label' => 'Segundo apellido del segundo tutor', 
             'rules' => [
                 'required',
-                'alpha_space',
-                'max_length[22]'
+                // Este regex acepta letras, eñes, tildes y espacios
+                'regex_match[/^[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ\s]+$/u]',
+                'max_length[25]'
             ],
             'errors' => [
                 'required'    => 'El campo {field} es obligatorio.',
-                'alpha_space' => 'El campo {field} solo puede contener letras y espacios.',
-                'max_length' => 'El campo {field} no puede exceder los 22 caracteres.'
+                'regex_match' => 'El campo {field} solo puede contener letras y espacios.', 
+                'max_length'  => 'El campo {field} no puede exceder los 25 caracteres.'
             ]
-        ], 
+        ],
+
 
         'ocupacion_tutor2' => [ 
             'label' => 'Ocupación del segundo tutor', 
@@ -638,8 +641,8 @@ class Validation extends BaseConfig
             'rules' => [
                 'required',
                 'integer',                     // Garantiza que sea un número entero (sin decimales)
-                'greater_than_equal_to[15]',  // Límite mínimo: 100 cm
-                'less_than_equal_to[65]',     // Límite máximo: 165 cm
+                'greater_than_equal_to[15]',  // Límite mínimo: 15 cm
+                'less_than_equal_to[65]',     // Límite máximo: 65 cm
             ],
             'errors' => [
                 'required'              => 'El campo {field} es obligatorio.',
@@ -655,13 +658,13 @@ class Validation extends BaseConfig
             'rules' => [
                 'required',
                 'integer',                     // Garantiza que sea un número entero (sin decimales)
-                'greater_than_equal_to[18]',  // Límite mínimo: 100 cm
-                'less_than_equal_to[25]',     // Límite máximo: 165 cm
+                'greater_than_equal_to[18]',  // Límite mínimo: 18 cm
+                'less_than_equal_to[25]',     // Límite máximo: 25 cm
             ],
             'errors' => [
                 'required'              => 'El campo {field} es obligatorio.',
                 'integer'               => 'La {field} debe ser un número entero.',
-                'greater_than_equal_to' => 'La {field} mínima permitida es de 15 cm.',
+                'greater_than_equal_to' => 'La {field} mínima permitida es de 18 cm.',
                 'less_than_equal_to'    => 'La {field} máxima permitida es de 25 cm.'
             ]
         ],
@@ -679,6 +682,7 @@ class Validation extends BaseConfig
         'otro_apoyo' => [ // Null
             'label' => 'Otro apoyo', 
             'rules' => [
+                'permit_empty', // Se puede dejar vacío
                 'max_length[40]'
             ],
             'errors' => [
@@ -690,6 +694,7 @@ class Validation extends BaseConfig
         'discapacidad' => [ // Null
             'label' => 'Discapacidad', 
             'rules' => [
+                'permit_empty', // Se puede dejar vacío
                 'max_length[60]'
             ],
             'errors' => [
@@ -726,6 +731,7 @@ class Validation extends BaseConfig
         'nombre_medico' => [ // Null
             'label' => 'Nombre del médico familiar', 
             'rules' => [
+                'permit_empty', // Se puede dejar vacío
                 'max_length[50]'
             ],
             'errors' => [
@@ -734,17 +740,18 @@ class Validation extends BaseConfig
         ], 
 
 
+ 
         'tel_medico' => [ // Null
-            'label' => 'Teléfono del médico familiar',
+            'label' => 'Teléfono del médico familiar', 
             'rules' => [
-                'numeric',          // Garantiza que solo entren números del 0 al 9
-                'exact_length[10]'  // Fuerza a que sean exactamente 10 caracteres
+                'permit_empty', // Se puede dejar vacío
+                'regex_match[/^\d{10}$/]' 
             ],
             'errors' => [
-                'numeric'      => 'El campo {field} solo debe contener números.',
-                'exact_length' => 'El campo {field} debe tener exactamente 10 dígitos.'
+                'regex_match' => 'Campo {field} inválido, debe ser un número de 10 dígitos.'
             ]
         ], 
+
 
         'institucion_dh' => [ 
             'label' => 'Institucion de derechohabiencia', 
