@@ -82,7 +82,7 @@
 
         <div class="form-control" style="margin-bottom: 10px;">
       <label class="label" for="municipio_dom"><b style="color: red;">*</b> MUNICIPIO:</label><br />
-          <select class="select select-accent" id="municipio_dom" name="municipio_dom" >
+          <select class="select select-secondary" id="municipio_dom" name="municipio_dom" >
                 <option disabled selected>SELECCIONAR</option>
                 <option value="TEXCOCO">TEXCOCO</option>
                 <option value="ATENCO">ATENCO</option>
@@ -229,8 +229,8 @@
   </div>
 
   <div class="form-control" style="margin-bottom: 10px;">
-        <label for="rs_user_alumno"><b style="color: red;">*</b> NOMBRE DE USUARIO DE LA RED SOCIAL:</label>
-        <input style="width: 300px;" class="form-control" type="text" id="rs_user_alumno" name="rs_user_alumno" 
+        <label class="label" for="rs_user_alumno"><b style="color: red;">*</b> NOMBRE DE USUARIO DE LA RED SOCIAL:</label><br/>
+        <input style="width: 300px;" class="input input-accent" type="text" id="rs_user_alumno" name="rs_user_alumno" 
         
         data-parsley-maxlength="20"
         data-parsley-maxlength-message="No debe exceder los 20 caracteres" 
@@ -243,12 +243,12 @@
 
 
     <!--Comienza datos complementarios del alumno -->
-    <div id="datos_complem_alumno">
-    <h2>DATOS COMPLEMENTARIOS</h2>
+<fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-md border p-4">
+    <legend class="fieldset-legend" style="color: darkolivegreen;">DATOS COMPLEMENTARIOS</legend>
 
-     <div class="form-group">
-        <label for="num_personas">¿CUÁNTAS PERSONAS VIVEN EN SU CASA?</label>
-        <input style="width: 100px;" class="form-control" type="number" min="1" id="num_personas" 
+    <div class="form-control" style="margin-bottom: 10px;">
+        <label class="label" for="num_personas">¿CUÁNTAS PERSONAS VIVEN EN SU CASA?</label><br/>
+        <input style="width: 100px;" class="input input-accent" type="number" min="1" id="num_personas" 
         name="num_personas" 
         
         data-parsley-type="number" 
@@ -257,10 +257,10 @@
 
 
 
-    <div class="form-group">
-      <label for="vive_con"><b style="color: red;">*</b>¿CON QUIÉN VIVE?</label>
-          <select style="width: 150px;" class="form-control" id="vive_con" name="vive_con" >
-                <option></option>
+    <div class="form-control" style="margin-bottom: 10px;">
+      <label clas="label" for="vive_con"><b style="color: red;">*</b>¿CON QUIÉN VIVE?</label><br/>
+          <select style="width: 150px;" class="select select-primary" id="vive_con" name="vive_con" >
+                <option disabled selected>SELECCIONAR</option>
                 <option>MAMA</option>
                 <option>PAPA</option>
                 <option>AMBOS</option>
@@ -268,30 +268,32 @@
     </div>
 
 
-    <div class="form-group">
-      <label for="sosten_econ"><b style="color: red;">*</b> ¿QUIÉN SOSTIENE ECONÓMICAMENTE LA CASA?</label>
-          <select style="width: 150px;" class="form-control" id="sosten_econ" name="sosten_econ" >
-                <option></option>
+    <div class="form-control" style="margin-bottom: 10px;">
+      <label class="label" for="sosten_econ"><b style="color: red;">*</b> ¿QUIÉN SOSTIENE ECONÓMICAMENTE LA CASA?</label><br/>
+          <select style="width: 150px;" class="select select-secondary" id="sosten_econ" name="sosten_econ" >
+                <option disabled selected>SELECCIONAR</option>
                 <option>MAMA</option>
                 <option>PAPA</option>
                 <option>AMBOS</option>
           </select>
     </div>
 
-<br />
 
-     <div class="form-group">
-        <label for="nombre_escuela_procedencia">NOMBRE DE LA ESCUELA DE PROCEDENCIA:</label>
-        <input class="form-control" type="text" id="nombre_escuela_procedencia" name="nombre_escuela_procedencia" value=""
+
+     <div class="form-control" style="margin-bottom: 10px;">
+        <label class="label" for="nombre_escuela_procedencia">NOMBRE DE LA ESCUELA DE PROCEDENCIA:</label><br/>
+        <input class="input input-accent" type="text" id="nombre_escuela_procedencia" name="nombre_escuela_procedencia" value=""
         
         data-parsley-maxlength="50"
         data-parsley-maxlength-message="No debe exceder los 50 caracteres" 
         data-parsley-trigger="keyup" />
     </div>
 
-    <div class="form-group">
-        <label for="anios_prescolar">AÑOS CURSADOS EN PREESCOLAR: </label>
-            <select class="form-control" id="anios_prescolar" name="anios_prescolar" style="width: 100px;">
+
+
+    <div class="form-control" style="margin-bottom: 10px;">
+        <label class="label" for="anios_prescolar">AÑOS CURSADOS EN PREESCOLAR: </label><br/>
+            <select class="select select-info" id="anios_prescolar" name="anios_prescolar" style="width: 100px;">
                   <option value="3" selected="selected">3</option>
                   <option value="2">2</option>
                   <option value="1">1</option>
@@ -299,97 +301,101 @@
             </select>
       </div>
 
-<!-- Comienza apoyos tecnológicos -->
 
-<div id="apoyos_tec_alumno">
-  <h2>RECURSOS TECNOLÓGICOS CON LOS QUE CUENTA EL ALUMNO</h2>
-<br />
 
-    <div class="form-check">
-        <label class="form-check-label">
-          <input type="checkbox" class="form-check-input" name="computadora" value="SI">COMPUTADORA DE ESCRITORIO O PORTATIL
+<br/>
+  <h2>RECURSOS TECNOLÓGICOS CON LOS QUE CUENTA EL ALUMNO:</h2>
+  
+  <div class="form-check">
+        <label class="label">
+          <input type="checkbox" class="checkbox checkbox-primary" name="computadora" value="SI"> COMPUTADORA DE ESCRITORIO O PORTATIL
         </label>
     </div>
 
     <div class="form-check">
-        <label class="form-check-label">
-          <input type="checkbox" class="form-check-input" name="tablet" value="SI">TABLET
+        <label class="label">
+          <input type="checkbox" class="checkbox checkbox-primary" name="tablet" value="SI"> TABLET
         </label>
     </div>
 
     
     <div class="form-check">
-        <label class="form-check-label">
-          <input type="checkbox" class="form-check-input" name="internet_casa" value="SI">INTERNET EN CASA
+        <label class="label">
+          <input type="checkbox" class="checkbox checkbox-primary" name="internet_casa" value="SI"> INTERNET EN CASA
         </label>
     </div>
 
     <div class="form-check">
-        <label class="form-check-label">
-          <input type="checkbox" class="form-check-input" name="internet_movil" value="SI">INTERNET EN CELULAR
+        <label class="label">
+          <input type="checkbox" class="checkbox checkbox-primary" name="internet_movil" value="SI"> INTERNET EN CELULAR
         </label>
     </div>
 
     <div class="form-check">
-        <label class="form-check-label">
-          <input type="checkbox" class="form-check-input" name="tv_paga" value="SI">TELEVISIÓN DE PAGA
-        </label>
-    </div>
-
-
-    <div class="form-check">
-        <label class="form-check-label">
-          <input type="checkbox" class="form-check-input" name="tv_abierta" value="SI">TELEVISIÓN ABIERTA
+        <label class="label">
+          <input type="checkbox" class="checkbox checkbox-primary" name="tv_paga" value="SI"> TELEVISIÓN DE PAGA
         </label>
     </div>
 
 
     <div class="form-check">
-        <label class="form-check-label">
-          <input type="checkbox" class="form-check-input" name="radio" value="SI">RADIO
+        <label class="label">
+          <input type="checkbox" class="checkbox checkbox-primary" name="tv_abierta" value="SI"> TELEVISIÓN ABIERTA
         </label>
     </div>
 
-</div>
+
+    <div class="form-check">
+        <label class="label">
+          <input type="checkbox" class="checkbox checkbox-primary" name="radio" value="SI"> RADIO
+        </label>
+    </div>
+
+</fieldset>
+
 <br />
-<hr />
+
 
 <!-- Comienza datos del tutor -->
-<h2>DATOS DEL TUTOR</h2>
-<br />
-<div class="form-group">
-  <label for="curp_tutor"><b style="color: red;">*</b> CURP DEL TUTOR:</label>
+
+<fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-md border p-4">
+    <legend class="fieldset-legend" style="color: darkolivegreen;">DATOS DEL TUTOR</legend>
+
+<div class="form-control" style="margin-bottom: 10px;">
+  <label class="label" for="curp_tutor"><b style="color: red;">*</b> CURP DEL TUTOR:</label><br/>
   <input style="width: 250px;" class="form-control" type="text" id="curp_tutor" name="curp_tutor" 
     />
   
 </div>
 
-<div class="form-group">
-        <label for="nombre_tutor">NOMBRE(S):</label>
-        <input class="form-control" type="text" id="nombre_tutor" name="nombre_tutor" value="<?= old('nombre_tutor') ?>" />
+
+<div class="form-control" style="margin-bottom: 10px;">
+    <label class="label" for="nombre_tutor">NOMBRE(S):</label><br/>
+        <input class="input input-info" type="text" id="nombre_tutor" name="nombre_tutor" value="<?= old('nombre_tutor') ?>" />
 </div>
 
 
-<div class="form-group">
-        <label for="primer_apellido_tutor">PRIMER APELLIDO:</label>
-        <input class="form-control" type="text" id="primer_apellido_tutor" name="primer_apellido_tutor" value="<?= old('primer_apellido_tutor') ?>" />
-</div>
-
-<div class="form-group">
-        <label for="segundo_apellido_tutor">SEGUNDO APELLIDO:</label>
-        <input class="form-control" type="text" id="segundo_apellido_tutor" name="segundo_apellido_tutor" value="<?= old('segundo_apellido_tutor') ?>" />
+<div class="form-control" style="margin-bottom: 10px;">
+    <label class="label" for="primer_apellido_tutor">PRIMER APELLIDO:</label><br/>
+        <input class="input input-info" type="text" id="primer_apellido_tutor" name="primer_apellido_tutor" value="<?= old('primer_apellido_tutor') ?>" />
 </div>
 
 
-<div class="form-group">
-    <label for="nacionalidad_tutor">NACIONALIDAD:</label>
-    <input type="text" id="nacionalidad_tutor" name="nacionalidad_tutor" size="10" value="MEXICANA" />
+<div class="form-control" style="margin-bottom: 10px;">
+    <label class="label" for="segundo_apellido_tutor">SEGUNDO APELLIDO:</label><br/>
+        <input class="input input-info" type="text" id="segundo_apellido_tutor" name="segundo_apellido_tutor" value="<?= old('segundo_apellido_tutor') ?>" />
 </div>
 
 
-  <div class="form-group">
-    <label for="ocupacion_tutor"><b style="color: red;">*</b> OCUPACIÓN:</label>
-    <input style="width: 400px;" class="form-control" type="text" id="ocupacion_tutor" name="ocupacion_tutor" 
+<div class="form-control" style="margin-bottom: 10px;">
+    <label class="label" for="nacionalidad_tutor">NACIONALIDAD:</label><br/>
+    <input class="input input-info" type="text" id="nacionalidad_tutor" name="nacionalidad_tutor" size="10" value="MEXICANA" />
+</div>
+
+
+  <div class="form-control" style="margin-bottom: 10px;">
+    <label class="label" for="ocupacion_tutor"><b style="color: red;">*</b> OCUPACIÓN:</label><br/>
+    <input style="width: 400px;" class="input input-info" type="text" id="ocupacion_tutor" name="ocupacion_tutor" 
     
     data-parsley-maxlength="30"
     data-parsley-maxlength-message="No debe exceder los 30 caracteres" 
@@ -397,10 +403,10 @@
   </div>
 
 
-<div class="form-group">
-    <label for="estudios_tutor"><b style="color: red;">*</b> GRADO MÁXIMO DE ESTUDIOS:</label>
-        <select style="width: 300px;" class="form-control" id="estudios_tutor" name="estudios_tutor" >
-              <option></option>
+<div class="form-control" style="margin-bottom: 10px;">
+    <label class="label" for="estudios_tutor"><b style="color: red;">*</b> GRADO MÁXIMO DE ESTUDIOS:</label><br/>
+        <select class="select select-secondary" style="width: 300px;" id="estudios_tutor" name="estudios_tutor" >
+              <option disabled selected>SELECCIONAR</option>
               <option>NINGUNO</option>
               <option>PRIMARIA</option>
               <option>SECUNDARIA</option>
@@ -413,10 +419,10 @@
     </div>
 
 
-    <div class="form-group">
-      <label for="parentesco_tutor"><b style="color: red;">*</b> PARENTESCO:</label>
-          <select style="width: 200px;" class="form-control" id="parentesco_tutor" name="parentesco_tutor" >
-                <option></option>
+  <div class="form-control" style="margin-bottom: 10px;">
+      <label class="label" for="parentesco_tutor"><b style="color: red;">*</b> PARENTESCO:</label><br/>
+          <select class="select select-secondary" style="width: 200px;" id="parentesco_tutor" name="parentesco_tutor" >
+                <option disabled selected>SELECCIONAR</option>
                 <option>MADRE</option>
                 <option>PADRE</option>
                 <option>ABUELO</option>
@@ -439,10 +445,10 @@
       </div>
 
 
-<div class="form-group">
-    <label for="salario_tutor"><b style="color: red;">*</b> INGRESO MENSUAL:</label>
-        <select style="width: 300px;" class="form-control" id="salario_tutor" name="salario_tutor" >
-            <option></option>
+<div class="form-control" style="margin-bottom: 10px;">
+    <label class="label" for="salario_tutor"><b style="color: red;">*</b> INGRESO MENSUAL:</label><br/>
+        <select class="select select-secondary" style="width: 300px;" id="salario_tutor" name="salario_tutor" >
+            <option disabled selected>SELECCIONAR</option>
             <option>NINGUNO</option>
             <option>MENOS DE UN SALARIO MÍNIMO</option>
             <option>DE 1 A 2 SALARIOS MÍNIMOS</option>
@@ -453,10 +459,10 @@
 </div>
 
 
-<div class="form-group">
-    <label for="estado_civil_tutor"><b style="color: red;">*</b> ESTADO CIVIL:</label>
-        <select style="width: 300px;" class="form-control" id="estado_civil_tutor" name="estado_civil_tutor" >
-            <option></option>
+<div class="form-control" style="margin-bottom: 10px;">
+    <label class="label" for="estado_civil_tutor"><b style="color: red;">*</b> ESTADO CIVIL:</label><br/>
+        <select class="select select-secondary" style="width: 300px;" id="estado_civil_tutor" name="estado_civil_tutor" >
+            <option disabled selected>SELECCIONAR</option>
             <option>CASADO</option>
             <option>CASADA</option>
             <option>DIVORCIADO</option>
@@ -471,66 +477,71 @@
 </div>
 
 
-<div class="form-group">
-    <label for="email_tutor"><b style="color: red;">*</b> CORREO ELECTRÓNICO:</label>
-        <input class="form-control" type="text" id="email_tutor" name="email_tutor" style="text-transform: lowercase; width: 300px;"
+<div class="form-control" style="margin-bottom: 10px;">
+    <label class="label" for="email_tutor"><b style="color: red;">*</b> CORREO ELECTRÓNICO:</label><br/>
+        <input class="input input-info" type="text" id="email_tutor" name="email_tutor" style="text-transform: lowercase; width: 300px;"
             
            data-parsley-type="email" />
 </div>
 
 
-<div class="form-group">
-    <label for="rs_tutor"><b style="color: red;">*</b> RED SOCIAL:</label>
-        <select style="width: 250px;" class="form-control" id="rs_tutor" name="rs_tutor" >
-            <option></option>
+<div class="form-control" style="margin-bottom: 10px;">
+    <label class="label" for="rs_tutor"><b style="color: red;">*</b> RED SOCIAL:</label><br/>
+        <select class="select select-secondary" style="width: 250px;" id="rs_tutor" name="rs_tutor" >
+            <option disabled selected>SELECCIONAR</option>
             <option>FACEBOOK</option>
             <option>INSTAGRAM</option>
             <option>X</option>
                                         
         </select>
 </div>
+
+
         
-<div class="form-group">
-            <label for="rs_user_tutor"><b style="color: red;">*</b> NOMBRE DE USUARIO DE LA RED SOCIAL:</label>
-            <input style="width: 300px;" class="form-control" type="text" id="rs_user_tutor" name="rs_user_tutor" 
+<div class="form-control" style="margin-bottom: 10px;">
+     <label class="label" for="rs_user_tutor"><b style="color: red;">*</b> NOMBRE DE USUARIO DE LA RED SOCIAL:</label><br/>
+         <input class="input input-info" style="width: 300px;" type="text" id="rs_user_tutor" name="rs_user_tutor" 
             
             data-parsley-maxlength="20"
             data-parsley-maxlength-message="No debe exceder los 20 caracteres" 
             data-parsley-trigger="keyup" /> 
 </div>
+</fieldset>
+
 
 <!-- Datos del segundo tutor -->
 
-<h2>DATOS DEL SEGUNDO TUTOR</h2>
+<fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-md border p-4">
+    <legend class="fieldset-legend" style="color: darkolivegreen;">DATOS DEL SEGUNDO TUTOR</legend>
 
-<div class="form-group">
-  <label for="curp_tutor2"><b style="color: red;">*</b> CURP:</label>
-  <input style="width: 250px;" class="form-control" type="text" id="curp_tutor2" name="curp_tutor2" 
+<div class="form-control" style="margin-bottom: 10px;">
+  <label class="label" for="curp_tutor2"><b style="color: red;">*</b> CURP:</label><br/>
+  <input class="input input-primary" style="width: 250px;" type="text" id="curp_tutor2" name="curp_tutor2" 
     />
 </div>
 
 
-<div class="form-group">
-  <label for="nombre_tutor2"><b style="color: red;">*</b> NOMBRE(S):</label>
-  <input style="width: 300px;" class="form-control" type="text" id="nombre_tutor2" name="nombre_tutor2" value="<?= old('nombre_tutor2') ?>" />
+<div class="form-control" style="margin-bottom: 10px;">
+  <label class="label" for="nombre_tutor2"><b style="color: red;">*</b> NOMBRE(S):</label><br/>
+  <input class="input input-primary" style="width: 300px;" type="text" id="nombre_tutor2" name="nombre_tutor2" value="<?= old('nombre_tutor2') ?>" />
 </div>
 
 
-<div class="form-group">
-  <label for="primer_apellido_tutor2"><b style="color: red;">*</b> PRIMER APELLIDO:</label>
-  <input style="width: 300px;" class="form-control" type="text" id="primer_apellido_tutor2" name="primer_apellido_tutor2" value="<?= old('primer_apellido_tutor2') ?>" />
+<div class="form-control" style="margin-bottom: 10px;">
+  <label class="label" for="primer_apellido_tutor2"><b style="color: red;">*</b> PRIMER APELLIDO:</label><br/>
+  <input class="input input-primary" style="width: 300px;" type="text" id="primer_apellido_tutor2" name="primer_apellido_tutor2" value="<?= old('primer_apellido_tutor2') ?>" />
 </div>
 
 
-<div class="form-group">
-  <label for="segundo_apellido_tutor2"><b style="color: red;">*</b> SEGUNDO APELLIDO:</label>
-  <input style="width: 300px;" class="form-control" type="text" id="segundo_apellido_tutor2" name="segundo_apellido_tutor2" value="<?= old('segundo_apellido_tutor2') ?>" />
+<div class="form-control" style="margin-bottom: 10px;">
+  <label class="label" for="segundo_apellido_tutor2"><b style="color: red;">*</b> SEGUNDO APELLIDO:</label><br/>
+  <input class="input input-primary" style="width: 300px;" type="text" id="segundo_apellido_tutor2" name="segundo_apellido_tutor2" value="<?= old('segundo_apellido_tutor2') ?>" />
 </div>
 
 
-<div class="form-group">
-    <label for="ocupacion_tutor2"><b style="color: red;">*</b> OCUPACIÓN:</label>
-    <input style="width: 400px;" class="form-control" type="text" id="ocupacion_tutor2" name="ocupacion_tutor2" 
+<div class="form-control" style="margin-bottom: 10px;">
+    <label class="label" for="ocupacion_tutor2"><b style="color: red;">*</b> OCUPACIÓN:</label><br/>
+    <input class="input input-primary" style="width: 400px;" type="text" id="ocupacion_tutor2" name="ocupacion_tutor2" 
     
     data-parsley-maxlength="30"
     data-parsley-maxlength-message="No debe exceder los 30 caracteres" 
@@ -538,10 +549,10 @@
   </div>
 
 
-<div class="form-group">
-    <label for="estudios_tutor2"><b style="color: red;">*</b> GRADO MÁXIMO DE ESTUDIOS:</label>
-        <select style="width: 300px;" class="form-control" id="estudios_tutor2" name="estudios_tutor2" >
-              <option></option>
+<div class="form-control" style="margin-bottom: 10px;">
+    <label class="label" for="estudios_tutor2"><b style="color: red;">*</b> GRADO MÁXIMO DE ESTUDIOS:</label><br/>
+        <select class="select select-info" style="width: 300px;" id="estudios_tutor2" name="estudios_tutor2" >
+              <option disabled selected>SELECCIONAR</option>
               <option>NINGUNO</option>
               <option>PRIMARIA</option>
               <option>SECUNDARIA</option>
@@ -554,10 +565,10 @@
  </div>
 
 
- <div class="form-group">
-      <label for="parentesco_tutor2"><b style="color: red;">*</b> PARENTESCO:</label>
-          <select style="width: 200px;" class="form-control" id="parentesco_tutor2" name="parentesco_tutor2" >
-                <option></option>
+ <div class="form-control" style="margin-bottom: 10px;">
+      <label class="label" for="parentesco_tutor2"><b style="color: red;">*</b> PARENTESCO:</label><br/>
+          <select class="select select-info" style="width: 200px;" id="parentesco_tutor2" name="parentesco_tutor2" >
+                <option disabled selected>SELECCIONAR</option>
                 <option>MADRE</option>
                 <option>PADRE</option>
                 <option>ABUELO</option>
@@ -580,10 +591,10 @@
  </div>
 
 
-<div class="form-group">
-    <label for="salario_tutor2"><b style="color: red;">*</b> INGRESO MENSUAL:</label>
-        <select style="width: 300px;" class="form-control" id="salario_tutor2" name="salario_tutor2" >
-            <option></option>
+<div class="form-control" style="margin-bottom: 10px;">
+    <label class="label" for="salario_tutor2"><b style="color: red;">*</b> INGRESO MENSUAL:</label><br/>
+        <select class="select select-info" style="width: 300px;" id="salario_tutor2" name="salario_tutor2" >
+            <option disabled selected>SELECCIONAR</option>
             <option>NINGUNO</option>
             <option>MENOS DE UN SALARIO MÍNIMO</option>
             <option>DE 1 A 2 SALARIOS MÍNIMOS</option>
@@ -593,10 +604,10 @@
         </select>
 </div>
 
-<div class="form-group">
-    <label for="estado_civil_tutor2"><b style="color: red;">*</b> ESTADO CIVIL:</label>
-        <select style="width: 300px;" class="form-control" id="estado_civil_tutor2" name="estado_civil_tutor2" >
-            <option></option>
+<div class="form-control" style="margin-bottom: 10px;">
+    <label class="label" for="estado_civil_tutor2"><b style="color: red;">*</b> ESTADO CIVIL:</label><br/>
+        <select class="select select-info" style="width: 300px;" id="estado_civil_tutor2" name="estado_civil_tutor2" >
+            <option disabled selected>SELECCIONAR</option>
             <option>CASADO</option>
             <option>CASADA</option>
             <option>DIVORCIADO</option>
@@ -611,54 +622,59 @@
 </div>
 
 
-<div class="form-group">
-    <label for="email_tutor2"><b style="color: red;">*</b> CORREO ELECTRÓNICO:</label>
-        <input class="form-control" type="text" id="email_tutor2" name="email_tutor2" style="text-transform: lowercase; width: 300px;"
+<div class="form-control" style="margin-bottom: 10px;">
+    <label class="label" for="email_tutor2"><b style="color: red;">*</b> CORREO ELECTRÓNICO:</label><br/>
+        <input class="input input-primary" type="text" id="email_tutor2" name="email_tutor2" style="text-transform: lowercase; width: 300px;"
             
            data-parsley-type="email" />
 </div>
 
-<div class="form-group">
-    <label for="responsabilidad"><b style="color: red;">*</b> RESPONSABILIDAD DEL MENOR:</label>
-        <select class="form-control" id="responsabilidad" name="responsabilidad" style="width: 100px;" >
+
+<div class="form-control" style="margin-bottom: 10px;">
+    <label class="label" for="responsabilidad"><b style="color: red;">*</b> RESPONSABILIDAD DEL MENOR:</label><br/>
+        <select class="select select-info" id="responsabilidad" name="responsabilidad" style="width: 100px;" >
               <option value="SI" selected="selected">SI</option>
               <option value="SI">SI</option>
               <option value="NO">NO</option>
         </select>
 </div>
 
-<div class="form-group">
-    <label for="recoge"><b style="color: red;">*</b> ¿RECOGE AL MENOR?</label>
-        <select class="form-control" id="recoge" name="recoge" style="width: 100px;" >
+
+<div class="form-control" style="margin-bottom: 10px;">
+    <label class="label" for="recoge"><b style="color: red;">*</b> ¿RECOGE AL MENOR?</label><br/>
+        <select class="select select-info" id="recoge" name="recoge" style="width: 100px;" >
               <option value="SI" selected="selected">SI</option>
               <option value="SI">SI</option>
               <option value="NO">NO</option>
         </select>
 </div>
+
+</fieldset>
 
 
 <!-- ================ Datos de salud (Historial Médico) ================== -->
 
-<h2>DATOS DE SALUD DEL ALUMNO</h2>
+<fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-md border p-4">
+    <legend class="fieldset-legend" style="color: darkolivegreen;">DATOS DE SALUD DEL ALUMNO</legend>
 
-<div class="form-group">
-    <label for="estatura"><b style="color: red;">*</b> ESTATURA EN CENTÍMETROS:</label>
-    <input class="form-control" type="number" id="estatura" name="estatura" style="width: 100px;" 
+<div class="form-control" style="margin-bottom: 10px;">
+    <label class="label" for="estatura"><b style="color: red;">*</b> ESTATURA EN CENTÍMETROS:</label><br/>
+    <input class="input input-secondary" type="number" id="estatura" name="estatura" style="width: 100px;" 
   />
 </div>
 
 
 
-<div class="form-group">
-    <label for="peso"><b style="color: red;">*</b> PESO EN KILOGRAMOS:</label>
-    <input class="form-control" type="number" id="peso" name="peso" style="width: 100px;" 
+<div class="form-control" style="margin-bottom: 10px;">
+    <label class="label" for="peso"><b style="color: red;">*</b> PESO EN KILOGRAMOS:</label><br/>
+    <input class="input input-secondary" type="number" id="peso" name="peso" style="width: 100px;" 
    />
 </div>
 
 
- <div class="form-group">
-     <label for="tipo_sangre">TIPO DE SANGRE:</label>
-         <select style="width: 200px;" class="form-control" id="tipo_sangre" name="tipo_sangre">
+ <div class="form-control" style="margin-bottom: 10px;">
+     <label class="label" for="tipo_sangre">TIPO DE SANGRE:</label><br/>
+         <select class="select select-secondary" style="width: 200px;" id="tipo_sangre" name="tipo_sangre">
             <option value="NR" selected="selected">NO REPORTADO</option>
             <option value="O-">O-</option>
             <option value="O+">O+</option>
@@ -673,44 +689,46 @@
  </div>
 
 
- <div class="form-group">
-    <label for="talla_zapato"><b style="color: red;">*</b> TALLA DE ZAPATO EN CENTÍMETROS: </label>
-    <input style="width: 100px;" class="form-control" type="number" min="10" max="30" step="1" 
+<div class="form-control" style="margin-bottom: 10px;">
+    <label class="label" for="talla_zapato"><b style="color: red;">*</b> TALLA DE ZAPATO EN CENTÍMETROS: </label><br/>
+    <input style="width: 100px;" class="input input-secondary" type="number" min="18" max="25" step="1" 
     id="talla_zapato" name="talla_zapato"  />
 </div>
-<br />
 
-    <label for="zapato_orto">¿USA ZAPATO ORTOPÉDICO?&nbsp;&nbsp;</label>
+
+    <label class="label" for="zapato_orto">¿USA ZAPATO ORTOPÉDICO?&nbsp;&nbsp;</label>
  <div class="form-check-inline">
      <label class="form-check-label">
-        <input type="radio" id="zapato_orto" name="zapato_orto" class="form-check-input" value="NO"  checked="checked"> NO
+        <input type="radio" id="zapato_orto" name="zapato_orto" class="radio radio-secondary" value="NO"  checked="checked"> NO
      </label>
  </div>
  
  <div class="form-check-inline">
      <label class="form-check-label">
-        <input type="radio" id="zapato_orto" name="zapato_orto" class="form-check-input" value="SI" > SI
+        <input type="radio" id="zapato_orto" name="zapato_orto" class="radio radio-secondary" value="SI" > SI
      </label>
  </div>
 
-<br />
-   <label for="lentes">¿USA LENTES?&nbsp;&nbsp;</label>
+ <br/>
+
+
+   <label class="label" for="lentes">¿USA LENTES?&nbsp;&nbsp;</label>
 <div class="form-check-inline">
         <label class="form-check-label">
-          <input type="radio" id="lentes" class="form-check-input" value="NO" name="lentes" checked="checked"> NO
+          <input type="radio" id="lentes" class="radio radio-secondary" value="NO" name="lentes" checked="checked"> NO
         </label>
       </div>
       <div class="form-check-inline">
         <label class="form-check-label">
-          <input type="radio" id="lentes" class="form-check-input" value="SI" name="lentes"> SI
+          <input type="radio" id="lentes" class="radio radio-secondary" value="SI" name="lentes"> SI
         </label>
 </div>
 
-
-<div class="form-group">
-     <label for="vacunas">VACUNAS:</label>
-      <select class="form-control" id="vacunas" name="vacunas" >
-        <option value="" selected="selected">SELECCIONAR</option>
+<br />
+<div class="form-control" style="margin-bottom: 10px;">
+     <label class="label" for="vacunas">VACUNAS:</label><br/>
+      <select class="select select-secondary" id="vacunas" name="vacunas" >
+        <option disabled selected>SELECCIONAR</option>
         <option value="COMPLETAS HASTA LOS 3 AÑOS">COMPLETAS HASTA LOS 3 AÑOS</option>
         <option value="COMPLETAS HASTA LOS 6 AÑOS">COMPLETAS HASTA LOS 6 AÑOS</option>
         <option value="COMPLETAS HASTA LOS 11 AÑOS O 5° DE PRIMARIA">COMPLETAS HASTA LOS 11 AÑOS O 5° DE PRIMARIA</option>
@@ -718,58 +736,64 @@
       </select>
 </div>
 
+
 <div class="form-check">
-        <label class="form-check-label">
-          <input type="checkbox" class="form-check-input apoyo" name="apoyo_1" value="SI">DISPOSITIVOS DE AYUDA VISUAL
-        </label>
-</div>
-<div class="form-check">
-        <label class="form-check-label">
-          <input type="checkbox" class="form-check-input apoyo" name="apoyo_2" value="SI">AUDÍFONOS
-        </label>
-</div>
-<div class="form-check">
-        <label class="form-check-label">
-          <input type="checkbox" class="form-check-input apoyo" name="apoyo_3" value="SI">AYUDA PARA LA MOVILIDAD
-        </label>
-</div>
-<div class="form-check">
-        <label class="form-check-label">
-          <input type="checkbox" class="form-check-input apoyo" name="apoyo_4" value="SI">PRÓTESIS
-        </label>
-</div>
-<div class="form-check">
-        <label class="form-check-label">
-          <input type="checkbox" class="form-check-input apoyo" name="apoyo_5" value="SI">SILLA DE RUEDAS
+        <label class="label">
+          <input type="checkbox" class="checkbox checkbox-success" name="apoyo_1" value="SI">DISPOSITIVOS DE AYUDA VISUAL
         </label>
 </div>
 
+<div class="form-check">
+        <label class="label">
+          <input type="checkbox" class="checkbox checkbox-success" name="apoyo_2" value="SI">AUDÍFONOS
+        </label>
+</div>
 
-<div class="form-group">
-  <label for="otro_apoyo">OTRO APOYO:</label>
-  <input class="form-control" type="text" id="otro_apoyo" name="otro_apoyo" placeholder="OPCIONAL" 
+<div class="form-check">
+        <label class="label">
+          <input type="checkbox" class="checkbox checkbox-success" name="apoyo_3" value="SI">AYUDA PARA LA MOVILIDAD
+        </label>
+</div>
+
+<div class="form-check">
+        <label class="label">
+          <input type="checkbox" class="checkbox checkbox-success" name="apoyo_4" value="SI">PRÓTESIS
+        </label>
+</div>
+
+<div class="form-check">
+        <label class="label">
+          <input type="checkbox" class="checkbox checkbox-success" name="apoyo_5" value="SI">SILLA DE RUEDAS
+        </label>
+</div>
+
+<br/>
+<div class="form-control" style="margin-bottom: 10px;">
+  <label class="label" for="otro_apoyo">OTRO APOYO:</label><br/>
+  <input class="input input-secondary" type="text" id="otro_apoyo" name="otro_apoyo" placeholder="OPCIONAL" 
     />
 </div>
 
 
-<div class="form-group">
-  <label for="otro_apoyo">DISCAPACIDAD:</label>
-  <input class="form-control" type="text" id="discapacidad" name="discapacidad" value="NINGUNA" 
+<div class="form-control" style="margin-bottom: 10px;">
+  <label class="label" for="otro_apoyo">DISCAPACIDAD:</label><br/>
+  <input class="input input-secondary" type="text" id="discapacidad" name="discapacidad" value="NINGUNA" 
     />
 </div>
 
 
-<div class="form-group">
-        <label for="covid">¿HA PADECIDO COVID?</label>
-           <select style="width: 200px;" class="form-control" id="covid" name="covid" >
+<div class="form-control" style="margin-bottom: 10px;">
+        <label class="label" for="covid">¿HA PADECIDO COVID?</label><br/>
+           <select class="select select-secondary" style="width: 200px;" id="covid" name="covid" >
                 <option value="NO" selected="selected">NO</option>
                 <option value="SI">SI</option>                                   
            </select>
 </div>
 
- <div class="form-group">
-     <label for="covid_dosis">¿HA RECIBIDO VACUNA CONTRA COVID-19?</label>
-         <select style="width: 200px;" class="form-control" id="covid_dosis" name="covid_dosis">
+
+<div class="form-control" style="margin-bottom: 10px;">
+     <label class="label" for="covid_dosis">¿HA RECIBIDO VACUNA CONTRA COVID-19?</label><br/>
+         <select class="select select-secondary" style="width: 200px;" id="covid_dosis" name="covid_dosis">
             <option value="NINGUNA" selected="selected">NINGUNA</option>
             <option value="PRIMERA DOSIS">PRIMERA DOSIS</option>
             <option value="SEGUNDA DOSIS">SEGUNDA DOSIS</option>
@@ -824,6 +848,7 @@
         </select>
 </div>
 
+
 <div class="form-group">
         <label for="recomendaciones">RECOMENDACIONES ESPECIALES: (Sea breve, máximo 200 caracteres)</label>
         <textarea id="recomendaciones" name="recomendaciones" rows="4" cols="40" 
@@ -835,9 +860,8 @@
 
 <!--Comienza la sección de padecimientos -->
 
-<div id="padecimientos">
-        <h2>¿SU HIJO PADECE ALGUNA DE LAS SIGUIENTES ENFERMEDADES?</h2>
-    <br />
+<h2>¿SU HIJO PADECE ALGUNA DE LAS SIGUIENTES ENFERMEDADES?</h2>
+  
 
 <label for="padecimientos"><strong>SELECCIONE EN CASO AFIRMATIVO:</strong>&nbsp;&nbsp;</label>
       <div class="form-check">
@@ -921,7 +945,6 @@
         </label>
       </div>
 
-<br />
 
 
 <div class="form-group">
@@ -932,13 +955,12 @@
         data-parsley-trigger="keyup">NINGUNA</textarea>
 </div>
 
-</div><!--Termina la sección de padecimientos -->
 
 
 <!--Comienza la sección de detecciones -->
-<div id="detecciones">
+
         <h2>HA DETECTADO QUE EL(LA) NIÑO(A)</h2>
-    <br />
+    
 
     <label for="vacunas"><strong>SELECCIONE EN CASO AFIRMATIVO:</strong>&nbsp;&nbsp;</label>
       
@@ -987,7 +1009,7 @@
       </div>
 
 <br />
-<br />
+
 
       <div class="form-group">
   <label for="alergia_medicamento"><b style="color: red;">*</b> ¿ES ALÉRGICO A ALGÚN MEDICAMENTO? ESPECIFIQUE:</label>
@@ -1024,13 +1046,11 @@
  />
 </div>
     
-</div><!--Termina sección de detecciones -->
-
 
 <!--Comienza antecedentes hereditarios del alumno -->
-  <div id="antecedentes_hereditarios">
+ 
         <h2>ANTECEDENTES HEREDITARIOS DEL ALUMNO(A)</h2>
-    <br />
+   
 
     <div class="form-group">
   <label for="familiar_diabetes"><b style="color: red;">*</b> ¿TIENE ALGÚN FAMILIAR DIABÉTICO? ESPECIFIQUE PARENTESCO:</label>
@@ -1059,7 +1079,7 @@
  />
     </div>
 
-</div><!--Termina antecedentes hereditarios del alumno -->
+</fieldset>
 
 
 
