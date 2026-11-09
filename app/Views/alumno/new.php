@@ -36,12 +36,12 @@
 <!-- ========= Datos de nacimiento  ================== -->
    
   <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-md border p-4">
-    <legend class="fieldset-legend">DATOS DE NACIMIENTO DEL ALUMNO</legend>
+    <legend class="fieldset-legend" style="color: darkolivegreen;">DATOS DE NACIMIENTO DEL ALUMNO</legend>
 
    
 <div class="form-control" style="margin-bottom: 10px;">
-   <label class="label" for="curp_alumno">CURP DEL ALUMNO</label><br />
-    <input class="input input-accent" type="text" id="curp_alumno" name="curp_alumno" readonly value="AEAA190507MMCRRTA9" />
+   <label class="label" for="curp_alumno">CURP DEL ALUMNO (SOLO LECTURA)</label><br />
+    <input class="input input-neutral" type="text" id="curp_alumno" name="curp_alumno" readonly value="AEAA190507MMCRRTA9" />
 </div>
 
   <div class="form-control" style="margin-bottom: 10px;">
@@ -65,7 +65,7 @@
 
     <div class="form-control" style="margin-bottom: 10px;">
         <label class="label" for="nacionalidad_alumno">NACIONALIDAD:</label><br />
-        <input  class="input input-accent" type="text" id="nacionalidad_alumno" name="nacionalidad_alumno" size="10" placeholder="MEXICANA" value="MEXICANA" />
+        <input class="input input-accent" type="text" id="nacionalidad_alumno" name="nacionalidad_alumno" size="10" placeholder="MEXICANA" value="MEXICANA" />
     </div>
 
     </fieldset>   
@@ -73,15 +73,15 @@
 
 <!-- ========= Domicilio del alumno  ================== -->
 <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-md border p-4">
-    <legend class="fieldset-legend">DATOS DEL DOMICILIO DEL ALUMNO</legend>
+    <legend class="fieldset-legend" style="color: darkolivegreen ;">DATOS DEL DOMICILIO DEL ALUMNO</legend>
 
-<div class="form-group">
-    <label for="entidad_dom">ESTADO:</label>
-      <input type="text" id="entidad_dom" name="entidad_dom" value="MEXICO" readonly="readonly" />
+<div class="form-control" style="margin-bottom: 10px;">
+    <label for="entidad_dom">ESTADO: (SOLO LECTURA)</label><br />
+      <input class="input input-neutral" type="text" id="entidad_dom" name="entidad_dom" value="MEXICO" readonly="readonly" />
 </div>
 
-        <div class="form-group">
-      <label for="municipio_dom"><b style="color: red;">*</b> MUNICIPIO:</label>
+        <div class="form-control" style="margin-bottom: 10px;">
+      <label class="label" for="municipio_dom"><b style="color: red;">*</b> MUNICIPIO:</label><br />
           <select class="select select-accent" id="municipio_dom" name="municipio_dom" >
                 <option disabled selected>SELECCIONAR</option>
                 <option value="TEXCOCO">TEXCOCO</option>
@@ -104,19 +104,18 @@
     </div>
    
     
-    <div class="form-group">
-        <label for="localidad_dom"><b style="color: red;">*</b> LOCALIDAD:</label>
+  <div class="form-control" style="margin-bottom: 10px;">
+        <label class="label" for="localidad_dom"><b style="color: red;">*</b> LOCALIDAD:</label><br />
             <select class="select select-accent" id="localidad_dom" name="localidad_dom" disabled>
             <option disabled selected>Selecciona primero un municipio</option>
-                              
             </select>
    </div> 
 
    
 
-    <div class="form-group">
-        <label for="colonia_dom"><b style="color: red;">*</b>COLONIA:</label>
-            <input type="text" class="form-control" id="colonia_dom" name="colonia_dom" placeholder="COLONIA" 
+   <div class="form-control" style="margin-bottom: 10px;">
+        <label class="label" for="colonia_dom"><b style="color: red;">*</b>COLONIA:</label><br />
+            <input class="input input-accent" type="text" class="form-control" id="colonia_dom" name="colonia_dom" placeholder="" 
             
             data-parsley-required-message="Por favor, ingrese el nombre de su colonia." 
             data-parsley-maxlength="50"
@@ -125,9 +124,9 @@
             
     </div>   
 
-     <div class="form-group">
-        <label for="calle_num_dom"><b style="color: red;">*</b> CALLE y NÚMERO:</label>
-        <input class="form-control" type="text" id="calle_num_dom" name="calle_num_dom" placeholder="NOMBRE DE LA CALLE Y NÚMERO" 
+     <div class="form-control" style="margin-bottom: 10px;">
+        <label class="label" for="calle_num_dom"><b style="color: red;">*</b> CALLE y NÚMERO:</label><br />
+        <input class=" input input-accent" type="text" id="calle_num_dom" name="calle_num_dom" placeholder="" 
         
         data-parsley-required-message="Por favor, ingrese el nombre de la calle y el número" 
         data-parsley-maxlength="60"
@@ -136,34 +135,34 @@
     </div>
 
 
-    <div class="form-group">
-        <label for="entre_calle_1"><b style="color: red;">*</b> ENTRE CALLE:</label>
-        <input class="form-control" type="text" id="entre_calle_1" name="entre_calle_1" 
+    <div class="form-control" style="margin-bottom: 10px;">
+        <label class="label" for="entre_calle_1"><b style="color: red;">*</b> ENTRE CALLE:</label><br/>
+        <input class="input input-accent type="text" id="entre_calle_1" name="entre_calle_1" 
         
         data-parsley-maxlength="40"
         data-parsley-maxlength-message="No debe exceder los 40 caracteres"
         data-parsley-trigger="keyup" />
     </div>
 
-    <div class="form-group">
-        <label for="entre_calle_2"><b style="color: red;">*</b> Y CALLE:</label>
-        <input class="form-control" type="text" id="entre_calle_2" name="entre_calle_2" 
+    <div class="form-control" style="margin-bottom: 10px;">
+        <label class="label" for="entre_calle_2"><b style="color: red;">*</b> Y CALLE:</label><br/>
+        <input class="input input-accent" type="text" id="entre_calle_2" name="entre_calle_2" 
         
         data-parsley-maxlength="40"
         data-parsley-maxlength-message="No debe exceder los 40 caracteres"
         data-parsley-trigger="keyup" />
     </div>
 
-     <div class="form-group">
-        <label for="cp"><b style="color: red;">*</b> CÓDIGO POSTAL:</label>
-            <input type="text" style="width: 200px;" class="form-control" id="cp" name="cp" placeholder="CÓDIGO POSTAL"
+     <div class="form-control" style="margin-bottom: 10px;">
+        <label class="label" for="cp"><b style="color: red;">*</b> CÓDIGO POSTAL:</label><br/>
+            <input class="input input-accent" type="text" style="width: 200px;" class="form-control" id="cp" name="cp" placeholder=""
              
          />     
     </div>      
 
-    <div class="form-group">
-        <label for="referencia_dom"><b style="color: red;">*</b> REFERENCIA DOMICILIARIA (BREVE):</label>
-        <input class="form-control" type="text" id="referencia_dom" name="referencia_dom" placeholder="REFERENCIA DOMICILIARIA" 
+    <div class="form-control" style="margin-bottom: 10px;">
+        <label class="label" for="referencia_dom"><b style="color: red;">*</b> REFERENCIA DOMICILIARIA (BREVE):</label><br/>
+        <input class="input input-accent" type="text" id="referencia_dom" name="referencia_dom" placeholder="" 
         
         data-parsley-required-message="Por favor, ingrese una referencia domiciliaria muy breve." 
         data-parsley-maxlength="50"
@@ -177,21 +176,20 @@
 
 
 <!--Comienza datos de contacto del alumno -->
-<div id="datos_contacto_alumno">
-    <h2>DATOS DE CONTACTO DEL ALUMNO</h2>
-<br />
+<fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-md border p-4">
+    <legend class="fieldset-legend" style="color: darkolivegreen;">DATOS DE CONTACTO DEL ALUMNO</legend>
 
-<div class="form-group">
-    <label for="telefono_1"><b style="color: red;">*</b> NÚM. DE TELÉFONO (10 DÍGITOS):</label>
-    <input class="form-control" type="tel" id="telefono_1" name="telefono_1" style="width: 200px;" 
+<div class="form-control" style="margin-bottom: 10px;">
+    <label class="label" for="telefono_1"><b style="color: red;">*</b> NÚM. DE TELÉFONO (10 DÍGITOS):</label><br/>
+    <input class="input input-accent" type="tel" id="telefono_1" name="telefono_1" style="width: 200px;" 
      
 
     data-parsley-pattern-message="Debe ser un número de 10 dígitos." />   
 </div>
 
-<div class="form-group">
-    <label for="telefono_2"><b style="color: red;">*</b> NÚM. DE TELÉFONO 2 (10 DÍGITOS):</label>
-    <input class="form-control" type="tel" id="telefono_2" name="telefono_2" style="width: 200px;"
+<div class="form-control" style="margin-bottom: 10px;">
+    <label class="label" for="telefono_2"><b style="color: red;">*</b> NÚM. DE TELÉFONO 2 (10 DÍGITOS):</label><br/>
+    <input class="input input-accent" type="tel" id="telefono_2" name="telefono_2" style="width: 200px;"
      
     
     data-parsley-pattern-message="Debe ser un número de 10 dígitos." 
@@ -199,9 +197,10 @@
     data-parsley-notequalto-message="Este número ya existe en un campo anterior."  />
 </div>
 
-<div class="form-group">
-    <label for="telefono_emer">NÚM. DE TELÉFONO EMERGENCIAS (10 DÍGITOS):</label>
-    <input class="form-control" type="tel" id="telefono_emer" name="telefono_emer" style="width: 200px;"
+
+<div class="form-control" style="margin-bottom: 10px;">
+    <label class="label" for="telefono_emer">NÚM. DE TELÉFONO EMERGENCIAS (10 DÍGITOS):</label><br/>
+    <input class="input input-accent" type="tel" id="telefono_emer" name="telefono_emer" style="width: 200px;"
      
     
     data-parsley-pattern-message="Debe ser un número de 10 dígitos." 
@@ -209,16 +208,19 @@
     data-parsley-notequalto-message="Este número ya existe en un campo anterior."  />
 </div>
 
-<div class="form-group">
-    <label for="email_alumno"><b style="color: red;">*</b> CORREO ELECTRÓNICO:</label>
-    <input class="form-control" type="text" id="email_alumno" name="email_alumno" style="text-transform: lowercase; width: 300px;"
+
+<div class="form-control" style="margin-bottom: 10px;">
+    <label class="label" for="email_alumno"><b style="color: red;">*</b> CORREO ELECTRÓNICO:</label><br/>
+    <input class="input input-accent" type="text" id="email_alumno" name="email_alumno" style="text-transform: lowercase; width: 300px;"
      
     data-parsley-type="email" />
 </div>
 
-<div class="form-group">
-    <label for="rs_alumno"><b style="color: red;">*</b> RED SOCIAL:</label>
-        <select style="width: 200px;" class="form-control" id="rs_alumno" name="rs_alumno" >
+
+
+<div class="form-control" style="margin-bottom: 10px;">
+    <label class="label" for="rs_alumno"><b style="color: red;">*</b> RED SOCIAL:</label><br/>
+        <select class="select select-accent" style="width: 200px;" class="form-control" id="rs_alumno" name="rs_alumno" >
               <option></option>
               <option>FACEBOOK</option>
               <option>INSTAGRAM</option>
@@ -226,7 +228,7 @@
         </select>
   </div>
 
-    <div class="form-group">
+  <div class="form-control" style="margin-bottom: 10px;">
         <label for="rs_user_alumno"><b style="color: red;">*</b> NOMBRE DE USUARIO DE LA RED SOCIAL:</label>
         <input style="width: 300px;" class="form-control" type="text" id="rs_user_alumno" name="rs_user_alumno" 
         
@@ -234,6 +236,11 @@
         data-parsley-maxlength-message="No debe exceder los 20 caracteres" 
         data-parsley-trigger="keyup" />
     </div>
+
+  </fieldset>
+<!--Comienza datos de contacto del alumno -->
+
+
 
     <!--Comienza datos complementarios del alumno -->
     <div id="datos_complem_alumno">
