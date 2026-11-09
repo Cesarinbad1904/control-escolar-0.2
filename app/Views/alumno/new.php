@@ -34,48 +34,46 @@
 
 
 <!-- ========= Datos de nacimiento  ================== -->
+   
+  <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-md border p-4">
+    <legend class="fieldset-legend">DATOS DE NACIMIENTO DEL ALUMNO</legend>
 
+   
+<div class="form-control" style="margin-bottom: 10px;">
+   <label class="label" for="curp_alumno">CURP DEL ALUMNO</label><br />
+    <input class="input input-accent" type="text" id="curp_alumno" name="curp_alumno" readonly value="AEAA190507MMCRRTA9" />
+</div>
 
-    <h2>DATOS DE NACIMIENTO DEL ALUMNO</h2>
-    <br />
-    
-    <label class="floating-label">
-        <input class="input input-accent" type="text" id="curp_alumno" name="curp_alumno" readonly value="AEAA190507MMCRRTA9" />
-     <span>CURP DEL ALUMNO</span>
-  </label> 
-  
-
-
-    <label class="input">
-      <span>NOMBRE DEL ALUMNO</span>
+  <div class="form-control" style="margin-bottom: 10px;">
+  <label class="label" for="nombre_alumno">NOMBRE(S) DEL ALUMNO</label><br />
        <input class="input input-accent" type="text" id="nombre_alumno" name="nombre_alumno" value="<?= old('nombre_alumno') ?>" />
-     
-  </label> 
+</div>
 
 
-    <div class="form-group">
-        <label for="primer_apellido_alumno">PRIMER APELLIDO DEL ALUMNO:</label>
-        <input class="form-control" type="text" id="primer_apellido_alumno" name="primer_apellido_alumno" value="<?= old('primer_apellido_alumno') ?>" />
+    <div class="form-control" style="margin-bottom: 10px;">
+        <label class="label" for="primer_apellido_alumno">PRIMER APELLIDO DEL ALUMNO:</label><br />
+        <input class="input input-accent" type="text" id="primer_apellido_alumno" name="primer_apellido_alumno" value="<?= old('primer_apellido_alumno') ?>" />
     </div>
 
 
-    <div class="form-group">
-        <label for="segundo_apellido_alumno">SEGUNDO APELLIDO DEL ALUMNO:</label>
-        <input class="form-control" type="text" id="segundo_apellido_alumno" name="segundo_apellido_alumno" value="<?= old('segundo_apellido_alumno') ?>" />
+    <div class="form-control" style="margin-bottom: 10px;">
+        <label class="label" for="segundo_apellido_alumno">SEGUNDO APELLIDO DEL ALUMNO:</label><br />
+        <input class="input input-accent" type="text" id="segundo_apellido_alumno" name="segundo_apellido_alumno" value="<?= old('segundo_apellido_alumno') ?>" />
     </div>
 
     
 
-    <div class="form-group">
-        <label for="nacionalidad_alumno">NACIONALIDAD:</label>
-        <input type="text" id="nacionalidad_alumno" name="nacionalidad_alumno" size="10" placeholder="MEXICANA" value="MEXICANA" />
+    <div class="form-control" style="margin-bottom: 10px;">
+        <label class="label" for="nacionalidad_alumno">NACIONALIDAD:</label><br />
+        <input  class="input input-accent" type="text" id="nacionalidad_alumno" name="nacionalidad_alumno" size="10" placeholder="MEXICANA" value="MEXICANA" />
     </div>
 
+    </fieldset>   
 
 
 <!-- ========= Domicilio del alumno  ================== -->
-<h2>DOMICILIO DEL ALUMNO</h2>
-    <br />
+<fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-md border p-4">
+    <legend class="fieldset-legend">DATOS DEL DOMICILIO DEL ALUMNO</legend>
 
 <div class="form-group">
     <label for="entidad_dom">ESTADO:</label>
@@ -172,6 +170,11 @@
         data-parsley-maxlength-message="No debe exceder los 50 caracteres"
         data-parsley-trigger="keyup" />
     </div>
+
+</fieldset>
+<!-- Termina datos del domicilio del alumno -->
+
+
 
 <!--Comienza datos de contacto del alumno -->
 <div id="datos_contacto_alumno">
