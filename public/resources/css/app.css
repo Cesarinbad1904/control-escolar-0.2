@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+@plugin "daisyui";
+
+/* Directorio de vistas de CodeIgniter */
+@source "../../app/Views";

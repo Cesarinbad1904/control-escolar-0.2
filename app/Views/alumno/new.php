@@ -1,9 +1,14 @@
 <?= $this->extend('layouts/main_layout') ?>
 
+<?= $this->section('contenido') ?>
+
 <?= view('partials/_form-error'); ?>
 
 
 <form action="create" method="post">
+
+<fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
+  <legend class="fieldset-legend">Datos del alumno</legend>
 
 <div class="form-group">
         <label for="grado"><b style="color: red;">*</b> GRADO AL QUE SE INSCRIBIRÁ:</label>
@@ -62,6 +67,8 @@
         <input type="text" id="nacionalidad_alumno" name="nacionalidad_alumno" size="10" placeholder="MEXICANA" value="MEXICANA" />
     </div>
 
+</fieldset>
+
 <!-- ========= Domicilio del alumno  ================== -->
 <h2>DOMICILIO DEL ALUMNO</h2>
     <br />
@@ -73,8 +80,8 @@
 
         <div class="form-group">
       <label for="municipio_dom"><b style="color: red;">*</b> MUNICIPIO:</label>
-          <select class="form-control" id="municipio_dom" name="municipio_dom" >
-                <option value="">SELECCIONAR</option>
+          <select class="select select-accent" id="municipio_dom" name="municipio_dom" >
+                <option disabled selected>SELECCIONAR</option>
                 <option value="TEXCOCO">TEXCOCO</option>
                 <option value="ATENCO">ATENCO</option>
                 <option value="TEPETLAOXTOC">TEPETLAOXTOC</option>
@@ -97,8 +104,8 @@
     
     <div class="form-group">
         <label for="localidad_dom"><b style="color: red;">*</b> LOCALIDAD:</label>
-            <select class="form-control" id="localidad_dom" name="localidad_dom" disabled>
-            <option value="">Selecciona primero un municipio</option>
+            <select class="select select-accent" id="localidad_dom" name="localidad_dom" disabled>
+            <option disabled selected>Selecciona primero un municipio</option>
                               
             </select>
    </div> 
@@ -1050,7 +1057,7 @@
     <a href="../" >Regresar</a>
 
 
-<?= $thi->endSection() ?>
+
 
 
 
@@ -1094,3 +1101,5 @@
 });
 
 </script>
+
+<?= $this->endSection() ?>
