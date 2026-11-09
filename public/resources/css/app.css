@@ -4,3 +4,8 @@
 
 /* Directorio de vistas de CodeIgniter */
 @source "../../app/Views";
+
+/* Establece el tamaño base para toda la página */
+body {
+  @apply text-base; /* O la clase de tamaño que prefieras como text-sm, text-base, text-xl text-base = 16px */
+}

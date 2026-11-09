@@ -5,12 +5,13 @@
 <?= view('partials/_form-error'); ?>
 
 
-<form action="create" method="post">
+<div class="flex min-h-screen items-center justify-center bg-base-200 p-4">
+  
+  <div class="card w-full max-w-2xl bg-base-100 shadow-xl border border-base-300">
+    <div class="card-body">
 
-<fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
-  <legend class="fieldset-legend">Datos del alumno</legend>
+<form class="space-y-6" action="create" method="post">
 
-<div class="form-group">
         <label for="grado"><b style="color: red;">*</b> GRADO AL QUE SE INSCRIBIRÁ:</label>
             <select class="form-control" id="grado" name="grado" style="width: 100px;" >
                   <option value="<?php  ?>" selected="selected"><?php  ?>°</option>
@@ -22,7 +23,7 @@
                   <option value="6">6°</option>
                                        
              </select>
-</div>
+
 
 <!-- Se envían los datos de movimiento inicial y fecha de alta en su caso (ocultos) --> 
   <input type='hidden' name='grupo' value="<?php echo "A";  ?>" />
@@ -34,19 +35,22 @@
 
 <!-- ========= Datos de nacimiento  ================== -->
 
-<div id="datos_nacimiento_alumno">
+
     <h2>DATOS DE NACIMIENTO DEL ALUMNO</h2>
     <br />
-    <div class="form-group">
-        <label for="curp_alumno">CURP DEL ALUMNO:</label>
-        <input class="form-control" type="text" id="curp_alumno" name="curp_alumno" readonly value="AEAA190507MMCRRTA9" />
-    </div>
+    
+    <label class="floating-label">
+        <input class="input input-accent" type="text" id="curp_alumno" name="curp_alumno" readonly value="AEAA190507MMCRRTA9" />
+     <span>CURP DEL ALUMNO</span>
+  </label> 
+  
 
 
-    <div class="form-group">
-        <label for="nombre_alumno">NOMBRE(S) DEL ALUMNO:</label>
-        <input class="form-control" type="text" id="nombre_alumno" name="nombre_alumno" value="<?= old('nombre_alumno') ?>" />
-    </div>
+    <label class="input">
+      <span>NOMBRE DEL ALUMNO</span>
+       <input class="input input-accent" type="text" id="nombre_alumno" name="nombre_alumno" value="<?= old('nombre_alumno') ?>" />
+     
+  </label> 
 
 
     <div class="form-group">
@@ -67,7 +71,7 @@
         <input type="text" id="nacionalidad_alumno" name="nacionalidad_alumno" size="10" placeholder="MEXICANA" value="MEXICANA" />
     </div>
 
-</fieldset>
+
 
 <!-- ========= Domicilio del alumno  ================== -->
 <h2>DOMICILIO DEL ALUMNO</h2>
@@ -1057,6 +1061,9 @@
     <a href="../" >Regresar</a>
 
 
+</div>
+</div>
+</div>
 
 
 
