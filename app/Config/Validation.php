@@ -318,10 +318,12 @@ class Validation extends BaseConfig
         'nombre_escuela_procedencia' => [ 
             'label' => 'Escuela de procedencia', 
             'rules' => [
-                'required'
+                'required',
+                'max_length[40]'
             ],
             'errors' => [
-                'required'    => 'El campo {field} es obligatorio.'
+                'required'    => 'El campo {field} es obligatorio.',
+                'max_length' => 'El campo {field} no puede exceder los 40 caracteres.'
             ]
         ], 
 
@@ -766,11 +768,10 @@ class Validation extends BaseConfig
         'recomendaciones' => [ 
             'label' => 'Recomendaciones especiales', 
             'rules' => [
-                'required',
+                'permit_empty', // Se puede dejar vacío
                 'max_length[200]'
             ],
             'errors' => [
-                'required'    => 'El campo {field} es obligatorio.',
                 'max_length' => 'El campo {field} no puede exceder los 200 caracteres.'
             ]
         ], 
@@ -778,11 +779,10 @@ class Validation extends BaseConfig
         'enfermedad_cronica' => [ 
             'label' => 'Enfermedad crónica', 
             'rules' => [
-                'required',
+                'permit_empty', // Se puede dejar vacío
                 'max_length[200]'
             ],
             'errors' => [
-                'required'    => 'El campo {field} es obligatorio.',
                 'max_length' => 'El campo {field} no puede exceder los 200 caracteres.'
             ]
         ], 
@@ -809,6 +809,97 @@ class Validation extends BaseConfig
             'errors' => [
                 'required'    => 'El campo {field} es obligatorio.',
                 'max_length' => 'El campo {field} no puede exceder los 150 caracteres.'
+            ]
+        ], 
+
+
+        'hemorargias_frecuentes' => [ 
+            'label' => 'Hemorragias frecuentes', 
+            'rules' => [
+                'required',
+                'max_length[150]'
+            ],
+            'errors' => [
+                'required'    => 'El campo {field} es obligatorio.',
+                'max_length' => 'El campo {field} no puede exceder los 150 caracteres.'
+            ]
+        ], 
+
+
+        'antecedente_medico' => [ 
+            'label' => 'Antecedente médico', 
+            'rules' => [
+                'required',
+                'max_length[150]'
+            ],
+            'errors' => [
+                'required'    => 'El campo {field} es obligatorio.',
+                'max_length' => 'El campo {field} no puede exceder los 150 caracteres.'
+            ]
+        ], 
+
+
+        'intervencion_quirurgica' => [ 
+            'label' => 'Intervención quirúrgica', 
+            'rules' => [
+                'required',
+                'max_length[150]'
+            ],
+            'errors' => [
+                'required'    => 'El campo {field} es obligatorio.',
+                'max_length' => 'El campo {field} no puede exceder los 150 caracteres.'
+            ]
+        ], 
+
+
+        'familiar_diabetes' => [ 
+            'label' => 'Familiar diabetes', 
+            'rules' => [
+                'required',
+                'max_length[50]'
+            ],
+            'errors' => [
+                'required'    => 'El campo {field} es obligatorio.',
+                'max_length' => 'El campo {field} no puede exceder los 50 caracteres.'
+            ]
+        ], 
+
+
+        'familiar_corazon' => [ 
+            'label' => 'Familiar corazon', 
+            'rules' => [
+                'required',
+                'max_length[50]'
+            ],
+            'errors' => [
+                'required'    => 'El campo {field} es obligatorio.',
+                'max_length' => 'El campo {field} no puede exceder los 50 caracteres.'
+            ]
+        ], 
+
+
+        'familiar_hipertension' => [ 
+            'label' => 'Familiar hipertensión', 
+            'rules' => [
+                'required',
+                'max_length[50]'
+            ],
+            'errors' => [
+                'required'    => 'El campo {field} es obligatorio.',
+                'max_length' => 'El campo {field} no puede exceder los 50 caracteres.'
+            ]
+        ], 
+
+
+        'familiar_cancer' => [ 
+            'label' => 'Familiar cancer', 
+            'rules' => [
+                'required',
+                'max_length[50]'
+            ],
+            'errors' => [
+                'required'    => 'El campo {field} es obligatorio.',
+                'max_length' => 'El campo {field} no puede exceder los 50 caracteres.'
             ]
         ]
 

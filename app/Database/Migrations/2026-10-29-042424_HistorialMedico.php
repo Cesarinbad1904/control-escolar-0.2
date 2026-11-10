@@ -313,20 +313,20 @@ class HistorialMedico extends Migration
                 'alergia_medicamento' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '150',
-                'default' => 'NINGUNA',
+                'default' => 'NO',
                 'null'       => FALSE
                 ],
 
                 'alergia_alimento' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '150',
-                'default' => 'NINGUNA',
+                'default' => 'NO',
                 'null'       => FALSE
                 ],
 
                 'hemorragias_frecuentes' => [
-                'type'       => 'ENUM',
-                'constraint' => ['NO', 'SI'],
+                'type'       => 'VARCHAR',
+                'constraint' => '150',
                 'default' => 'NO',
                 'null'       => FALSE
                 ],
@@ -334,14 +334,14 @@ class HistorialMedico extends Migration
                 'antecedente_medico' => [ // Algún antecedente médico que le prohiba realizar actividad física
                 'type'       => 'VARCHAR',
                 'constraint' => '150',
-                'default' => 'NINGUNO',
+                'default' => 'NO',
                 'null'       => FALSE
                 ],
 
                 'intervencion_quirurgica' => [ 
                 'type'       => 'VARCHAR',
                 'constraint' => '150',
-                'default' => 'NINGUNA',
+                'default' => 'NO',
                 'null'       => FALSE
                 ],
 // ============= Antecedentes hereditarios =======================================

@@ -91,9 +91,9 @@
         <input class="input input-accent" type="text" id="nacionalidad_alumno" name="nacionalidad_alumno" size="10" placeholder="MEXICANA" value="MEXICANA" 
         required 
         data-parsley-required-message="Este campo es requerido, el valor predeterminado es MEXICANA." 
-            data-parsley-maxlength="20"
-            data-parsley-maxlength-message="No debe ser mayor a 20 caracteres"
-            data-parsley-trigger="keyup" />
+        data-parsley-maxlength="20"
+        data-parsley-maxlength-message="No debe ser mayor a 20 caracteres"
+        data-parsley-trigger="keyup" />
     </div>
 
     </fieldset>   
@@ -246,8 +246,10 @@
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="email_alumno"><b style="color: red;">*</b> CORREO ELECTRÓNICO:</label><br/>
     <input class="input input-accent" type="text" id="email_alumno" name="email_alumno" style="text-transform: lowercase; width: 300px;"
-    required
-    data-parsley-type="email" />
+    required    
+    data-parsley-type="email"
+    data-parsley-maxlength-message="Dirección de correo inválida."  
+    data-parsley-trigger="keyup" />
 </div>
 
 
@@ -284,7 +286,7 @@
         <label class="label" for="num_personas">¿CUÁNTAS PERSONAS VIVEN EN SU CASA?</label><br/>
         <input style="width: 100px;" class="input input-accent" type="number" min="1" id="num_personas" 
         name="num_personas" 
-        
+        required
         data-parsley-type="number" 
         data-parsley-number-message="Debe ser un número." />
     </div>
@@ -293,7 +295,7 @@
 
     <div class="form-control" style="margin-bottom: 10px;">
       <label clas="label" for="vive_con"><b style="color: red;">*</b>¿CON QUIÉN VIVE?</label><br/>
-          <select style="width: 150px;" class="select select-primary" id="vive_con" name="vive_con" >
+          <select style="width: 150px;" class="select select-primary" id="vive_con" name="vive_con" required >
                 <option disabled selected>SELECCIONAR</option>
                 <option>MAMA</option>
                 <option>PAPA</option>
@@ -304,7 +306,7 @@
 
     <div class="form-control" style="margin-bottom: 10px;">
       <label class="label" for="sosten_econ"><b style="color: red;">*</b> ¿QUIÉN SOSTIENE ECONÓMICAMENTE LA CASA?</label><br/>
-          <select style="width: 150px;" class="select select-secondary" id="sosten_econ" name="sosten_econ" >
+          <select style="width: 150px;" class="select select-secondary" id="sosten_econ" name="sosten_econ" required>
                 <option disabled selected>SELECCIONAR</option>
                 <option>MAMA</option>
                 <option>PAPA</option>
@@ -317,9 +319,9 @@
      <div class="form-control" style="margin-bottom: 10px;">
         <label class="label" for="nombre_escuela_procedencia">NOMBRE DE LA ESCUELA DE PROCEDENCIA:</label><br/>
         <input class="input input-accent" type="text" id="nombre_escuela_procedencia" name="nombre_escuela_procedencia" value=""
-        
-        data-parsley-maxlength="50"
-        data-parsley-maxlength-message="No debe exceder los 50 caracteres" 
+        required
+        data-parsley-maxlength="40"
+        data-parsley-maxlength-message="No debe exceder los 40 caracteres" 
         data-parsley-trigger="keyup" />
     </div>
 
@@ -398,39 +400,71 @@
 <div class="form-control" style="margin-bottom: 10px;">
   <label class="label" for="curp_tutor"><b style="color: red;">*</b> CURP DEL TUTOR:</label><br/>
   <input class="input input-info" style="width: 250px;" class="form-control" type="text" id="curp_tutor" name="curp_tutor" 
-    />
-  
+   required 
+   pattern="/^[A-Z]{1}[XAEIOU]{1}[A-Z]{2}[0-9]{2}(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])[HM]{1}(AS|BC|BS|CC|CS|CH|CL|CM|DF|DG|GT|GR|HG|JC|MC|MN|MS|NT|NL|OC|PL|QT|QR|SP|SL|SR|TC|TS|TL|VZ|YN|ZS|NE)[B-DF-HJ-NP-TV-Z]{3}[0-9A-Z]{1}[0-9]{1}$/i"
+   data-parsley-pattern-message="Formato de CURP inválido." 
+   data-parsley-notequalto="#curp_alumno" 
+   data-parsley-notequalto-message="Esta CURP ya existe en otro campo."
+   data-parsley-trigger="keyup" />
 </div>
+
+<div role="alert" class="alert alert-success">
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+  </svg>
+  <span>Por favor, capture el nombre y apellidos del tutor en los campos correspondientes, respetando el orden y la escritura que aparecen en su acta de nacimiento.</span>
+</div>
+<br/>
 
 
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="nombre_tutor">NOMBRE(S):</label><br/>
-        <input class="input input-info" type="text" id="nombre_tutor" name="nombre_tutor" value="<?= old('nombre_tutor') ?>" />
+        <input class="input input-info" type="text" id="nombre_tutor" name="nombre_tutor" value="<?= old('nombre_tutor') ?>" 
+        required 
+        data-parsley-required-message="Ingrese el nombre o nombres del tutor." 
+        data-parsley-maxlength="25"
+        data-parsley-maxlength-message="No debe ser mayor a 25 caracteres"
+        data-parsley-trigger="keyup" />
 </div>
 
 
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="primer_apellido_tutor">PRIMER APELLIDO:</label><br/>
-        <input class="input input-info" type="text" id="primer_apellido_tutor" name="primer_apellido_tutor" value="<?= old('primer_apellido_tutor') ?>" />
+        <input class="input input-info" type="text" id="primer_apellido_tutor" name="primer_apellido_tutor" value="<?= old('primer_apellido_tutor') ?>" 
+        required 
+        data-parsley-required-message="Ingrese el primer apellido del tutor." 
+        data-parsley-maxlength="25"
+        data-parsley-maxlength-message="No debe ser mayor a 25 caracteres"
+        data-parsley-trigger="keyup" />
 </div>
 
 
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="segundo_apellido_tutor">SEGUNDO APELLIDO:</label><br/>
-        <input class="input input-info" type="text" id="segundo_apellido_tutor" name="segundo_apellido_tutor" value="<?= old('segundo_apellido_tutor') ?>" />
+        <input class="input input-info" type="text" id="segundo_apellido_tutor" name="segundo_apellido_tutor" value="<?= old('segundo_apellido_tutor') ?>" 
+        required 
+        data-parsley-required-message="Ingrese el segundo apellido del tutor." 
+        data-parsley-maxlength="25"
+        data-parsley-maxlength-message="No debe ser mayor a 25 caracteres"
+        data-parsley-trigger="keyup" />
 </div>
 
 
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="nacionalidad_tutor">NACIONALIDAD:</label><br/>
-    <input class="input input-info" type="text" id="nacionalidad_tutor" name="nacionalidad_tutor" size="10" value="MEXICANA" />
+    <input class="input input-info" type="text" id="nacionalidad_tutor" name="nacionalidad_tutor" size="10" value="MEXICANA" 
+       required 
+        data-parsley-required-message="Este campo es requerido, el valor predeterminado es MEXICANA." 
+        data-parsley-maxlength="20"
+        data-parsley-maxlength-message="No debe ser mayor a 20 caracteres"
+        data-parsley-trigger="keyup" />
 </div>
 
 
   <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="ocupacion_tutor"><b style="color: red;">*</b> OCUPACIÓN:</label><br/>
     <input style="width: 400px;" class="input input-info" type="text" id="ocupacion_tutor" name="ocupacion_tutor" 
-    
+    required
     data-parsley-maxlength="30"
     data-parsley-maxlength-message="No debe exceder los 30 caracteres" 
     data-parsley-trigger="keyup" />
@@ -439,7 +473,7 @@
 
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="estudios_tutor"><b style="color: red;">*</b> GRADO MÁXIMO DE ESTUDIOS:</label><br/>
-        <select class="select select-secondary" style="width: 300px;" id="estudios_tutor" name="estudios_tutor" >
+        <select class="select select-secondary" style="width: 300px;" id="estudios_tutor" name="estudios_tutor" required >
               <option disabled selected>SELECCIONAR</option>
               <option>NINGUNO</option>
               <option>PRIMARIA</option>
@@ -455,7 +489,7 @@
 
   <div class="form-control" style="margin-bottom: 10px;">
       <label class="label" for="parentesco_tutor"><b style="color: red;">*</b> PARENTESCO:</label><br/>
-          <select class="select select-secondary" style="width: 200px;" id="parentesco_tutor" name="parentesco_tutor" >
+          <select class="select select-secondary" style="width: 200px;" id="parentesco_tutor" name="parentesco_tutor" required>
                 <option disabled selected>SELECCIONAR</option>
                 <option>MADRE</option>
                 <option>PADRE</option>
@@ -481,7 +515,7 @@
 
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="salario_tutor"><b style="color: red;">*</b> INGRESO MENSUAL:</label><br/>
-        <select class="select select-secondary" style="width: 300px;" id="salario_tutor" name="salario_tutor" >
+        <select class="select select-secondary" style="width: 300px;" id="salario_tutor" name="salario_tutor" required>
             <option disabled selected>SELECCIONAR</option>
             <option>NINGUNO</option>
             <option>MENOS DE UN SALARIO MÍNIMO</option>
@@ -495,7 +529,7 @@
 
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="estado_civil_tutor"><b style="color: red;">*</b> ESTADO CIVIL:</label><br/>
-        <select class="select select-secondary" style="width: 300px;" id="estado_civil_tutor" name="estado_civil_tutor" >
+        <select class="select select-secondary" style="width: 300px;" id="estado_civil_tutor" name="estado_civil_tutor" required >
             <option disabled selected>SELECCIONAR</option>
             <option>CASADO</option>
             <option>CASADA</option>
@@ -514,14 +548,16 @@
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="email_tutor"><b style="color: red;">*</b> CORREO ELECTRÓNICO:</label><br/>
         <input class="input input-info" type="text" id="email_tutor" name="email_tutor" style="text-transform: lowercase; width: 300px;"
-            
-           data-parsley-type="email" />
+        required    
+        data-parsley-type="email"
+        data-parsley-maxlength-message="Dirección de correo inválida." 
+        data-parsley-trigger="keyup" />
 </div>
 
 
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="rs_tutor"><b style="color: red;">*</b> RED SOCIAL:</label><br/>
-        <select class="select select-secondary" style="width: 250px;" id="rs_tutor" name="rs_tutor" >
+        <select class="select select-secondary" style="width: 250px;" id="rs_tutor" name="rs_tutor" required >
             <option disabled selected>SELECCIONAR</option>
             <option>FACEBOOK</option>
             <option>INSTAGRAM</option>
@@ -535,7 +571,7 @@
 <div class="form-control" style="margin-bottom: 10px;">
      <label class="label" for="rs_user_tutor"><b style="color: red;">*</b> NOMBRE DE USUARIO DE LA RED SOCIAL:</label><br/>
          <input class="input input-info" style="width: 300px;" type="text" id="rs_user_tutor" name="rs_user_tutor" 
-            
+            required
             data-parsley-maxlength="20"
             data-parsley-maxlength-message="No debe exceder los 20 caracteres" 
             data-parsley-trigger="keyup" /> 
@@ -551,32 +587,61 @@
 <div class="form-control" style="margin-bottom: 10px;">
   <label class="label" for="curp_tutor2"><b style="color: red;">*</b> CURP:</label><br/>
   <input class="input input-primary" style="width: 250px;" type="text" id="curp_tutor2" name="curp_tutor2" 
-    />
+   required 
+   pattern="/^[A-Z]{1}[XAEIOU]{1}[A-Z]{2}[0-9]{2}(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])[HM]{1}(AS|BC|BS|CC|CS|CH|CL|CM|DF|DG|GT|GR|HG|JC|MC|MN|MS|NT|NL|OC|PL|QT|QR|SP|SL|SR|TC|TS|TL|VZ|YN|ZS|NE)[B-DF-HJ-NP-TV-Z]{3}[0-9A-Z]{1}[0-9]{1}$/i"
+   data-parsley-pattern-message="Formato de CURP inválido." 
+   data-parsley-notequalto="#curp_tutor" 
+   data-parsley-notequalto-message="Esta CURP ya existe en otro campo."
+   data-parsley-trigger="keyup" />
 </div>
+
+
+<div role="alert" class="alert alert-success">
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+  </svg>
+  <span>Por favor, capture el nombre y apellidos del segundo tutor en los campos correspondientes, respetando el orden y la escritura que aparecen en su acta de nacimiento.</span>
+</div>
+<br/>
 
 
 <div class="form-control" style="margin-bottom: 10px;">
   <label class="label" for="nombre_tutor2"><b style="color: red;">*</b> NOMBRE(S):</label><br/>
-  <input class="input input-primary" style="width: 300px;" type="text" id="nombre_tutor2" name="nombre_tutor2" value="<?= old('nombre_tutor2') ?>" />
+  <input class="input input-primary" style="width: 300px;" type="text" id="nombre_tutor2" name="nombre_tutor2" value="<?= old('nombre_tutor2') ?>" 
+  required 
+  data-parsley-required-message="Ingrese el nombre o nombres del segundo tutor." 
+  data-parsley-maxlength="25"
+  data-parsley-maxlength-message="No debe ser mayor a 25 caracteres"
+  data-parsley-trigger="keyup" />
 </div>
 
 
 <div class="form-control" style="margin-bottom: 10px;">
   <label class="label" for="primer_apellido_tutor2"><b style="color: red;">*</b> PRIMER APELLIDO:</label><br/>
-  <input class="input input-primary" style="width: 300px;" type="text" id="primer_apellido_tutor2" name="primer_apellido_tutor2" value="<?= old('primer_apellido_tutor2') ?>" />
+  <input class="input input-primary" style="width: 300px;" type="text" id="primer_apellido_tutor2" name="primer_apellido_tutor2" value="<?= old('primer_apellido_tutor2') ?>" 
+  required 
+  data-parsley-required-message="Ingrese el primer apellido del segundo tutor." 
+  data-parsley-maxlength="25"
+  data-parsley-maxlength-message="No debe ser mayor a 25 caracteres"
+  data-parsley-trigger="keyup" />
 </div>
 
 
 <div class="form-control" style="margin-bottom: 10px;">
   <label class="label" for="segundo_apellido_tutor2"><b style="color: red;">*</b> SEGUNDO APELLIDO:</label><br/>
-  <input class="input input-primary" style="width: 300px;" type="text" id="segundo_apellido_tutor2" name="segundo_apellido_tutor2" value="<?= old('segundo_apellido_tutor2') ?>" />
+  <input class="input input-primary" style="width: 300px;" type="text" id="segundo_apellido_tutor2" name="segundo_apellido_tutor2" value="<?= old('segundo_apellido_tutor2') ?>" 
+  required 
+  data-parsley-required-message="Ingrese el segundo apellido del segundo tutor." 
+  data-parsley-maxlength="25"
+  data-parsley-maxlength-message="No debe ser mayor a 25 caracteres"
+  data-parsley-trigger="keyup" />
 </div>
 
 
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="ocupacion_tutor2"><b style="color: red;">*</b> OCUPACIÓN:</label><br/>
     <input class="input input-primary" style="width: 400px;" type="text" id="ocupacion_tutor2" name="ocupacion_tutor2" 
-    
+    required
     data-parsley-maxlength="30"
     data-parsley-maxlength-message="No debe exceder los 30 caracteres" 
     data-parsley-trigger="keyup" />
@@ -585,7 +650,7 @@
 
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="estudios_tutor2"><b style="color: red;">*</b> GRADO MÁXIMO DE ESTUDIOS:</label><br/>
-        <select class="select select-info" style="width: 300px;" id="estudios_tutor2" name="estudios_tutor2" >
+        <select class="select select-info" style="width: 300px;" id="estudios_tutor2" name="estudios_tutor2" required>
               <option disabled selected>SELECCIONAR</option>
               <option>NINGUNO</option>
               <option>PRIMARIA</option>
@@ -601,7 +666,7 @@
 
  <div class="form-control" style="margin-bottom: 10px;">
       <label class="label" for="parentesco_tutor2"><b style="color: red;">*</b> PARENTESCO:</label><br/>
-          <select class="select select-info" style="width: 200px;" id="parentesco_tutor2" name="parentesco_tutor2" >
+          <select class="select select-info" style="width: 200px;" id="parentesco_tutor2" name="parentesco_tutor2" required>
                 <option disabled selected>SELECCIONAR</option>
                 <option>MADRE</option>
                 <option>PADRE</option>
@@ -627,7 +692,7 @@
 
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="salario_tutor2"><b style="color: red;">*</b> INGRESO MENSUAL:</label><br/>
-        <select class="select select-info" style="width: 300px;" id="salario_tutor2" name="salario_tutor2" >
+        <select class="select select-info" style="width: 300px;" id="salario_tutor2" name="salario_tutor2" required>
             <option disabled selected>SELECCIONAR</option>
             <option>NINGUNO</option>
             <option>MENOS DE UN SALARIO MÍNIMO</option>
@@ -640,7 +705,7 @@
 
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="estado_civil_tutor2"><b style="color: red;">*</b> ESTADO CIVIL:</label><br/>
-        <select class="select select-info" style="width: 300px;" id="estado_civil_tutor2" name="estado_civil_tutor2" >
+        <select class="select select-info" style="width: 300px;" id="estado_civil_tutor2" name="estado_civil_tutor2" required>
             <option disabled selected>SELECCIONAR</option>
             <option>CASADO</option>
             <option>CASADA</option>
@@ -659,8 +724,10 @@
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="email_tutor2"><b style="color: red;">*</b> CORREO ELECTRÓNICO:</label><br/>
         <input class="input input-primary" type="text" id="email_tutor2" name="email_tutor2" style="text-transform: lowercase; width: 300px;"
-            
-           data-parsley-type="email" />
+        required    
+        data-parsley-type="email"
+        data-parsley-maxlength-message="Dirección de correo inválida." 
+        data-parsley-trigger="keyup" />
 </div>
 
 
@@ -694,7 +761,10 @@
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="estatura"><b style="color: red;">*</b> ESTATURA EN CENTÍMETROS:</label><br/>
     <input class="input input-secondary" type="number" id="estatura" name="estatura" style="width: 100px;" 
-  />
+    required
+    data-parsley-range="[100, 165]"
+    data-parsley-range-message="El valor debe estar entre 100 y 165."
+    data-parsley-trigger="keyup" />
 </div>
 
 
@@ -702,8 +772,12 @@
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="peso"><b style="color: red;">*</b> PESO EN KILOGRAMOS:</label><br/>
     <input class="input input-secondary" type="number" id="peso" name="peso" style="width: 100px;" 
-   />
+    required
+    data-parsley-range="[15, 65]"
+    data-parsley-range-message="El valor debe estar entre 15 y 65."
+    data-parsley-trigger="keyup" />
 </div>
+
 
 
  <div class="form-control" style="margin-bottom: 10px;">
@@ -726,7 +800,11 @@
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="talla_zapato"><b style="color: red;">*</b> TALLA DE ZAPATO EN CENTÍMETROS: </label><br/>
     <input style="width: 100px;" class="input input-secondary" type="number" min="18" max="25" step="1" 
-    id="talla_zapato" name="talla_zapato"  />
+    id="talla_zapato" name="talla_zapato" 
+    required
+    data-parsley-range="[18, 25]"
+    data-parsley-range-message="El valor debe estar entre 18 y 25."
+    data-parsley-trigger="keyup" />
 </div>
 
 
@@ -736,6 +814,8 @@
         <input type="radio" id="zapato_orto" name="zapato_orto" class="radio radio-secondary" value="NO"  checked="checked"> NO
      </label>
  </div>
+
+
  
  <div class="form-check-inline">
      <label class="form-check-label">
@@ -761,7 +841,7 @@
 <br />
 <div class="form-control" style="margin-bottom: 10px;">
      <label class="label" for="vacunas">VACUNAS:</label><br/>
-      <select class="select select-secondary" id="vacunas" name="vacunas" >
+      <select class="select select-secondary" id="vacunas" name="vacunas" required>
         <option disabled selected>SELECCIONAR</option>
         <option value="COMPLETAS HASTA LOS 3 AÑOS">COMPLETAS HASTA LOS 3 AÑOS</option>
         <option value="COMPLETAS HASTA LOS 6 AÑOS">COMPLETAS HASTA LOS 6 AÑOS</option>
@@ -804,15 +884,13 @@
 <br/>
 <div class="form-control" style="margin-bottom: 10px;">
   <label class="label" for="otro_apoyo">OTRO APOYO:</label><br/>
-  <input class="input input-secondary" type="text" id="otro_apoyo" name="otro_apoyo" placeholder="OPCIONAL" 
-    />
+  <input class="input input-secondary" type="text" id="otro_apoyo" name="otro_apoyo" placeholder="OPCIONAL" />
 </div>
 
 
 <div class="form-control" style="margin-bottom: 10px;">
   <label class="label" for="otro_apoyo">DISCAPACIDAD:</label><br/>
-  <input class="input input-secondary" type="text" id="discapacidad" name="discapacidad" value="NINGUNA" 
-    />
+  <input class="input input-secondary" type="text" id="discapacidad" name="discapacidad" value="NINGUNA" required />
 </div>
 
 
@@ -840,9 +918,10 @@
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="ultimas_enfermedades">ESCRIBA LOS NOMBRES DE LAS ENFERMEDADES QUE SU HIJO(A) HA PADECIDO DURANTE<br/> LOS ÚLTIMOS 12 MESES: (Sea breve, máximo 150 caracteres)</label><br/>
        <textarea class="w-full h-48 max-w-lg p-3 border rounded-md resize-y textarea textarea-success" id="ultimas_enfermedades" name="ultimas_enfermedades"  
-        data-parsley-maxlength="150"
-        data-parsley-maxlength-message="No debe exceder los 150 caracteres" 
-        data-parsley-trigger="keyup">NINGUNA</textarea>
+       required 
+       data-parsley-maxlength="150"
+       data-parsley-maxlength-message="No debe exceder los 150 caracteres" 
+       data-parsley-trigger="keyup">NINGUNA</textarea>
 </div>
 
 
@@ -850,6 +929,7 @@
 <div class="form-control" style="margin-bottom: 10px;">
         <label class="label" for="enfermedades_frecuentes">ENFERMEDADES QUE PADECE CON MAYOR FRECUENCIA: (Sea breve, máximo 150 caracteres)</label><br/>
         <textarea class="w-full h-48 max-w-lg p-3 border rounded-md resize-y textarea textarea-success" id="enfermedades_frecuentes" name="enfermedades_frecuentes" 
+        required
         data-parsley-maxlength="150"
         data-parsley-maxlength-message="No debe exceder los 150 caracteres" 
         data-parsley-trigger="keyup">NINGUNA</textarea>
@@ -867,13 +947,16 @@
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="tel_medico"><b style="color: red;"></b> NÚM. DE TELÉFONO DEL MEDICO FAMILIAR (10 DÍGITOS):</label><br/>
     <input class="input input-secondary" style="width: 150px;" type="tel" id="tel_medico" name="tel_medico" placeholder="OPCIONAL" 
-    />
+    
+    pattern="/^\d{10}$/"
+    data-parsley-pattern-message="Debe ser un número de 10 dígitos." 
+    data-parsley-trigger="keyup" />
 </div>
 
 
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="institucion_dh">INSTITUCIÓN DE DERECHOHABIENCIA DEL ALUMNO(A):</label><br/>
-        <select class="select select-accent" style="width: 200px;" id="institucion_dh" name="institucion_dh"  >
+        <select class="select select-accent" style="width: 200px;" id="institucion_dh" name="institucion_dh" required >
             <option disabled selected>SELECCIONAR</option>
             <option value="ISSEMYM">ISSEMYM</option>
             <option value="ISSSTE">ISSSTE</option>
@@ -1047,28 +1130,40 @@
    <div class="form-control" style="margin-bottom: 10px;">
   <label class="label" for="alergia_medicamento"><b style="color: red;">*</b> ¿ES ALÉRGICO A ALGÚN MEDICAMENTO? ESPECIFIQUE:</label><br/>
   <input class="input input-secondary w-full max-w-md" type="text" id="alergia_medicamento" name="alergia_medicamento" value="NO" 
-   />
+    required
+    data-parsley-maxlength="150"
+    data-parsley-maxlength-message="No debe exceder los 150 caracteres" 
+    data-parsley-trigger="keyup" />
     </div>
 
 
  <div class="form-control" style="margin-bottom: 10px;">
   <label class="label" for="alergia_alimento"><b style="color: red;">*</b> ¿ES ALÉRGICO A ALGÚN ALIMENTO O BEBIDA? ESPECIFIQUE:</label><br/>
   <input class="input input-secondary w-full max-w-md" type="text" id="alergia_alimento" name="alergia_alimento" value="NO" 
- />
+    required
+    data-parsley-maxlength="150"
+    data-parsley-maxlength-message="No debe exceder los 150 caracteres" 
+    data-parsley-trigger="keyup" />
  </div>
 
 
 <div class="form-control" style="margin-bottom: 10px;">
   <label class="label" for="hemorragias_frecuentes"><b style="color: red;">*</b> ¿PRESENTA HEMORRAGIAS FRECUENTES? ESPECIFIQUE:</label><br/>
   <input class="input input-secondary w-full max-w-md" type="text" id="hemorragias_frecuentes" name="hemorragias_frecuentes" value="NO" 
- />
+    required
+    data-parsley-maxlength="150"
+    data-parsley-maxlength-message="No debe exceder los 150 caracteres" 
+    data-parsley-trigger="keyup" />
 </div>
 
 
 <div class="form-control" style="margin-bottom: 10px;">
   <label class="label" for="antecedente_medico"><b style="color: red;">*</b> ¿CUENTA CON ALGÚN ANTECEDENTE MÉDICO QUE LE PROHIBA<br/> A SU HIJO(A) REALIZAR ACTIVIDAD FÍSICA? ESPECIFIQUE:</label><br/>
   <input class="input input-secondary w-full max-w-md" type="text" id="antecedente_medico" name="antecedente_medico" value="NO" 
- />
+    required
+    data-parsley-maxlength="150"
+    data-parsley-maxlength-message="No debe exceder los 150 caracteres" 
+    data-parsley-trigger="keyup" />
 </div>
 
 
@@ -1076,7 +1171,10 @@
 <div class="form-control" style="margin-bottom: 10px;">
   <label class="label" for="intervencion_quirurgica"><b style="color: red;">*</b> ¿HA SIDO INTERVENIDO QUIRÚRGICAMENTE? ESPECIFIQUE:</label><br/>
   <input class="input input-secondary w-full max-w-md" type="text" id="intervencion_quirurgica" name="intervencion_quirurgica" value="NO" 
- />
+    required
+    data-parsley-maxlength="150"
+    data-parsley-maxlength-message="No debe exceder los 150 caracteres" 
+    data-parsley-trigger="keyup" />
 </div>
     
 
@@ -1087,29 +1185,41 @@
 
 <div class="form-control" style="margin-bottom: 10px;">
   <label class="label" for="familiar_diabetes"><b style="color: red;">*</b> ¿TIENE ALGÚN FAMILIAR DIABÉTICO? ESPECIFIQUE PARENTESCO:</label><br/>
-  <input class="input input-accent w-full max-w-md" type="text" id="familiar_diabetes" name="familiar_diabetes" value="NO" 
- />
+  <input class="input input-accent w-full max-w-md" type="text" id="familiar_diabetes" name="familiar_diabetes" value="NINGUNO" 
+    required
+    data-parsley-maxlength="50"
+    data-parsley-maxlength-message="No debe exceder los 50 caracteres" 
+    data-parsley-trigger="keyup" />
 </div>
 
 
 <div class="form-control" style="margin-bottom: 10px;">
   <label class="label" for="familiar_corazon"><b style="color: red;">*</b> ¿TIENE ALGÚN FAMILIAR ENFERMO DEL CORAZÓN? ESPECIFIQUE PARENTESCO:</label><br/>
-  <input class="input input-accent w-full max-w-md" type="text" id="familiar_corazon" name="familiar_corazon" value="NO" 
- />
+  <input class="input input-accent w-full max-w-md" type="text" id="familiar_corazon" name="familiar_corazon" value="NINGUNO" 
+    required
+    data-parsley-maxlength="50"
+    data-parsley-maxlength-message="No debe exceder los 50 caracteres" 
+    data-parsley-trigger="keyup" />
     </div>
 
 
 <div class="form-control" style="margin-bottom: 10px;">
   <label class="label" for="familiar_hipertension"><b style="color: red;">*</b> ¿TIENE ALGÚN FAMILIAR HIPERTENSO? ESPECIFIQUE PARENTESCO:</label><br/>
-  <input class="input input-accent w-full max-w-md" type="text" id="familiar_hipertension" name="familiar_hipertension" value="NO" 
- />
+  <input class="input input-accent w-full max-w-md" type="text" id="familiar_hipertension" name="familiar_hipertension" value="NINGUNO" 
+    required
+    data-parsley-maxlength="50"
+    data-parsley-maxlength-message="No debe exceder los 50 caracteres" 
+    data-parsley-trigger="keyup" />
     </div>
 
 
 <div class="form-control" style="margin-bottom: 10px;">
   <label class="label" for="famliar_cancer"><b style="color: red;">*</b> ¿TIENE ALGÚN FAMILIAR ENFERMO DE CANCER? ESPECIFIQUE PARENTESCO:</label><br/>
-  <input class="input input-accent w-full max-w-md" type="text" id="familiar_cancer" name="familiar_cancer" value="NO" 
- />
+  <input class="input input-accent w-full max-w-md" type="text" id="familiar_cancer" name="familiar_cancer" value="NINGUNO" 
+   required
+   data-parsley-maxlength="50"
+   data-parsley-maxlength-message="No debe exceder los 50 caracteres" 
+   data-parsley-trigger="keyup" />
 </div>
 
 </fieldset>
