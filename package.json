@@ -27,5 +27,9 @@
     "@tailwindcss/cli": "^4.3.5",
     "daisyui": "^5.7.50",
     "tailwindcss": "^4.3.5"
+  },
+  "dependencies": {
+    "jquery": "^4.0.0",
+    "parsleyjs": "^2.9.2"
   }
 }

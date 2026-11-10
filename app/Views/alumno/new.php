@@ -10,7 +10,7 @@
   <div class="card w-full max-w-2xl bg-base-100 shadow-xl border border-base-300">
     <div class="card-body">
 
-<form class="space-y-6" action="create" method="post">
+<form class="space-y-6" action="create" method="post" data-parsley-validate>
 
         <label for="grado"><b style="color: red;">*</b> GRADO AL QUE SE INSCRIBIRÁ:</label>
             <select class="form-control" id="grado" name="grado" style="width: 100px;" >
@@ -44,28 +44,56 @@
     <input class="input input-neutral" type="text" id="curp_alumno" name="curp_alumno" readonly value="AEAA190507MMCRRTA9" />
 </div>
 
+<div role="alert" class="alert alert-success">
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+  </svg>
+  <span>Por favor, capture el nombre y apellidos del alumno en los campos correspondientes, respetando el orden y la escritura que aparecen en su acta de nacimiento.</span>
+</div>
+<br/>
+
   <div class="form-control" style="margin-bottom: 10px;">
   <label class="label" for="nombre_alumno">NOMBRE(S) DEL ALUMNO</label><br />
-       <input class="input input-accent" type="text" id="nombre_alumno" name="nombre_alumno" value="<?= old('nombre_alumno') ?>" />
+       <input class="input input-accent" type="text" id="nombre_alumno" name="nombre_alumno" value="<?= old('nombre_alumno') ?>" 
+       required 
+       data-parsley-required-message="Ingrese el nombre o nombres del alumno." 
+            data-parsley-maxlength="25"
+            data-parsley-maxlength-message="No debe ser mayor a 25 caracteres"
+            data-parsley-trigger="keyup" />
 </div>
 
 
     <div class="form-control" style="margin-bottom: 10px;">
         <label class="label" for="primer_apellido_alumno">PRIMER APELLIDO DEL ALUMNO:</label><br />
-        <input class="input input-accent" type="text" id="primer_apellido_alumno" name="primer_apellido_alumno" value="<?= old('primer_apellido_alumno') ?>" />
+        <input class="input input-accent" type="text" id="primer_apellido_alumno" name="primer_apellido_alumno" value="<?= old('primer_apellido_alumno') ?>" 
+        required 
+       data-parsley-required-message="Ingrese el primer apellido del alumno." 
+            data-parsley-maxlength="25"
+            data-parsley-maxlength-message="No debe ser mayor a 25 caracteres"
+            data-parsley-trigger="keyup" />
     </div>
 
 
     <div class="form-control" style="margin-bottom: 10px;">
         <label class="label" for="segundo_apellido_alumno">SEGUNDO APELLIDO DEL ALUMNO:</label><br />
-        <input class="input input-accent" type="text" id="segundo_apellido_alumno" name="segundo_apellido_alumno" value="<?= old('segundo_apellido_alumno') ?>" />
+        <input class="input input-accent" type="text" id="segundo_apellido_alumno" name="segundo_apellido_alumno" value="<?= old('segundo_apellido_alumno') ?>" 
+       required 
+       data-parsley-required-message="Ingrese el segundo apellido del alumno." 
+            data-parsley-maxlength="25"
+            data-parsley-maxlength-message="No debe ser mayor a 25 caracteres"
+            data-parsley-trigger="keyup" />
     </div>
 
     
 
     <div class="form-control" style="margin-bottom: 10px;">
         <label class="label" for="nacionalidad_alumno">NACIONALIDAD:</label><br />
-        <input class="input input-accent" type="text" id="nacionalidad_alumno" name="nacionalidad_alumno" size="10" placeholder="MEXICANA" value="MEXICANA" />
+        <input class="input input-accent" type="text" id="nacionalidad_alumno" name="nacionalidad_alumno" size="10" placeholder="MEXICANA" value="MEXICANA" 
+        required 
+        data-parsley-required-message="Este campo es requerido, el valor predeterminado es MEXICANA." 
+            data-parsley-maxlength="20"
+            data-parsley-maxlength-message="No debe ser mayor a 20 caracteres"
+            data-parsley-trigger="keyup" />
     </div>
 
     </fieldset>   
@@ -82,7 +110,7 @@
 
         <div class="form-control" style="margin-bottom: 10px;">
       <label class="label" for="municipio_dom"><b style="color: red;">*</b> MUNICIPIO:</label><br />
-          <select class="select select-secondary" id="municipio_dom" name="municipio_dom" >
+          <select class="select select-secondary" id="municipio_dom" name="municipio_dom" required>
                 <option disabled selected>SELECCIONAR</option>
                 <option value="TEXCOCO">TEXCOCO</option>
                 <option value="ATENCO">ATENCO</option>
@@ -106,7 +134,7 @@
     
   <div class="form-control" style="margin-bottom: 10px;">
         <label class="label" for="localidad_dom"><b style="color: red;">*</b> LOCALIDAD:</label><br />
-            <select class="select select-accent" id="localidad_dom" name="localidad_dom" disabled>
+            <select class="select select-accent" id="localidad_dom" name="localidad_dom" disabled required>
             <option disabled selected>Selecciona primero un municipio</option>
             </select>
    </div> 
@@ -116,7 +144,7 @@
    <div class="form-control" style="margin-bottom: 10px;">
         <label class="label" for="colonia_dom"><b style="color: red;">*</b>COLONIA:</label><br />
             <input class="input input-accent" type="text" class="form-control" id="colonia_dom" name="colonia_dom" placeholder="" 
-            
+            required
             data-parsley-required-message="Por favor, ingrese el nombre de su colonia." 
             data-parsley-maxlength="50"
             data-parsley-maxlength-message="No debe ser mayor a 50 caracteres"
@@ -127,7 +155,7 @@
      <div class="form-control" style="margin-bottom: 10px;">
         <label class="label" for="calle_num_dom"><b style="color: red;">*</b> CALLE y NÚMERO:</label><br />
         <input class=" input input-accent" type="text" id="calle_num_dom" name="calle_num_dom" placeholder="" 
-        
+        required
         data-parsley-required-message="Por favor, ingrese el nombre de la calle y el número" 
         data-parsley-maxlength="60"
         data-parsley-maxlength-message="No debe exceder los 60 caracteres"
@@ -138,7 +166,7 @@
     <div class="form-control" style="margin-bottom: 10px;">
         <label class="label" for="entre_calle_1"><b style="color: red;">*</b> ENTRE CALLE:</label><br/>
         <input class="input input-accent type="text" id="entre_calle_1" name="entre_calle_1" 
-        
+        required
         data-parsley-maxlength="40"
         data-parsley-maxlength-message="No debe exceder los 40 caracteres"
         data-parsley-trigger="keyup" />
@@ -147,7 +175,7 @@
     <div class="form-control" style="margin-bottom: 10px;">
         <label class="label" for="entre_calle_2"><b style="color: red;">*</b> Y CALLE:</label><br/>
         <input class="input input-accent" type="text" id="entre_calle_2" name="entre_calle_2" 
-        
+        required
         data-parsley-maxlength="40"
         data-parsley-maxlength-message="No debe exceder los 40 caracteres"
         data-parsley-trigger="keyup" />
@@ -155,15 +183,17 @@
 
      <div class="form-control" style="margin-bottom: 10px;">
         <label class="label" for="cp"><b style="color: red;">*</b> CÓDIGO POSTAL:</label><br/>
-            <input class="input input-accent" type="text" style="width: 200px;" class="form-control" id="cp" name="cp" placeholder=""
-             
-         />     
+            <input class="input input-accent" type="text" style="width: 200px;" class="form-control" id="cp" name="cp" placeholder="" 
+            required 
+            pattern="/^[0-9]{5}$/"
+            data-parsley-pattern-message="Formato de código postal inválido." 
+            data-parsley-trigger="keyup" />     
     </div>      
 
     <div class="form-control" style="margin-bottom: 10px;">
         <label class="label" for="referencia_dom"><b style="color: red;">*</b> REFERENCIA DOMICILIARIA (BREVE):</label><br/>
         <input class="input input-accent" type="text" id="referencia_dom" name="referencia_dom" placeholder="" 
-        
+        required
         data-parsley-required-message="Por favor, ingrese una referencia domiciliaria muy breve." 
         data-parsley-maxlength="50"
         data-parsley-maxlength-message="No debe exceder los 50 caracteres"
@@ -182,37 +212,41 @@
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="telefono_1"><b style="color: red;">*</b> NÚM. DE TELÉFONO (10 DÍGITOS):</label><br/>
     <input class="input input-accent" type="tel" id="telefono_1" name="telefono_1" style="width: 200px;" 
-     
-
-    data-parsley-pattern-message="Debe ser un número de 10 dígitos." />   
+    required 
+    pattern="/^\d{10}$/"
+    data-parsley-pattern-message="Debe ser un número de 10 dígitos." 
+    data-parsley-trigger="keyup" />   
 </div>
+
 
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="telefono_2"><b style="color: red;">*</b> NÚM. DE TELÉFONO 2 (10 DÍGITOS):</label><br/>
     <input class="input input-accent" type="tel" id="telefono_2" name="telefono_2" style="width: 200px;"
-     
-    
+    required
+     pattern="/^\d{10}$/"
     data-parsley-pattern-message="Debe ser un número de 10 dígitos." 
     data-parsley-notequalto="#telefono_1" 
-    data-parsley-notequalto-message="Este número ya existe en un campo anterior."  />
+    data-parsley-notequalto-message="Este número ya existe en un campo anterior." 
+    data-parsley-trigger="keyup" />
 </div>
 
 
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="telefono_emer">NÚM. DE TELÉFONO EMERGENCIAS (10 DÍGITOS):</label><br/>
     <input class="input input-accent" type="tel" id="telefono_emer" name="telefono_emer" style="width: 200px;"
-     
-    
+    required
+    pattern="/^\d{10}$/"
     data-parsley-pattern-message="Debe ser un número de 10 dígitos." 
     data-parsley-notequalto="#telefono_2" 
-    data-parsley-notequalto-message="Este número ya existe en un campo anterior."  />
+    data-parsley-notequalto-message="Este número ya existe en un campo anterior." 
+    data-parsley-trigger="keyup"  />
 </div>
 
 
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="email_alumno"><b style="color: red;">*</b> CORREO ELECTRÓNICO:</label><br/>
     <input class="input input-accent" type="text" id="email_alumno" name="email_alumno" style="text-transform: lowercase; width: 300px;"
-     
+    required
     data-parsley-type="email" />
 </div>
 
@@ -220,8 +254,8 @@
 
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="rs_alumno"><b style="color: red;">*</b> RED SOCIAL:</label><br/>
-        <select class="select select-accent" style="width: 200px;" class="form-control" id="rs_alumno" name="rs_alumno" >
-              <option></option>
+        <select class="select select-accent" style="width: 200px;" class="form-control" id="rs_alumno" name="rs_alumno" required>
+              <option disabled selected>SELECCIONAR</option>
               <option>FACEBOOK</option>
               <option>INSTAGRAM</option>
               <option>X</option>
@@ -231,14 +265,14 @@
   <div class="form-control" style="margin-bottom: 10px;">
         <label class="label" for="rs_user_alumno"><b style="color: red;">*</b> NOMBRE DE USUARIO DE LA RED SOCIAL:</label><br/>
         <input style="width: 300px;" class="input input-accent" type="text" id="rs_user_alumno" name="rs_user_alumno" 
-        
+        required
         data-parsley-maxlength="20"
         data-parsley-maxlength-message="No debe exceder los 20 caracteres" 
         data-parsley-trigger="keyup" />
     </div>
 
   </fieldset>
-<!--Comienza datos de contacto del alumno -->
+<!--Termina datos de contacto del alumno -->
 
 
 
@@ -363,7 +397,7 @@
 
 <div class="form-control" style="margin-bottom: 10px;">
   <label class="label" for="curp_tutor"><b style="color: red;">*</b> CURP DEL TUTOR:</label><br/>
-  <input style="width: 250px;" class="form-control" type="text" id="curp_tutor" name="curp_tutor" 
+  <input class="input input-info" style="width: 250px;" class="form-control" type="text" id="curp_tutor" name="curp_tutor" 
     />
   
 </div>
@@ -800,45 +834,47 @@
             <option value="TERCERA DOSIS">TERCERA DOSIS</option>
        </select>
  </div>
+<br/>
 
 
-<div class="form-group">
-    <label for="ultimas_enfermedades">ESCRIBA LOS NOMBRES DE LAS ENFERMEDADES QUE SU HIJO(A) HA PADECIDO DURANTE LOS ÚLTIMOS 12 MESES: (Sea breve, máximo 150 caracteres)</label>
-       <textarea id="ultimas_enfermedades" name="ultimas_enfermedades" rows="4" cols="40" 
+<div class="form-control" style="margin-bottom: 10px;">
+    <label class="label" for="ultimas_enfermedades">ESCRIBA LOS NOMBRES DE LAS ENFERMEDADES QUE SU HIJO(A) HA PADECIDO DURANTE<br/> LOS ÚLTIMOS 12 MESES: (Sea breve, máximo 150 caracteres)</label><br/>
+       <textarea class="w-full h-48 max-w-lg p-3 border rounded-md resize-y textarea textarea-success" id="ultimas_enfermedades" name="ultimas_enfermedades"  
         data-parsley-maxlength="150"
         data-parsley-maxlength-message="No debe exceder los 150 caracteres" 
         data-parsley-trigger="keyup">NINGUNA</textarea>
 </div>
 
 
-<div class="form-group">
-        <label for="enfermedades_frecuentes">ENFERMEDADES QUE PADECE CON MAYOR FRECUENCIA: (Sea breve, máximo 150 caracteres)</label>
-        <textarea id="enfermedades_frecuentes" name="enfermedades_frecuentes" rows="4" cols="40" 
+<br/>
+<div class="form-control" style="margin-bottom: 10px;">
+        <label class="label" for="enfermedades_frecuentes">ENFERMEDADES QUE PADECE CON MAYOR FRECUENCIA: (Sea breve, máximo 150 caracteres)</label><br/>
+        <textarea class="w-full h-48 max-w-lg p-3 border rounded-md resize-y textarea textarea-success" id="enfermedades_frecuentes" name="enfermedades_frecuentes" 
         data-parsley-maxlength="150"
         data-parsley-maxlength-message="No debe exceder los 150 caracteres" 
         data-parsley-trigger="keyup">NINGUNA</textarea>
 </div>
 
 
-<div class="form-group">
-  <label for="nombre_medico"><b style="color: red;"></b> NOMBRE DEL MEDICO FAMILIAR:</label>
-  <input class="form-control" type="text" id="nombre_medico" name="nombre_medico" placeholder="OPCIONAL" data-parsley-maxlength="50"
+<div class="form-control" style="margin-bottom: 10px;">
+  <label class="label" for="nombre_medico"><b style="color: red;"></b> NOMBRE DEL MEDICO FAMILIAR:</label><br/>
+  <input class="input input-secondary" class="form-control" type="text" id="nombre_medico" name="nombre_medico" placeholder="OPCIONAL" data-parsley-maxlength="50"
         data-parsley-maxlength-message="No debe exceder los 50 caracteres" 
         data-parsley-trigger="keyup" />
 </div>
 
 
-<div class="form-group">
-    <label for="tel_medico"><b style="color: red;"></b> NÚM. DE TELÉFONO DEL MEDICO FAMILIAR (10 DÍGITOS):</label>
-    <input style="width: 150px;" class="form-control" type="tel" id="tel_medico" name="tel_medico" placeholder="OPCIONAL" 
+<div class="form-control" style="margin-bottom: 10px;">
+    <label class="label" for="tel_medico"><b style="color: red;"></b> NÚM. DE TELÉFONO DEL MEDICO FAMILIAR (10 DÍGITOS):</label><br/>
+    <input class="input input-secondary" style="width: 150px;" type="tel" id="tel_medico" name="tel_medico" placeholder="OPCIONAL" 
     />
 </div>
 
 
-<div class="form-group">
-    <label for="institucion_dh">INSTITUCIÓN DE DERECHOHABIENCIA DEL ALUMNO(A):</label>
-        <select style="width: 200px;" class="form-control" id="institucion_dh" name="institucion_dh"  >
-            <option value="" selected="selected">SELECCIONAR</option>
+<div class="form-control" style="margin-bottom: 10px;">
+    <label class="label" for="institucion_dh">INSTITUCIÓN DE DERECHOHABIENCIA DEL ALUMNO(A):</label><br/>
+        <select class="select select-accent" style="width: 200px;" id="institucion_dh" name="institucion_dh"  >
+            <option disabled selected>SELECCIONAR</option>
             <option value="ISSEMYM">ISSEMYM</option>
             <option value="ISSSTE">ISSSTE</option>
             <option value="IMSS">IMSS</option>
@@ -849,9 +885,9 @@
 </div>
 
 
-<div class="form-group">
-        <label for="recomendaciones">RECOMENDACIONES ESPECIALES: (Sea breve, máximo 200 caracteres)</label>
-        <textarea id="recomendaciones" name="recomendaciones" rows="4" cols="40" 
+<div class="form-control" style="margin-bottom: 10px;">
+        <label class="label" for="recomendaciones">RECOMENDACIONES ESPECIALES: (Sea breve, máximo 200 caracteres)</label><br/>
+        <textarea class="w-full h-48 max-w-lg p-3 border rounded-md resize-y textarea textarea-success" id="recomendaciones" name="recomendaciones" rows="4" cols="40" 
         data-parsley-maxlength="200"
         data-parsley-maxlength-message="No debe exceder los 200 caracteres" 
         data-parsley-trigger="keyup">NINGUNA</textarea>
@@ -859,97 +895,96 @@
 
 
 <!--Comienza la sección de padecimientos -->
-
+<br/>
 <h2>¿SU HIJO PADECE ALGUNA DE LAS SIGUIENTES ENFERMEDADES?</h2>
-  
 
 <label for="padecimientos"><strong>SELECCIONE EN CASO AFIRMATIVO:</strong>&nbsp;&nbsp;</label>
       <div class="form-check">
-        <label class="form-check-label">
-          <input type="checkbox" class="form-check-input" name="sobrepeso" value="SI">SOBREPESO U OBESIDAD
+        <label class="label">
+          <input type="checkbox" class="checkbox checkbox-secondary" name="sobrepeso" value="SI"> SOBREPESO U OBESIDAD
         </label>
       </div>
 
       <div class="form-check">
-        <label class="form-check-label">
-          <input type="checkbox" class="form-check-input" name="corazon" value="SI">ENFERMEDAD DEL CORAZÓN
-        </label>
-      </div>
-
-
-      <div class="form-check">
-        <label class="form-check-label">
-          <input type="checkbox" class="form-check-input" name="bronquitis" value="SI">BRONQUITIS
+        <label class="label">
+          <input type="checkbox" class="checkbox checkbox-secondary" name="corazon" value="SI"> ENFERMEDAD DEL CORAZÓN
         </label>
       </div>
 
 
       <div class="form-check">
-        <label class="form-check-label">
-        <input type="checkbox" class="form-check-input" name="hemorragias" value="SI">HEMORRAGIAS
+        <label class="label">
+          <input type="checkbox" class="checkbox checkbox-secondary" name="bronquitis" value="SI"> BRONQUITIS
         </label>
       </div>
 
 
       <div class="form-check">
-        <label class="form-check-label">
-        <input type="checkbox" class="form-check-input" name="epilepsia" value="SI">EPILEPSIA (ATAQUES, CONVULSIONES)
+        <label class="label">
+        <input type="checkbox" class="checkbox checkbox-secondary" name="hemorragias" value="SI"> HEMORRAGIAS
         </label>
       </div>
 
 
       <div class="form-check">
-        <label class="form-check-label">
-        <input type="checkbox" class="form-check-input" name="fiebre_reumatica" value="SI">FIEBRE REUMÁTICA
+        <label class="label">
+        <input type="checkbox" class="checkbox checkbox-secondary" name="epilepsia" value="SI"> EPILEPSIA (ATAQUES, CONVULSIONES)
         </label>
       </div>
 
 
       <div class="form-check">
-        <label class="form-check-label">
-        <input type="checkbox" class="form-check-input" name="cancer" value="SI">CANCER
+        <label class="label">
+        <input type="checkbox" class="checkbox checkbox-secondary" name="fiebre_reumatica" value="SI"> FIEBRE REUMÁTICA
         </label>
       </div>
 
 
       <div class="form-check">
-        <label class="form-check-label">
-        <input type="checkbox" class="form-check-input" name="diabetes" value="SI">DIABETES
+        <label class="label">
+        <input type="checkbox" class="checkbox checkbox-secondary" name="cancer" value="SI"> CANCER
         </label>
       </div>
 
 
       <div class="form-check">
-        <label class="form-check-label">
-        <input type="checkbox" class="form-check-input" name="amigdalitis" value="SI">AMIGDALITIS
+        <label class="label">
+        <input type="checkbox" class="checkbox checkbox-secondary" name="diabetes" value="SI"> DIABETES
         </label>
       </div>
 
 
       <div class="form-check">
-        <label class="form-check-label">
-        <input type="checkbox" class="form-check-input" name="anemia" value="SI">ANEMIA
+        <label class="label">
+        <input type="checkbox" class="checkbox checkbox-secondary" name="amigdalitis" value="SI"> AMIGDALITIS
         </label>
       </div>
 
 
       <div class="form-check">
-        <label class="form-check-label">
-        <input type="checkbox" class="form-check-input" name="hepatitis" value="SI">HEPATITIS
+        <label class="label">
+        <input type="checkbox" class="checkbox checkbox-secondary" name="anemia" value="SI"> ANEMIA
+        </label>
+      </div>
+
+
+      <div class="form-check">
+        <label class="label">
+        <input type="checkbox" class="checkbox checkbox-secondary" name="hepatitis" value="SI"> HEPATITIS
         </label>
       </div>
 
       <div class="form-check">
-        <label class="form-check-label">
-        <input type="checkbox" class="form-check-input" name="neoplasias" value="SI">NEOPLASIAS
+        <label class="label">
+        <input type="checkbox" class="checkbox checkbox-secondary" name="neoplasias" value="SI"> NEOPLASIAS
         </label>
       </div>
 
 
 
-<div class="form-group">
-        <label for="enfermedad_cronica"><b style="color: red;"></b> ¿OTRAS ENFERMEDADES CRONICAS? ESPECIFIQUE: (Sea breve, máximo 200 caracteres)</label>
-        <textarea id="enfermedad_cronica" name="enfermedad_cronica" rows="4" cols="40" 
+<div class="form-control" style="margin-bottom: 10px;">
+        <label class="label" for="enfermedad_cronica"><b style="color: red;"></b> ¿OTRAS ENFERMEDADES CRONICAS? ESPECIFIQUE: (Sea breve, máximo 200 caracteres)</label><br/>
+        <textarea class="w-full h-48 max-w-lg p-3 border rounded-md resize-y textarea textarea-success" id="enfermedad_cronica" name="enfermedad_cronica" 
         data-parsley-maxlength="200"
         data-parsley-maxlength-message="No debe exceder los 200 caracteres" 
         data-parsley-trigger="keyup">NINGUNA</textarea>
@@ -958,135 +993,130 @@
 
 
 <!--Comienza la sección de detecciones -->
-
-        <h2>HA DETECTADO QUE EL(LA) NIÑO(A)</h2>
-    
-
-    <label for="vacunas"><strong>SELECCIONE EN CASO AFIRMATIVO:</strong>&nbsp;&nbsp;</label>
+<br/>
+  <label for="vacunas"><strong>SELECCIONE EN CASO AFIRMATIVO:</strong>&nbsp;&nbsp;</label>
+  <h2>HA DETECTADO QUE EL (LA) NIÑO (A):</h2>
       
       <div class="form-check">
-        <label class="form-check-label">
-          <input type="checkbox" class="form-check-input" name="dificultad_dormir" value="SI">¿TIENE DIFICULTAD PARA DORMIR BIEN DURANTE LA NOCHE?
+        <label class="label">
+          <input type="checkbox" class="checkbox checkbox-secondary" name="dificultad_dormir" value="SI"> ¿TIENE DIFICULTAD PARA DORMIR BIEN DURANTE LA NOCHE?
         </label>
       </div>
 
       <div class="form-check">
-        <label class="form-check-label">
-          <input type="checkbox" class="form-check-input" name="fiebre_frecuente" value="SI">¿LE DA FIEBRE CON FRECUENCIA?
+        <label class="label">
+          <input type="checkbox" class="checkbox checkbox-secondary" name="fiebre_frecuente" value="SI"> ¿LE DA FIEBRE CON FRECUENCIA?
         </label>
       </div>
 
       <div class="form-check">
-        <label class="form-check-label">
-          <input type="checkbox" class="form-check-input" name="falta_aire" value="SI">¿LE FALTA AIRE DESPUÉS DE HACER EJERCICIO?
+        <label class="label">
+          <input type="checkbox" class="checkbox checkbox-secondary" name="falta_aire" value="SI"> ¿LE FALTA AIRE DESPUÉS DE HACER EJERCICIO?
         </label>
       </div>
 
 
       <div class="form-check">
-        <label class="form-check-label">
-          <input type="checkbox" class="form-check-input" name="dolor_piernas" value="SI">¿LE DUELEN LAS PIERNAS POR LA NOCHE?
+        <label class="label">
+          <input type="checkbox" class="checkbox checkbox-secondary" name="dolor_piernas" value="SI"> ¿LE DUELEN LAS PIERNAS POR LA NOCHE?
         </label>
       </div>
     
 
     <div class="form-check">
-        <label class="form-check-label">
-          <input type="checkbox" class="form-check-input" name="desmayos_frecuentes" value="SI">¿SE DESMAYA CON FRECUENCIA?
+        <label class="label">
+          <input type="checkbox" class="checkbox checkbox-secondary" name="desmayos_frecuentes" value="SI"> ¿SE DESMAYA CON FRECUENCIA?
         </label>
       </div>
 
       <div class="form-check">
-        <label class="form-check-label">
-          <input type="checkbox" class="form-check-input" name="transfusion" value="SI">¿HA RECIBIDO ALGUNA VEZ TRANSFUSIÓN SANGUINEA?
+        <label class="label">
+          <input type="checkbox" class="checkbox checkbox-secondary" name="transfusion" value="SI"> ¿HA RECIBIDO ALGUNA VEZ TRANSFUSIÓN SANGUINEA?
         </label>
       </div>
 
       <div class="form-check">
-        <label class="form-check-label">
-          <input type="checkbox" class="form-check-input" name="impedimento" value="SI">¿TIENE IMPEDIMENTO PARA REALIZAR ACTIVIDADES DEPORTIVAS?
+        <label class="label">
+          <input type="checkbox" class="checkbox checkbox-secondary" name="impedimento" value="SI"> ¿TIENE IMPEDIMENTO PARA REALIZAR ACTIVIDADES DEPORTIVAS?
         </label>
       </div>
 
 <br />
 
 
-      <div class="form-group">
-  <label for="alergia_medicamento"><b style="color: red;">*</b> ¿ES ALÉRGICO A ALGÚN MEDICAMENTO? ESPECIFIQUE:</label>
-  <input class="form-control" type="text" id="alergia_medicamento" name="alergia_medicamento" value="NO" 
+   <div class="form-control" style="margin-bottom: 10px;">
+  <label class="label" for="alergia_medicamento"><b style="color: red;">*</b> ¿ES ALÉRGICO A ALGÚN MEDICAMENTO? ESPECIFIQUE:</label><br/>
+  <input class="input input-secondary w-full max-w-md" type="text" id="alergia_medicamento" name="alergia_medicamento" value="NO" 
    />
     </div>
 
 
- <div class="form-group">
-  <label for="alergia_alimento"><b style="color: red;">*</b> ¿ES ALÉRGICO A ALGÚN ALIMENTO O BEBIDA? ESPECIFIQUE:</label>
-  <input class="form-control" type="text" id="alergia_alimento" name="alergia_alimento" value="NO" 
+ <div class="form-control" style="margin-bottom: 10px;">
+  <label class="label" for="alergia_alimento"><b style="color: red;">*</b> ¿ES ALÉRGICO A ALGÚN ALIMENTO O BEBIDA? ESPECIFIQUE:</label><br/>
+  <input class="input input-secondary w-full max-w-md" type="text" id="alergia_alimento" name="alergia_alimento" value="NO" 
  />
  </div>
 
 
-<div class="form-group">
-  <label for="hemorragias_frecuentes"><b style="color: red;">*</b> ¿PRESENTA HEMORRAGIAS FRECUENTES? ESPECIFIQUE:</label>
-  <input class="form-control" type="text" id="hemorragias_frecuentes" name="hemorragias_frecuentes" value="NO" 
+<div class="form-control" style="margin-bottom: 10px;">
+  <label class="label" for="hemorragias_frecuentes"><b style="color: red;">*</b> ¿PRESENTA HEMORRAGIAS FRECUENTES? ESPECIFIQUE:</label><br/>
+  <input class="input input-secondary w-full max-w-md" type="text" id="hemorragias_frecuentes" name="hemorragias_frecuentes" value="NO" 
  />
 </div>
 
 
-<div class="form-group">
-  <label for="antecedente_medico"><b style="color: red;">*</b> ¿CUENTA CON ALGÚN ANTECEDENTE MÉDICO QUE LE PROHIBA A SU HIJO(A) REALIZAR ACTIVIDAD FÍSICA? ESPECIFIQUE:</label>
-  <input class="form-control" type="text" id="antecedente_medico" name="antecedente_medico" value="NO" 
+<div class="form-control" style="margin-bottom: 10px;">
+  <label class="label" for="antecedente_medico"><b style="color: red;">*</b> ¿CUENTA CON ALGÚN ANTECEDENTE MÉDICO QUE LE PROHIBA<br/> A SU HIJO(A) REALIZAR ACTIVIDAD FÍSICA? ESPECIFIQUE:</label><br/>
+  <input class="input input-secondary w-full max-w-md" type="text" id="antecedente_medico" name="antecedente_medico" value="NO" 
  />
 </div>
 
 
 
-<div class="form-group">
-  <label for="intervencion_quirurgica"><b style="color: red;">*</b> ¿HA SIDO INTERVENIDO QUIRÚRGICAMENTE? ESPECIFIQUE:</label>
-  <input class="form-control" type="text" id="intervencion_quirurgica" name="intervencion_quirurgica" value="NO" 
+<div class="form-control" style="margin-bottom: 10px;">
+  <label class="label" for="intervencion_quirurgica"><b style="color: red;">*</b> ¿HA SIDO INTERVENIDO QUIRÚRGICAMENTE? ESPECIFIQUE:</label><br/>
+  <input class="input input-secondary w-full max-w-md" type="text" id="intervencion_quirurgica" name="intervencion_quirurgica" value="NO" 
  />
 </div>
     
 
 <!--Comienza antecedentes hereditarios del alumno -->
- 
-        <h2>ANTECEDENTES HEREDITARIOS DEL ALUMNO(A)</h2>
+ <br/>
+ <h2>ANTECEDENTES HEREDITARIOS DEL (LA) ALUMNO(A)</h2>
    
 
-    <div class="form-group">
-  <label for="familiar_diabetes"><b style="color: red;">*</b> ¿TIENE ALGÚN FAMILIAR DIABÉTICO? ESPECIFIQUE PARENTESCO:</label>
-  <input style="width: 300px;" class="form-control" type="text" id="familiar_diabetes" name="familiar_diabetes" value="NO" 
+<div class="form-control" style="margin-bottom: 10px;">
+  <label class="label" for="familiar_diabetes"><b style="color: red;">*</b> ¿TIENE ALGÚN FAMILIAR DIABÉTICO? ESPECIFIQUE PARENTESCO:</label><br/>
+  <input class="input input-accent w-full max-w-md" type="text" id="familiar_diabetes" name="familiar_diabetes" value="NO" 
  />
 </div>
 
 
-     <div class="form-group">
-  <label for="familiar_corazon"><b style="color: red;">*</b> ¿TIENE ALGÚN FAMILIAR ENFERMO DEL CORAZÓN? ESPECIFIQUE PARENTESCO:</label>
-  <input style="width: 300px;" class="form-control" type="text" id="familiar_corazon" name="familiar_corazon" value="NO" 
+<div class="form-control" style="margin-bottom: 10px;">
+  <label class="label" for="familiar_corazon"><b style="color: red;">*</b> ¿TIENE ALGÚN FAMILIAR ENFERMO DEL CORAZÓN? ESPECIFIQUE PARENTESCO:</label><br/>
+  <input class="input input-accent w-full max-w-md" type="text" id="familiar_corazon" name="familiar_corazon" value="NO" 
  />
     </div>
 
 
-    <div class="form-group">
-  <label for="familiar_hipertension"><b style="color: red;">*</b> ¿TIENE ALGÚN FAMILIAR HIPERTENSO? ESPECIFIQUE PARENTESCO:</label>
-  <input style="width: 300px;" class="form-control" type="text" id="familiar_hipertension" name="familiar_hipertension" value="NO" 
+<div class="form-control" style="margin-bottom: 10px;">
+  <label class="label" for="familiar_hipertension"><b style="color: red;">*</b> ¿TIENE ALGÚN FAMILIAR HIPERTENSO? ESPECIFIQUE PARENTESCO:</label><br/>
+  <input class="input input-accent w-full max-w-md" type="text" id="familiar_hipertension" name="familiar_hipertension" value="NO" 
  />
     </div>
 
 
-     <div class="form-group">
-  <label for="famliar_cancer"><b style="color: red;">*</b> ¿TIENE ALGÚN FAMILIAR ENFERMO DE CANCER? ESPECIFIQUE PARENTESCO:</label>
-  <input style="width: 300px;" class="form-control" type="text" id="familiar_cancer" name="familiar_cancer" value="NO" 
+<div class="form-control" style="margin-bottom: 10px;">
+  <label class="label" for="famliar_cancer"><b style="color: red;">*</b> ¿TIENE ALGÚN FAMILIAR ENFERMO DE CANCER? ESPECIFIQUE PARENTESCO:</label><br/>
+  <input class="input input-accent w-full max-w-md" type="text" id="familiar_cancer" name="familiar_cancer" value="NO" 
  />
-    </div>
+</div>
 
 </fieldset>
 
+<p class="mx-auto w-1/2"><input class="btn btn-success btn-wide" type="submit" value="Enviar" /></p>
 
-
-<br />
-<input type="submit" value="Enviar" />
-
-    </form>
+</form>
 <br />
     <a href="../" >Regresar</a>
 
