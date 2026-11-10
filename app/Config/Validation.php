@@ -813,7 +813,7 @@ class Validation extends BaseConfig
         ], 
 
 
-        'hemorargias_frecuentes' => [ 
+        'hemorragias_frecuentes' => [ 
             'label' => 'Hemorragias frecuentes', 
             'rules' => [
                 'required',
