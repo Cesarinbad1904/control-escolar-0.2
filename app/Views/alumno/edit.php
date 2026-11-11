@@ -143,7 +143,7 @@
 
    <div class="form-control" style="margin-bottom: 10px;">
         <label class="label" for="colonia_dom"><b style="color: red;">*</b>COLONIA:</label><br />
-            <input class="input input-accent" type="text" class="form-control" id="colonia_dom" name="colonia_dom" placeholder="" 
+            <input class="input input-accent" type="text" class="form-control" id="colonia_dom" name="colonia_dom" placeholder="" value="<?= $alumno->colonia_dom ?>"
             required
             data-parsley-required-message="Por favor, ingrese el nombre de su colonia." 
             data-parsley-maxlength="50"
@@ -154,7 +154,7 @@
 
      <div class="form-control" style="margin-bottom: 10px;">
         <label class="label" for="calle_num_dom"><b style="color: red;">*</b> CALLE y NÚMERO:</label><br />
-        <input class=" input input-accent" type="text" id="calle_num_dom" name="calle_num_dom" placeholder="" 
+        <input class=" input input-accent" type="text" id="calle_num_dom" name="calle_num_dom" value="<?= $alumno->calle_num_dom ?>"
         required
         data-parsley-required-message="Por favor, ingrese el nombre de la calle y el número" 
         data-parsley-maxlength="60"
@@ -165,7 +165,7 @@
 
     <div class="form-control" style="margin-bottom: 10px;">
         <label class="label" for="entre_calle_1"><b style="color: red;">*</b> ENTRE CALLE:</label><br/>
-        <input class="input input-accent type="text" id="entre_calle_1" name="entre_calle_1" 
+        <input class="input input-accent type="text" id="entre_calle_1" name="entre_calle_1" value="<?= $alumno->entre_calle_1 ?>"
         required
         data-parsley-maxlength="40"
         data-parsley-maxlength-message="No debe exceder los 40 caracteres"
@@ -174,7 +174,7 @@
 
     <div class="form-control" style="margin-bottom: 10px;">
         <label class="label" for="entre_calle_2"><b style="color: red;">*</b> Y CALLE:</label><br/>
-        <input class="input input-accent" type="text" id="entre_calle_2" name="entre_calle_2" 
+        <input class="input input-accent" type="text" id="entre_calle_2" name="entre_calle_2" value="<?= $alumno->entre_calle_2 ?>"
         required
         data-parsley-maxlength="40"
         data-parsley-maxlength-message="No debe exceder los 40 caracteres"
@@ -183,7 +183,7 @@
 
      <div class="form-control" style="margin-bottom: 10px;">
         <label class="label" for="cp"><b style="color: red;">*</b> CÓDIGO POSTAL:</label><br/>
-            <input class="input input-accent" type="text" style="width: 200px;" class="form-control" id="cp" name="cp" placeholder="" 
+            <input class="input input-accent" type="text" style="width: 200px;" class="form-control" id="cp" name="cp" value="<?= $alumno->cp ?>" 
             required 
             pattern="/^[0-9]{5}$/"
             data-parsley-pattern-message="Formato de código postal inválido." 
@@ -192,7 +192,7 @@
 
     <div class="form-control" style="margin-bottom: 10px;">
         <label class="label" for="referencia_dom"><b style="color: red;">*</b> REFERENCIA DOMICILIARIA (BREVE):</label><br/>
-        <input class="input input-accent" type="text" id="referencia_dom" name="referencia_dom" placeholder="" 
+        <input class="input input-accent" type="text" id="referencia_dom" name="referencia_dom" value="<?= $alumno->referencia_dom ?>"
         required
         data-parsley-required-message="Por favor, ingrese una referencia domiciliaria muy breve." 
         data-parsley-maxlength="50"
@@ -211,7 +211,7 @@
 
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="telefono_1"><b style="color: red;">*</b> NÚM. DE TELÉFONO (10 DÍGITOS):</label><br/>
-    <input class="input input-accent" type="tel" id="telefono_1" name="telefono_1" style="width: 200px;" 
+    <input class="input input-accent" type="tel" id="telefono_1" name="telefono_1" style="width: 200px;" value="<?= $alumno->telefono_1 ?>"
     required 
     pattern="/^\d{10}$/"
     data-parsley-pattern-message="Debe ser un número de 10 dígitos." 
@@ -221,7 +221,7 @@
 
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="telefono_2"><b style="color: red;">*</b> NÚM. DE TELÉFONO 2 (10 DÍGITOS):</label><br/>
-    <input class="input input-accent" type="tel" id="telefono_2" name="telefono_2" style="width: 200px;"
+    <input class="input input-accent" type="tel" id="telefono_2" name="telefono_2" style="width: 200px;" value="<?= $alumno->telefono_2 ?>"
     required
      pattern="/^\d{10}$/"
     data-parsley-pattern-message="Debe ser un número de 10 dígitos." 
@@ -233,7 +233,7 @@
 
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="telefono_emer">NÚM. DE TELÉFONO EMERGENCIAS (10 DÍGITOS):</label><br/>
-    <input class="input input-accent" type="tel" id="telefono_emer" name="telefono_emer" style="width: 200px;"
+    <input class="input input-accent" type="tel" id="telefono_emer" name="telefono_emer" style="width: 200px;" value="<?= $alumno->telefono_emer ?>"
     required
     pattern="/^\d{10}$/"
     data-parsley-pattern-message="Debe ser un número de 10 dígitos." 
@@ -245,7 +245,7 @@
 
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="email_alumno"><b style="color: red;">*</b> CORREO ELECTRÓNICO:</label><br/>
-    <input class="input input-accent" type="text" id="email_alumno" name="email_alumno" style="text-transform: lowercase; width: 300px;"
+    <input class="input input-accent" type="text" id="email_alumno" name="email_alumno" style="text-transform: lowercase; width: 300px;" value="<?= $alumno->email_alumno ?>"
     required    
     data-parsley-type="email"
     data-parsley-maxlength-message="Dirección de correo inválida."  
@@ -257,7 +257,7 @@
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="rs_alumno"><b style="color: red;">*</b> RED SOCIAL:</label><br/>
         <select class="select select-accent" style="width: 200px;" class="form-control" id="rs_alumno" name="rs_alumno" required>
-              <option disabled selected>SELECCIONAR</option>
+              <option value="<?= $alumno->rs_alumno ?>"><?= $alumno->rs_alumno ?></option>
               <option>FACEBOOK</option>
               <option>INSTAGRAM</option>
               <option>X</option>
@@ -266,7 +266,7 @@
 
   <div class="form-control" style="margin-bottom: 10px;">
         <label class="label" for="rs_user_alumno"><b style="color: red;">*</b> NOMBRE DE USUARIO DE LA RED SOCIAL:</label><br/>
-        <input style="width: 300px;" class="input input-accent" type="text" id="rs_user_alumno" name="rs_user_alumno" 
+        <input style="width: 300px;" class="input input-accent" type="text" id="rs_user_alumno" name="rs_user_alumno" value="<?= $alumno->rs_user_alumno ?>"
         required
         data-parsley-maxlength="20"
         data-parsley-maxlength-message="No debe exceder los 20 caracteres" 
