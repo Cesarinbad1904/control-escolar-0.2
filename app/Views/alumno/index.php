@@ -21,6 +21,10 @@
                 <?= $p->grado ?> <?= $p->grupo ?> 
             </td>
 
+            <td>
+                <a href="/inscripciones/edit/<?= $p->id_alumno ?>">Editar</a>
+            </td>
+
             
         </tr>
        <?php endforeach ?>

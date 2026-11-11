@@ -9,7 +9,7 @@ class AlumnoModel extends Model
     protected $table            = 'alumnos_inscritos';
     protected $primaryKey       = 'id_alumno';
     protected $useAutoIncrement = true;
-    protected $returnType       = 'array';
+    protected $returnType       = 'object'; // en lugar de array
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [

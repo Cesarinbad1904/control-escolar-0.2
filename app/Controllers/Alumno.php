@@ -39,6 +39,40 @@ public function new() {
 // =========================================================================
 
 
+// =========== Método para mostrar la página de edición de un alumno existente 
+
+public function edit($id) {
+
+// Instanciar los tres modelos necesarios
+        $alumnoModel  = new AlumnoModel();
+        $tutorModel   = new TutorModel();
+        $medicoModel  = new HistorialMedicoModel();
+
+// Buscar los datos del alumno
+    $alumno = $alumnoModel->find($id);
+
+
+// Validar si el alumno existe antes de continuar
+    if (!$alumno) {
+        return redirect()->to('/alumno')->with('error', 'Alumno no encontrado');
+    }
+
+
+// Preparar el arreglo de datos para la vista    
+    $data = [
+        'alumno' => $alumno,
+        'tutor'  => $tutorModel->find($alumno->id_alumno ?? null),
+        'medico' => $medicoModel->find($alumno->id_alumno ?? null)
+    ];
+
+// enviar todo el arreglo a la vista
+return view('/alumno/edit', $data);
+   
+}
+// =========================================================================
+
+
+
 // =========== Método para crear un nuevo alumno =======================
 
 public function create() {

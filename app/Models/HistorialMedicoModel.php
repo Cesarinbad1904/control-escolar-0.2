@@ -9,7 +9,7 @@ class HistorialMedicoModel extends Model
     protected $table            = 'historial_medico';
     protected $primaryKey       = 'id_hmedico';
     protected $useAutoIncrement = true;
-    protected $returnType       = 'array';
+    protected $returnType       = 'object'; // en lugar de array
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [

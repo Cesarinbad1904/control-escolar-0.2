@@ -1,6 +1,8 @@
 @import "tailwindcss";
 
-@plugin "daisyui";
+@plugin "daisyui" {
+  themes: all; /* Habilitar todos los temas */
+}
 
 /* Directorio de vistas de CodeIgniter */
 @source "../../app/Views";

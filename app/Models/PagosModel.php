@@ -9,7 +9,7 @@ class PagosModel extends Model
     protected $table            = 'pagos';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
-    protected $returnType       = 'array';
+    protected $returnType       = 'object'; // en lugar de array
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [

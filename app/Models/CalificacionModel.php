@@ -9,7 +9,7 @@ class CalificacionModel extends Model
     protected $table            = 'calificaciones';
     protected $primaryKey       = 'id_calif';
     protected $useAutoIncrement = true;
-    protected $returnType       = 'array';
+    protected $returnType       = 'object'; // en lugar de array
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [

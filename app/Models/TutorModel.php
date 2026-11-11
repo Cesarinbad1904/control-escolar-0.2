@@ -9,7 +9,7 @@ class TutorModel extends Model
     protected $table            = 'tutores';
     protected $primaryKey       = 'id_tutor';
     protected $useAutoIncrement = true;
-    protected $returnType       = 'array';
+    protected $returnType       = 'object'; // en lugar de array
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
