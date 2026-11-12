@@ -284,7 +284,7 @@
 
     <div class="form-control" style="margin-bottom: 10px;">
         <label class="label" for="num_personas">¿CUÁNTAS PERSONAS VIVEN EN SU CASA?</label><br/>
-        <input style="width: 100px;" class="input input-accent" type="number" min="1" id="num_personas" 
+        <input style="width: 100px;" class="input input-accent" type="number" min="1" id="num_personas" value="<?= $alumno->num_personas ?>"
         name="num_personas" 
         required
         data-parsley-type="number" 
@@ -296,7 +296,7 @@
     <div class="form-control" style="margin-bottom: 10px;">
       <label clas="label" for="vive_con"><b style="color: red;">*</b>¿CON QUIÉN VIVE?</label><br/>
           <select style="width: 150px;" class="select select-primary" id="vive_con" name="vive_con" required >
-                <option disabled selected>SELECCIONAR</option>
+                <option value="<?= $alumno->vive_con ?>"><?= $alumno->vive_con ?></option>
                 <option>MAMA</option>
                 <option>PAPA</option>
                 <option>AMBOS</option>
@@ -307,7 +307,7 @@
     <div class="form-control" style="margin-bottom: 10px;">
       <label class="label" for="sosten_econ"><b style="color: red;">*</b> ¿QUIÉN SOSTIENE ECONÓMICAMENTE LA CASA?</label><br/>
           <select style="width: 150px;" class="select select-secondary" id="sosten_econ" name="sosten_econ" required>
-                <option disabled selected>SELECCIONAR</option>
+                <option value="<?= $alumno->sosten_econ ?>"><?= $alumno->sosten_econ ?></option>
                 <option>MAMA</option>
                 <option>PAPA</option>
                 <option>AMBOS</option>
@@ -318,7 +318,7 @@
 
      <div class="form-control" style="margin-bottom: 10px;">
         <label class="label" for="nombre_escuela_procedencia">NOMBRE DE LA ESCUELA DE PROCEDENCIA:</label><br/>
-        <input class="input input-accent" type="text" id="nombre_escuela_procedencia" name="nombre_escuela_procedencia" value=""
+        <input class="input input-accent" type="text" id="nombre_escuela_procedencia" name="nombre_escuela_procedencia" value="<?= $alumno->nombre_escuela_procedencia ?>"
         required
         data-parsley-maxlength="40"
         data-parsley-maxlength-message="No debe exceder los 40 caracteres" 
@@ -330,7 +330,7 @@
     <div class="form-control" style="margin-bottom: 10px;">
         <label class="label" for="anios_prescolar">AÑOS CURSADOS EN PREESCOLAR: </label><br/>
             <select class="select select-info" id="anios_prescolar" name="anios_prescolar" style="width: 100px;">
-                  <option value="3" selected="selected">3</option>
+                  <option value="<?= $alumno->anios_prescolar ?>"><?= $alumno->anios_prescolar ?></option>
                   <option value="2">2</option>
                   <option value="1">1</option>
                   <option value="0">0</option>
@@ -344,46 +344,53 @@
   
   <div class="form-check">
         <label class="label">
-          <input type="checkbox" class="checkbox checkbox-primary" name="computadora" value="SI"> COMPUTADORA DE ESCRITORIO O PORTATIL
+          <input type="checkbox" class="checkbox checkbox-primary" name="computadora" value="SI" 
+          <?= ($alumno->computadora ?? '') === 'SI' ? 'checked' : '' ?> > COMPUTADORA DE ESCRITORIO O PORTATIL
         </label>
     </div>
 
     <div class="form-check">
         <label class="label">
-          <input type="checkbox" class="checkbox checkbox-primary" name="tablet" value="SI"> TABLET
+          <input type="checkbox" class="checkbox checkbox-primary" name="tablet" value="SI" 
+          <?= ($alumno->tablet ?? '') === 'SI' ? 'checked' : '' ?> > TABLET
         </label>
     </div>
 
     
     <div class="form-check">
         <label class="label">
-          <input type="checkbox" class="checkbox checkbox-primary" name="internet_casa" value="SI"> INTERNET EN CASA
+          <input type="checkbox" class="checkbox checkbox-primary" name="internet_casa" value="SI" 
+          <?= ($alumno->internet_casa ?? '') === 'SI' ? 'checked' : '' ?> > INTERNET EN CASA
         </label>
     </div>
 
     <div class="form-check">
         <label class="label">
-          <input type="checkbox" class="checkbox checkbox-primary" name="internet_movil" value="SI"> INTERNET EN CELULAR
+          <input type="checkbox" class="checkbox checkbox-primary" name="internet_movil" value="SI" 
+          <?= ($alumno->internet_movil ?? '') === 'SI' ? 'checked' : '' ?> > INTERNET EN CELULAR
         </label>
     </div>
 
     <div class="form-check">
         <label class="label">
-          <input type="checkbox" class="checkbox checkbox-primary" name="tv_paga" value="SI"> TELEVISIÓN DE PAGA
-        </label>
-    </div>
-
-
-    <div class="form-check">
-        <label class="label">
-          <input type="checkbox" class="checkbox checkbox-primary" name="tv_abierta" value="SI"> TELEVISIÓN ABIERTA
+          <input type="checkbox" class="checkbox checkbox-primary" name="tv_paga" value="SI" 
+          <?= ($alumno->tv_paga ?? '') === 'SI' ? 'checked' : '' ?> > TELEVISIÓN DE PAGA
         </label>
     </div>
 
 
     <div class="form-check">
         <label class="label">
-          <input type="checkbox" class="checkbox checkbox-primary" name="radio" value="SI"> RADIO
+          <input type="checkbox" class="checkbox checkbox-primary" name="tv_abierta" value="SI" 
+          <?= ($alumno->tv_abierta ?? '') === 'SI' ? 'checked' : '' ?> > TELEVISIÓN ABIERTA
+        </label>
+    </div>
+
+
+    <div class="form-check">
+        <label class="label">
+          <input type="checkbox" class="checkbox checkbox-primary" name="radio" value="SI" 
+          <?= ($alumno->radio ?? '') === 'SI' ? 'checked' : '' ?> > RADIO
         </label>
     </div>
 
@@ -400,6 +407,7 @@
 <div class="form-control" style="margin-bottom: 10px;">
   <label class="label" for="curp_tutor"><b style="color: red;">*</b> CURP DEL TUTOR:</label><br/>
   <input class="input input-info" style="width: 250px;" class="form-control" type="text" id="curp_tutor" name="curp_tutor" 
+  value="<?= $tutor->curp_tutor ?>" 
    required 
    pattern="/^[A-Z]{1}[XAEIOU]{1}[A-Z]{2}[0-9]{2}(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])[HM]{1}(AS|BC|BS|CC|CS|CH|CL|CM|DF|DG|GT|GR|HG|JC|MC|MN|MS|NT|NL|OC|PL|QT|QR|SP|SL|SR|TC|TS|TL|VZ|YN|ZS|NE)[B-DF-HJ-NP-TV-Z]{3}[0-9A-Z]{1}[0-9]{1}$/i"
    data-parsley-pattern-message="Formato de CURP inválido." 
@@ -430,7 +438,7 @@
 
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="primer_apellido_tutor">PRIMER APELLIDO:</label><br/>
-        <input class="input input-info" type="text" id="primer_apellido_tutor" name="primer_apellido_tutor" value="<?= old('primer_apellido_tutor') ?>" 
+        <input class="input input-info" type="text" id="primer_apellido_tutor" name="primer_apellido_tutor" value="<?= $tutor->primer_apellido_tutor ?>" 
         required 
         data-parsley-required-message="Ingrese el primer apellido del tutor." 
         data-parsley-maxlength="25"
@@ -441,7 +449,7 @@
 
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="segundo_apellido_tutor">SEGUNDO APELLIDO:</label><br/>
-        <input class="input input-info" type="text" id="segundo_apellido_tutor" name="segundo_apellido_tutor" value="<?= old('segundo_apellido_tutor') ?>" 
+        <input class="input input-info" type="text" id="segundo_apellido_tutor" name="segundo_apellido_tutor" value="<?= $tutor->segundo_apellido_tutor ?>" 
         required 
         data-parsley-required-message="Ingrese el segundo apellido del tutor." 
         data-parsley-maxlength="25"
@@ -452,7 +460,7 @@
 
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="nacionalidad_tutor">NACIONALIDAD:</label><br/>
-    <input class="input input-info" type="text" id="nacionalidad_tutor" name="nacionalidad_tutor" size="10" value="MEXICANA" 
+    <input class="input input-info" type="text" id="nacionalidad_tutor" name="nacionalidad_tutor" size="10" value="<?= $tutor->nacionalidad_tutor ?>" 
        required 
         data-parsley-required-message="Este campo es requerido, el valor predeterminado es MEXICANA." 
         data-parsley-maxlength="20"
@@ -463,7 +471,7 @@
 
   <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="ocupacion_tutor"><b style="color: red;">*</b> OCUPACIÓN:</label><br/>
-    <input style="width: 400px;" class="input input-info" type="text" id="ocupacion_tutor" name="ocupacion_tutor" 
+    <input style="width: 400px;" class="input input-info" type="text" id="ocupacion_tutor" name="ocupacion_tutor" value="<?= $tutor->ocupacion_tutor ?>"
     required
     data-parsley-maxlength="30"
     data-parsley-maxlength-message="No debe exceder los 30 caracteres" 
@@ -474,7 +482,7 @@
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="estudios_tutor"><b style="color: red;">*</b> GRADO MÁXIMO DE ESTUDIOS:</label><br/>
         <select class="select select-secondary" style="width: 300px;" id="estudios_tutor" name="estudios_tutor" required >
-              <option disabled selected>SELECCIONAR</option>
+              <option value="<?= $tutor->estudios_tutor ?>"><?= $tutor->estudios_tutor ?></option>
               <option>NINGUNO</option>
               <option>PRIMARIA</option>
               <option>SECUNDARIA</option>
@@ -490,7 +498,7 @@
   <div class="form-control" style="margin-bottom: 10px;">
       <label class="label" for="parentesco_tutor"><b style="color: red;">*</b> PARENTESCO:</label><br/>
           <select class="select select-secondary" style="width: 200px;" id="parentesco_tutor" name="parentesco_tutor" required>
-                <option disabled selected>SELECCIONAR</option>
+                <option value="<?= $tutor->parentesco_tutor ?>"><?= $tutor->parentesco_tutor ?></option>
                 <option>MADRE</option>
                 <option>PADRE</option>
                 <option>ABUELO</option>
@@ -516,7 +524,7 @@
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="salario_tutor"><b style="color: red;">*</b> INGRESO MENSUAL:</label><br/>
         <select class="select select-secondary" style="width: 300px;" id="salario_tutor" name="salario_tutor" required>
-            <option disabled selected>SELECCIONAR</option>
+            <option value="<?= $tutor->salario_tutor ?>"><?= $tutor->salario_tutor ?></option>
             <option>NINGUNO</option>
             <option>MENOS DE UN SALARIO MÍNIMO</option>
             <option>DE 1 A 2 SALARIOS MÍNIMOS</option>
@@ -530,7 +538,7 @@
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="estado_civil_tutor"><b style="color: red;">*</b> ESTADO CIVIL:</label><br/>
         <select class="select select-secondary" style="width: 300px;" id="estado_civil_tutor" name="estado_civil_tutor" required >
-            <option disabled selected>SELECCIONAR</option>
+            <option value="<?= $tutor->estado_civil_tutor ?>"><?= $tutor->estado_civil_tutor ?></option>
             <option>CASADO</option>
             <option>CASADA</option>
             <option>DIVORCIADO</option>
@@ -547,7 +555,8 @@
 
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="email_tutor"><b style="color: red;">*</b> CORREO ELECTRÓNICO:</label><br/>
-        <input class="input input-info" type="text" id="email_tutor" name="email_tutor" style="text-transform: lowercase; width: 300px;"
+        <input class="input input-info" type="text" id="email_tutor" name="email_tutor" style="text-transform: lowercase; width: 300px;" 
+        value="<?= $tutor->email_tutor ?>" 
         required    
         data-parsley-type="email"
         data-parsley-maxlength-message="Dirección de correo inválida." 
@@ -558,7 +567,7 @@
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="rs_tutor"><b style="color: red;">*</b> RED SOCIAL:</label><br/>
         <select class="select select-secondary" style="width: 250px;" id="rs_tutor" name="rs_tutor" required >
-            <option disabled selected>SELECCIONAR</option>
+            <option value="<?= $tutor->rs_tutor ?>"><?= $tutor->rs_tutor ?></option>
             <option>FACEBOOK</option>
             <option>INSTAGRAM</option>
             <option>X</option>
@@ -570,7 +579,7 @@
         
 <div class="form-control" style="margin-bottom: 10px;">
      <label class="label" for="rs_user_tutor"><b style="color: red;">*</b> NOMBRE DE USUARIO DE LA RED SOCIAL:</label><br/>
-         <input class="input input-info" style="width: 300px;" type="text" id="rs_user_tutor" name="rs_user_tutor" 
+         <input class="input input-info" style="width: 300px;" type="text" id="rs_user_tutor" name="rs_user_tutor" value="<?= $tutor->rs_user_tutor ?>" 
             required
             data-parsley-maxlength="20"
             data-parsley-maxlength-message="No debe exceder los 20 caracteres" 
@@ -586,7 +595,7 @@
 
 <div class="form-control" style="margin-bottom: 10px;">
   <label class="label" for="curp_tutor2"><b style="color: red;">*</b> CURP:</label><br/>
-  <input class="input input-primary" style="width: 250px;" type="text" id="curp_tutor2" name="curp_tutor2" 
+  <input class="input input-primary" style="width: 250px;" type="text" id="curp_tutor2" name="curp_tutor2" value="<?= $tutor->curp_tutor2 ?>" 
    required 
    pattern="/^[A-Z]{1}[XAEIOU]{1}[A-Z]{2}[0-9]{2}(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])[HM]{1}(AS|BC|BS|CC|CS|CH|CL|CM|DF|DG|GT|GR|HG|JC|MC|MN|MS|NT|NL|OC|PL|QT|QR|SP|SL|SR|TC|TS|TL|VZ|YN|ZS|NE)[B-DF-HJ-NP-TV-Z]{3}[0-9A-Z]{1}[0-9]{1}$/i"
    data-parsley-pattern-message="Formato de CURP inválido." 
@@ -607,7 +616,7 @@
 
 <div class="form-control" style="margin-bottom: 10px;">
   <label class="label" for="nombre_tutor2"><b style="color: red;">*</b> NOMBRE(S):</label><br/>
-  <input class="input input-primary" style="width: 300px;" type="text" id="nombre_tutor2" name="nombre_tutor2" value="<?= old('nombre_tutor2') ?>" 
+  <input class="input input-primary" style="width: 300px;" type="text" id="nombre_tutor2" name="nombre_tutor2" value="<?= $tutor->nombre_tutor2 ?>" 
   required 
   data-parsley-required-message="Ingrese el nombre o nombres del segundo tutor." 
   data-parsley-maxlength="25"
@@ -618,7 +627,7 @@
 
 <div class="form-control" style="margin-bottom: 10px;">
   <label class="label" for="primer_apellido_tutor2"><b style="color: red;">*</b> PRIMER APELLIDO:</label><br/>
-  <input class="input input-primary" style="width: 300px;" type="text" id="primer_apellido_tutor2" name="primer_apellido_tutor2" value="<?= old('primer_apellido_tutor2') ?>" 
+  <input class="input input-primary" style="width: 300px;" type="text" id="primer_apellido_tutor2" name="primer_apellido_tutor2" value="<?= $tutor->primer_apellido_tutor2 ?>" 
   required 
   data-parsley-required-message="Ingrese el primer apellido del segundo tutor." 
   data-parsley-maxlength="25"
@@ -629,7 +638,7 @@
 
 <div class="form-control" style="margin-bottom: 10px;">
   <label class="label" for="segundo_apellido_tutor2"><b style="color: red;">*</b> SEGUNDO APELLIDO:</label><br/>
-  <input class="input input-primary" style="width: 300px;" type="text" id="segundo_apellido_tutor2" name="segundo_apellido_tutor2" value="<?= old('segundo_apellido_tutor2') ?>" 
+  <input class="input input-primary" style="width: 300px;" type="text" id="segundo_apellido_tutor2" name="segundo_apellido_tutor2" value="<?= $tutor->segundo_apellido_tutor2 ?>" 
   required 
   data-parsley-required-message="Ingrese el segundo apellido del segundo tutor." 
   data-parsley-maxlength="25"
@@ -640,7 +649,7 @@
 
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="ocupacion_tutor2"><b style="color: red;">*</b> OCUPACIÓN:</label><br/>
-    <input class="input input-primary" style="width: 400px;" type="text" id="ocupacion_tutor2" name="ocupacion_tutor2" 
+    <input class="input input-primary" style="width: 400px;" type="text" id="ocupacion_tutor2" name="ocupacion_tutor2" value="<?= $tutor->ocupacion_tutor2 ?>"
     required
     data-parsley-maxlength="30"
     data-parsley-maxlength-message="No debe exceder los 30 caracteres" 
@@ -651,7 +660,7 @@
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="estudios_tutor2"><b style="color: red;">*</b> GRADO MÁXIMO DE ESTUDIOS:</label><br/>
         <select class="select select-info" style="width: 300px;" id="estudios_tutor2" name="estudios_tutor2" required>
-              <option disabled selected>SELECCIONAR</option>
+              <option value="<?= $tutor->estudios_tutor2 ?>"><?= $tutor->estudios_tutor2 ?></option>
               <option>NINGUNO</option>
               <option>PRIMARIA</option>
               <option>SECUNDARIA</option>
@@ -667,7 +676,7 @@
  <div class="form-control" style="margin-bottom: 10px;">
       <label class="label" for="parentesco_tutor2"><b style="color: red;">*</b> PARENTESCO:</label><br/>
           <select class="select select-info" style="width: 200px;" id="parentesco_tutor2" name="parentesco_tutor2" required>
-                <option disabled selected>SELECCIONAR</option>
+                <option value="<?= $tutor->parentesco_tutor2 ?>"><?= $tutor->parentesco_tutor2 ?></option>
                 <option>MADRE</option>
                 <option>PADRE</option>
                 <option>ABUELO</option>
@@ -693,7 +702,7 @@
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="salario_tutor2"><b style="color: red;">*</b> INGRESO MENSUAL:</label><br/>
         <select class="select select-info" style="width: 300px;" id="salario_tutor2" name="salario_tutor2" required>
-            <option disabled selected>SELECCIONAR</option>
+            <option value="<?= $tutor->salario_tutor2 ?>"><?= $tutor->salario_tutor2 ?></option>
             <option>NINGUNO</option>
             <option>MENOS DE UN SALARIO MÍNIMO</option>
             <option>DE 1 A 2 SALARIOS MÍNIMOS</option>
@@ -706,7 +715,7 @@
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="estado_civil_tutor2"><b style="color: red;">*</b> ESTADO CIVIL:</label><br/>
         <select class="select select-info" style="width: 300px;" id="estado_civil_tutor2" name="estado_civil_tutor2" required>
-            <option disabled selected>SELECCIONAR</option>
+            <option value="<?= $tutor->estado_civil_tutor2 ?>"><?= $tutor->estado_civil_tutor2 ?></option>
             <option>CASADO</option>
             <option>CASADA</option>
             <option>DIVORCIADO</option>
@@ -724,6 +733,7 @@
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="email_tutor2"><b style="color: red;">*</b> CORREO ELECTRÓNICO:</label><br/>
         <input class="input input-primary" type="text" id="email_tutor2" name="email_tutor2" style="text-transform: lowercase; width: 300px;"
+        value="<?= $tutor->email_tutor2 ?>"
         required    
         data-parsley-type="email"
         data-parsley-maxlength-message="Dirección de correo inválida." 
@@ -734,7 +744,7 @@
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="responsabilidad"><b style="color: red;">*</b> RESPONSABILIDAD DEL MENOR:</label><br/>
         <select class="select select-info" id="responsabilidad" name="responsabilidad" style="width: 100px;" >
-              <option value="SI" selected="selected">SI</option>
+              <option value="<?= $tutor->responsabilidad ?>"><?= $tutor->responsabilidad ?></option>
               <option value="SI">SI</option>
               <option value="NO">NO</option>
         </select>
@@ -744,7 +754,7 @@
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="recoge"><b style="color: red;">*</b> ¿RECOGE AL MENOR?</label><br/>
         <select class="select select-info" id="recoge" name="recoge" style="width: 100px;" >
-              <option value="SI" selected="selected">SI</option>
+              <option value="<?= $tutor->recoge ?>"><?= $tutor->recoge ?></option>
               <option value="SI">SI</option>
               <option value="NO">NO</option>
         </select>
@@ -771,7 +781,7 @@
 
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="peso"><b style="color: red;">*</b> PESO EN KILOGRAMOS:</label><br/>
-    <input class="input input-secondary" type="number" id="peso" name="peso" style="width: 100px;" 
+    <input class="input input-secondary" type="number" id="peso" name="peso" style="width: 100px;" value="<?= $medico->peso ?>"
     required
     data-parsley-range="[15, 65]"
     data-parsley-range-message="El valor debe estar entre 15 y 65."
@@ -783,7 +793,8 @@
  <div class="form-control" style="margin-bottom: 10px;">
      <label class="label" for="tipo_sangre">TIPO DE SANGRE:</label><br/>
          <select class="select select-secondary" style="width: 200px;" id="tipo_sangre" name="tipo_sangre">
-            <option value="NR" selected="selected">NO REPORTADO</option>
+            <option value="<?= $medico->tipo_sangre ?>"><?= $medico->tipo_sangre ?></option>
+            <option value="NR">NO REPORTADO</option>
             <option value="O-">O-</option>
             <option value="O+">O+</option>
             <option value="A-">A-</option>
@@ -800,7 +811,7 @@
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="talla_zapato"><b style="color: red;">*</b> TALLA DE ZAPATO EN CENTÍMETROS: </label><br/>
     <input style="width: 100px;" class="input input-secondary" type="number" min="18" max="25" step="1" 
-    id="talla_zapato" name="talla_zapato" 
+    id="talla_zapato" name="talla_zapato" value="<?= $medico->talla_zapato ?>"
     required
     data-parsley-range="[18, 25]"
     data-parsley-range-message="El valor debe estar entre 18 y 25."
@@ -811,7 +822,8 @@
     <label class="label" for="zapato_orto">¿USA ZAPATO ORTOPÉDICO?&nbsp;&nbsp;</label>
  <div class="form-check-inline">
      <label class="form-check-label">
-        <input type="radio" id="zapato_orto" name="zapato_orto" class="radio radio-secondary" value="NO"  checked="checked"> NO
+        <input type="radio" id="zapato_orto" name="zapato_orto" class="radio radio-secondary" value="NO"  
+        <?= ($medico->zapato_orto ?? '') === 'NO' ? 'checked' : '' ?>> NO
      </label>
  </div>
 
@@ -819,7 +831,8 @@
  
  <div class="form-check-inline">
      <label class="form-check-label">
-        <input type="radio" id="zapato_orto" name="zapato_orto" class="radio radio-secondary" value="SI" > SI
+        <input type="radio" id="zapato_orto" name="zapato_orto" class="radio radio-secondary" value="SI" 
+        <?= ($medico->zapato_orto ?? '') === 'SI' ? 'checked' : '' ?>> SI
      </label>
  </div>
 
@@ -829,12 +842,14 @@
    <label class="label" for="lentes">¿USA LENTES?&nbsp;&nbsp;</label>
 <div class="form-check-inline">
         <label class="form-check-label">
-          <input type="radio" id="lentes" class="radio radio-secondary" value="NO" name="lentes" checked="checked"> NO
+          <input type="radio" id="lentes"  name="lentes" class="radio radio-secondary" value="NO" 
+          <?= ($medico->lentes ?? '') === 'NO' ? 'checked' : '' ?>> NO
         </label>
       </div>
       <div class="form-check-inline">
         <label class="form-check-label">
-          <input type="radio" id="lentes" class="radio radio-secondary" value="SI" name="lentes"> SI
+          <input type="radio" id="lentes"  name="lentes" class="radio radio-secondary" value="SI" 
+          <?= ($medico->lentes ?? '') === 'SI' ? 'checked' : '' ?>> SI
         </label>
 </div>
 
@@ -842,7 +857,7 @@
 <div class="form-control" style="margin-bottom: 10px;">
      <label class="label" for="vacunas">VACUNAS:</label><br/>
       <select class="select select-secondary" id="vacunas" name="vacunas" required>
-        <option disabled selected>SELECCIONAR</option>
+        <option value="<?= $medico->vacunas ?>"><?= $medico->vacunas ?></option>
         <option value="COMPLETAS HASTA LOS 3 AÑOS">COMPLETAS HASTA LOS 3 AÑOS</option>
         <option value="COMPLETAS HASTA LOS 6 AÑOS">COMPLETAS HASTA LOS 6 AÑOS</option>
         <option value="COMPLETAS HASTA LOS 11 AÑOS O 5° DE PRIMARIA">COMPLETAS HASTA LOS 11 AÑOS O 5° DE PRIMARIA</option>
@@ -853,31 +868,36 @@
 
 <div class="form-check">
         <label class="label">
-          <input type="checkbox" class="checkbox checkbox-success" name="apoyo_1" value="SI">DISPOSITIVOS DE AYUDA VISUAL
+          <input type="checkbox" class="checkbox checkbox-success" name="apoyo_1" value="SI" 
+          <?= ($medico->apoyo_1 ?? '') === 'SI' ? 'checked' : '' ?>> DISPOSITIVOS DE AYUDA VISUAL
         </label>
 </div>
 
 <div class="form-check">
         <label class="label">
-          <input type="checkbox" class="checkbox checkbox-success" name="apoyo_2" value="SI">AUDÍFONOS
+          <input type="checkbox" class="checkbox checkbox-success" name="apoyo_2" value="SI" 
+          <?= ($medico->apoyo_2 ?? '') === 'SI' ? 'checked' : '' ?>> AUDÍFONOS
         </label>
 </div>
 
 <div class="form-check">
         <label class="label">
-          <input type="checkbox" class="checkbox checkbox-success" name="apoyo_3" value="SI">AYUDA PARA LA MOVILIDAD
+          <input type="checkbox" class="checkbox checkbox-success" name="apoyo_3" value="SI"
+          <?= ($medico->apoyo_3 ?? '') === 'SI' ? 'checked' : '' ?>> AYUDA PARA LA MOVILIDAD
         </label>
 </div>
 
 <div class="form-check">
         <label class="label">
-          <input type="checkbox" class="checkbox checkbox-success" name="apoyo_4" value="SI">PRÓTESIS
+          <input type="checkbox" class="checkbox checkbox-success" name="apoyo_4" value="SI"
+          <?= ($medico->apoyo_4 ?? '') === 'SI' ? 'checked' : '' ?>> PRÓTESIS
         </label>
 </div>
 
 <div class="form-check">
         <label class="label">
-          <input type="checkbox" class="checkbox checkbox-success" name="apoyo_5" value="SI">SILLA DE RUEDAS
+          <input type="checkbox" class="checkbox checkbox-success" name="apoyo_5" value="SI"
+          <?= ($medico->apoyo_5 ?? '') === 'SI' ? 'checked' : '' ?>> SILLA DE RUEDAS
         </label>
 </div>
 
@@ -890,14 +910,15 @@
 
 <div class="form-control" style="margin-bottom: 10px;">
   <label class="label" for="otro_apoyo">DISCAPACIDAD:</label><br/>
-  <input class="input input-secondary" type="text" id="discapacidad" name="discapacidad" value="NINGUNA" required />
+  <input class="input input-secondary" type="text" id="discapacidad" name="discapacidad" value="<?= $medico->discapacidad ?>" required />
 </div>
 
 
 <div class="form-control" style="margin-bottom: 10px;">
         <label class="label" for="covid">¿HA PADECIDO COVID?</label><br/>
            <select class="select select-secondary" style="width: 200px;" id="covid" name="covid" >
-                <option value="NO" selected="selected">NO</option>
+                <option value="<?= $medico->covid ?>"><?= $medico->covid ?></option>
+                <option value="NO">NO</option>
                 <option value="SI">SI</option>                                   
            </select>
 </div>
@@ -906,7 +927,7 @@
 <div class="form-control" style="margin-bottom: 10px;">
      <label class="label" for="covid_dosis">¿HA RECIBIDO VACUNA CONTRA COVID-19?</label><br/>
          <select class="select select-secondary" style="width: 200px;" id="covid_dosis" name="covid_dosis">
-            <option value="NINGUNA" selected="selected">NINGUNA</option>
+            <option value="<?= $medico->covid_dosis ?>"><?= $medico->covid_dosis ?></option>
             <option value="PRIMERA DOSIS">PRIMERA DOSIS</option>
             <option value="SEGUNDA DOSIS">SEGUNDA DOSIS</option>
             <option value="TERCERA DOSIS">TERCERA DOSIS</option>
@@ -921,7 +942,7 @@
        required 
        data-parsley-maxlength="150"
        data-parsley-maxlength-message="No debe exceder los 150 caracteres" 
-       data-parsley-trigger="keyup">NINGUNA</textarea>
+       data-parsley-trigger="keyup"><?= $medico->ultimas_enfermedades ?></textarea>
 </div>
 
 
@@ -932,22 +953,23 @@
         required
         data-parsley-maxlength="150"
         data-parsley-maxlength-message="No debe exceder los 150 caracteres" 
-        data-parsley-trigger="keyup">NINGUNA</textarea>
+        data-parsley-trigger="keyup"><?= $medico->enfermedades_frecuentes ?></textarea>
 </div>
 
 
 <div class="form-control" style="margin-bottom: 10px;">
   <label class="label" for="nombre_medico"><b style="color: red;"></b> NOMBRE DEL MEDICO FAMILIAR:</label><br/>
-  <input class="input input-secondary" class="form-control" type="text" id="nombre_medico" name="nombre_medico" placeholder="OPCIONAL" data-parsley-maxlength="50"
-        data-parsley-maxlength-message="No debe exceder los 50 caracteres" 
-        data-parsley-trigger="keyup" />
+  <input class="input input-secondary" class="form-control" type="text" id="nombre_medico" name="nombre_medico" value="<?= $medico->nombre_medico ?? '' ?>"
+   placeholder="OPCIONAL" data-parsley-maxlength="50"
+   data-parsley-maxlength-message="No debe exceder los 50 caracteres" 
+   data-parsley-trigger="keyup" />
 </div>
 
 
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="tel_medico"><b style="color: red;"></b> NÚM. DE TELÉFONO DEL MEDICO FAMILIAR (10 DÍGITOS):</label><br/>
-    <input class="input input-secondary" style="width: 150px;" type="tel" id="tel_medico" name="tel_medico" placeholder="OPCIONAL" 
-    
+    <input class="input input-secondary" style="width: 150px;" type="tel" id="tel_medico" name="tel_medico" value="<?= $medico->tel_medico ?? '' ?>"
+    placeholder="OPCIONAL" 
     pattern="/^\d{10}$/"
     data-parsley-pattern-message="Debe ser un número de 10 dígitos." 
     data-parsley-trigger="keyup" />
@@ -957,7 +979,7 @@
 <div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="institucion_dh">INSTITUCIÓN DE DERECHOHABIENCIA DEL ALUMNO(A):</label><br/>
         <select class="select select-accent" style="width: 200px;" id="institucion_dh" name="institucion_dh" required >
-            <option disabled selected>SELECCIONAR</option>
+            <option value="<?= $medico->institucion_dh ?>"><?= $medico->institucion_dh ?></option>
             <option value="ISSEMYM">ISSEMYM</option>
             <option value="ISSSTE">ISSSTE</option>
             <option value="IMSS">IMSS</option>
@@ -973,7 +995,7 @@
         <textarea class="w-full h-48 max-w-lg p-3 border rounded-md resize-y textarea textarea-success" id="recomendaciones" name="recomendaciones" rows="4" cols="40" 
         data-parsley-maxlength="200"
         data-parsley-maxlength-message="No debe exceder los 200 caracteres" 
-        data-parsley-trigger="keyup">NINGUNA</textarea>
+        data-parsley-trigger="keyup"><?= $medico->recomendaciones ?></textarea>
 </div>
 
 
@@ -984,82 +1006,94 @@
 <label for="padecimientos"><strong>SELECCIONE EN CASO AFIRMATIVO:</strong>&nbsp;&nbsp;</label>
       <div class="form-check">
         <label class="label">
-          <input type="checkbox" class="checkbox checkbox-secondary" name="sobrepeso" value="SI"> SOBREPESO U OBESIDAD
+          <input type="checkbox" class="checkbox checkbox-secondary" name="sobrepeso" value="SI"
+          <?= ($medico->sobrepeso ?? '') === 'SI' ? 'checked' : '' ?>> SOBREPESO U OBESIDAD
         </label>
       </div>
 
       <div class="form-check">
         <label class="label">
-          <input type="checkbox" class="checkbox checkbox-secondary" name="corazon" value="SI"> ENFERMEDAD DEL CORAZÓN
-        </label>
-      </div>
-
-
-      <div class="form-check">
-        <label class="label">
-          <input type="checkbox" class="checkbox checkbox-secondary" name="bronquitis" value="SI"> BRONQUITIS
+          <input type="checkbox" class="checkbox checkbox-secondary" name="corazon" value="SI"
+          <?= ($medico->corazon ?? '') === 'SI' ? 'checked' : '' ?>> ENFERMEDAD DEL CORAZÓN
         </label>
       </div>
 
 
       <div class="form-check">
         <label class="label">
-        <input type="checkbox" class="checkbox checkbox-secondary" name="hemorragias" value="SI"> HEMORRAGIAS
+          <input type="checkbox" class="checkbox checkbox-secondary" name="bronquitis" value="SI"
+          <?= ($medico->bronquitis ?? '') === 'SI' ? 'checked' : '' ?>> BRONQUITIS
         </label>
       </div>
 
 
       <div class="form-check">
         <label class="label">
-        <input type="checkbox" class="checkbox checkbox-secondary" name="epilepsia" value="SI"> EPILEPSIA (ATAQUES, CONVULSIONES)
+        <input type="checkbox" class="checkbox checkbox-secondary" name="hemorragias" value="SI"
+        <?= ($medico->hemorragias ?? '') === 'SI' ? 'checked' : '' ?>> HEMORRAGIAS
         </label>
       </div>
 
 
       <div class="form-check">
         <label class="label">
-        <input type="checkbox" class="checkbox checkbox-secondary" name="fiebre_reumatica" value="SI"> FIEBRE REUMÁTICA
+        <input type="checkbox" class="checkbox checkbox-secondary" name="epilepsia" value="SI"
+        <?= ($medico->epilepsia ?? '') === 'SI' ? 'checked' : '' ?>> EPILEPSIA (ATAQUES, CONVULSIONES)
         </label>
       </div>
 
 
       <div class="form-check">
         <label class="label">
-        <input type="checkbox" class="checkbox checkbox-secondary" name="cancer" value="SI"> CANCER
+        <input type="checkbox" class="checkbox checkbox-secondary" name="fiebre_reumatica" value="SI"
+        <?= ($medico->fiebre_reumatica ?? '') === 'SI' ? 'checked' : '' ?>> FIEBRE REUMÁTICA
         </label>
       </div>
 
 
       <div class="form-check">
         <label class="label">
-        <input type="checkbox" class="checkbox checkbox-secondary" name="diabetes" value="SI"> DIABETES
+        <input type="checkbox" class="checkbox checkbox-secondary" name="cancer" value="SI"
+        <?= ($medico->cancer ?? '') === 'SI' ? 'checked' : '' ?>> CANCER
         </label>
       </div>
 
 
       <div class="form-check">
         <label class="label">
-        <input type="checkbox" class="checkbox checkbox-secondary" name="amigdalitis" value="SI"> AMIGDALITIS
+        <input type="checkbox" class="checkbox checkbox-secondary" name="diabetes" value="SI"
+        <?= ($medico->diabetes ?? '') === 'SI' ? 'checked' : '' ?>> DIABETES
         </label>
       </div>
 
 
       <div class="form-check">
         <label class="label">
-        <input type="checkbox" class="checkbox checkbox-secondary" name="anemia" value="SI"> ANEMIA
+        <input type="checkbox" class="checkbox checkbox-secondary" name="amigdalitis" value="SI"
+        <?= ($medico->amigdalitis ?? '') === 'SI' ? 'checked' : '' ?>> AMIGDALITIS
         </label>
       </div>
 
 
       <div class="form-check">
         <label class="label">
-        <input type="checkbox" class="checkbox checkbox-secondary" name="hepatitis" value="SI"> HEPATITIS
+        <input type="checkbox" class="checkbox checkbox-secondary" name="anemia" value="SI"
+        <?= ($medico->anemia ?? '') === 'SI' ? 'checked' : '' ?>> ANEMIA
+        </label>
+      </div>
+
+
+      <div class="form-check">
+        <label class="label">
+        <input type="checkbox" class="checkbox checkbox-secondary" name="hepatitis" value="SI"
+        <?= ($medico->hepatitis ?? '') === 'SI' ? 'checked' : '' ?>> HEPATITIS
         </label>
       </div>
 
       <div class="form-check">
         <label class="label">
-        <input type="checkbox" class="checkbox checkbox-secondary" name="neoplasias" value="SI"> NEOPLASIAS
+        <input type="checkbox" class="checkbox checkbox-secondary" name="neoplasias" value="SI"
+        <?= ($medico->neoplasias ?? '') === 'SI' ? 'checked' : '' ?>> NEOPLASIAS
         </label>
       </div>
 
@@ -1070,7 +1104,7 @@
         <textarea class="w-full h-48 max-w-lg p-3 border rounded-md resize-y textarea textarea-success" id="enfermedad_cronica" name="enfermedad_cronica" 
         data-parsley-maxlength="200"
         data-parsley-maxlength-message="No debe exceder los 200 caracteres" 
-        data-parsley-trigger="keyup">NINGUNA</textarea>
+        data-parsley-trigger="keyup"><?= $medico->enfermedad_cronica ?></textarea>
 </div>
 
 
@@ -1082,45 +1116,52 @@
       
       <div class="form-check">
         <label class="label">
-          <input type="checkbox" class="checkbox checkbox-secondary" name="dificultad_dormir" value="SI"> ¿TIENE DIFICULTAD PARA DORMIR BIEN DURANTE LA NOCHE?
+          <input type="checkbox" class="checkbox checkbox-secondary" name="dificultad_dormir" value="SI"
+          <?= ($medico->dificultad_dormir ?? '') === 'SI' ? 'checked' : '' ?>> ¿TIENE DIFICULTAD PARA DORMIR BIEN DURANTE LA NOCHE?
         </label>
       </div>
 
       <div class="form-check">
         <label class="label">
-          <input type="checkbox" class="checkbox checkbox-secondary" name="fiebre_frecuente" value="SI"> ¿LE DA FIEBRE CON FRECUENCIA?
+          <input type="checkbox" class="checkbox checkbox-secondary" name="fiebre_frecuente" value="SI"
+          <?= ($medico->fiebre_frecuente ?? '') === 'SI' ? 'checked' : '' ?>> ¿LE DA FIEBRE CON FRECUENCIA?
         </label>
       </div>
 
       <div class="form-check">
         <label class="label">
-          <input type="checkbox" class="checkbox checkbox-secondary" name="falta_aire" value="SI"> ¿LE FALTA AIRE DESPUÉS DE HACER EJERCICIO?
+          <input type="checkbox" class="checkbox checkbox-secondary" name="falta_aire" value="SI"
+          <?= ($medico->falta_aire ?? '') === 'SI' ? 'checked' : '' ?>> ¿LE FALTA AIRE DESPUÉS DE HACER EJERCICIO?
         </label>
       </div>
 
 
       <div class="form-check">
         <label class="label">
-          <input type="checkbox" class="checkbox checkbox-secondary" name="dolor_piernas" value="SI"> ¿LE DUELEN LAS PIERNAS POR LA NOCHE?
+          <input type="checkbox" class="checkbox checkbox-secondary" name="dolor_piernas" value="SI"
+          <?= ($medico->dolor_piernas ?? '') === 'SI' ? 'checked' : '' ?>> ¿LE DUELEN LAS PIERNAS POR LA NOCHE?
         </label>
       </div>
     
 
     <div class="form-check">
         <label class="label">
-          <input type="checkbox" class="checkbox checkbox-secondary" name="desmayos_frecuentes" value="SI"> ¿SE DESMAYA CON FRECUENCIA?
+          <input type="checkbox" class="checkbox checkbox-secondary" name="desmayos_frecuentes" value="SI"
+          <?= ($medico->desmayos_frecuentes ?? '') === 'SI' ? 'checked' : '' ?>> ¿SE DESMAYA CON FRECUENCIA?
         </label>
       </div>
 
       <div class="form-check">
         <label class="label">
-          <input type="checkbox" class="checkbox checkbox-secondary" name="transfusion" value="SI"> ¿HA RECIBIDO ALGUNA VEZ TRANSFUSIÓN SANGUINEA?
+          <input type="checkbox" class="checkbox checkbox-secondary" name="transfusion" value="SI"
+          <?= ($medico->transfusion ?? '') === 'SI' ? 'checked' : '' ?>> ¿HA RECIBIDO ALGUNA VEZ TRANSFUSIÓN SANGUINEA?
         </label>
       </div>
 
       <div class="form-check">
         <label class="label">
-          <input type="checkbox" class="checkbox checkbox-secondary" name="impedimento" value="SI"> ¿TIENE IMPEDIMENTO PARA REALIZAR ACTIVIDADES DEPORTIVAS?
+          <input type="checkbox" class="checkbox checkbox-secondary" name="impedimento" value="SI"
+          <?= ($medico->impedimento ?? '') === 'SI' ? 'checked' : '' ?>> ¿TIENE IMPEDIMENTO PARA REALIZAR ACTIVIDADES DEPORTIVAS?
         </label>
       </div>
 
@@ -1129,7 +1170,8 @@
 
    <div class="form-control" style="margin-bottom: 10px;">
   <label class="label" for="alergia_medicamento"><b style="color: red;">*</b> ¿ES ALÉRGICO A ALGÚN MEDICAMENTO? ESPECIFIQUE:</label><br/>
-  <input class="input input-secondary w-full max-w-md" type="text" id="alergia_medicamento" name="alergia_medicamento" value="NO" 
+  <input class="input input-secondary w-full max-w-md" type="text" id="alergia_medicamento" name="alergia_medicamento"  
+    value="<?= $medico->alergia_medicamento ?>"
     required
     data-parsley-maxlength="150"
     data-parsley-maxlength-message="No debe exceder los 150 caracteres" 
@@ -1139,7 +1181,8 @@
 
  <div class="form-control" style="margin-bottom: 10px;">
   <label class="label" for="alergia_alimento"><b style="color: red;">*</b> ¿ES ALÉRGICO A ALGÚN ALIMENTO O BEBIDA? ESPECIFIQUE:</label><br/>
-  <input class="input input-secondary w-full max-w-md" type="text" id="alergia_alimento" name="alergia_alimento" value="NO" 
+  <input class="input input-secondary w-full max-w-md" type="text" id="alergia_alimento" name="alergia_alimento"  
+     value="<?= $medico->alergia_alimento ?>"
     required
     data-parsley-maxlength="150"
     data-parsley-maxlength-message="No debe exceder los 150 caracteres" 
@@ -1149,7 +1192,8 @@
 
 <div class="form-control" style="margin-bottom: 10px;">
   <label class="label" for="hemorragias_frecuentes"><b style="color: red;">*</b> ¿PRESENTA HEMORRAGIAS FRECUENTES? ESPECIFIQUE:</label><br/>
-  <input class="input input-secondary w-full max-w-md" type="text" id="hemorragias_frecuentes" name="hemorragias_frecuentes" value="NO" 
+  <input class="input input-secondary w-full max-w-md" type="text" id="hemorragias_frecuentes" name="hemorragias_frecuentes" 
+     value="<?= $medico->hemorragias_frecuentes ?>"
     required
     data-parsley-maxlength="150"
     data-parsley-maxlength-message="No debe exceder los 150 caracteres" 
@@ -1159,7 +1203,8 @@
 
 <div class="form-control" style="margin-bottom: 10px;">
   <label class="label" for="antecedente_medico"><b style="color: red;">*</b> ¿CUENTA CON ALGÚN ANTECEDENTE MÉDICO QUE LE PROHIBA<br/> A SU HIJO(A) REALIZAR ACTIVIDAD FÍSICA? ESPECIFIQUE:</label><br/>
-  <input class="input input-secondary w-full max-w-md" type="text" id="antecedente_medico" name="antecedente_medico" value="NO" 
+  <input class="input input-secondary w-full max-w-md" type="text" id="antecedente_medico" name="antecedente_medico" 
+     value="<?= $medico->antecedente_medico ?>"
     required
     data-parsley-maxlength="150"
     data-parsley-maxlength-message="No debe exceder los 150 caracteres" 
@@ -1170,7 +1215,8 @@
 
 <div class="form-control" style="margin-bottom: 10px;">
   <label class="label" for="intervencion_quirurgica"><b style="color: red;">*</b> ¿HA SIDO INTERVENIDO QUIRÚRGICAMENTE? ESPECIFIQUE:</label><br/>
-  <input class="input input-secondary w-full max-w-md" type="text" id="intervencion_quirurgica" name="intervencion_quirurgica" value="NO" 
+  <input class="input input-secondary w-full max-w-md" type="text" id="intervencion_quirurgica" name="intervencion_quirurgica" 
+     value="<?= $medico->intervencion_quirurgica ?>"
     required
     data-parsley-maxlength="150"
     data-parsley-maxlength-message="No debe exceder los 150 caracteres" 
@@ -1185,7 +1231,7 @@
 
 <div class="form-control" style="margin-bottom: 10px;">
   <label class="label" for="familiar_diabetes"><b style="color: red;">*</b> ¿TIENE ALGÚN FAMILIAR DIABÉTICO? ESPECIFIQUE PARENTESCO:</label><br/>
-  <input class="input input-accent w-full max-w-md" type="text" id="familiar_diabetes" name="familiar_diabetes" value="NINGUNO" 
+  <input class="input input-accent w-full max-w-md" type="text" id="familiar_diabetes" name="familiar_diabetes"  value="<?= $medico->familiar_diabetes ?>" 
     required
     data-parsley-maxlength="50"
     data-parsley-maxlength-message="No debe exceder los 50 caracteres" 
@@ -1195,7 +1241,7 @@
 
 <div class="form-control" style="margin-bottom: 10px;">
   <label class="label" for="familiar_corazon"><b style="color: red;">*</b> ¿TIENE ALGÚN FAMILIAR ENFERMO DEL CORAZÓN? ESPECIFIQUE PARENTESCO:</label><br/>
-  <input class="input input-accent w-full max-w-md" type="text" id="familiar_corazon" name="familiar_corazon" value="NINGUNO" 
+  <input class="input input-accent w-full max-w-md" type="text" id="familiar_corazon" name="familiar_corazon" value="<?= $medico->familiar_corazon ?>" 
     required
     data-parsley-maxlength="50"
     data-parsley-maxlength-message="No debe exceder los 50 caracteres" 
@@ -1205,7 +1251,7 @@
 
 <div class="form-control" style="margin-bottom: 10px;">
   <label class="label" for="familiar_hipertension"><b style="color: red;">*</b> ¿TIENE ALGÚN FAMILIAR HIPERTENSO? ESPECIFIQUE PARENTESCO:</label><br/>
-  <input class="input input-accent w-full max-w-md" type="text" id="familiar_hipertension" name="familiar_hipertension" value="NINGUNO" 
+  <input class="input input-accent w-full max-w-md" type="text" id="familiar_hipertension" name="familiar_hipertension" value="<?= $medico->familiar_hipertension ?>" 
     required
     data-parsley-maxlength="50"
     data-parsley-maxlength-message="No debe exceder los 50 caracteres" 
@@ -1215,7 +1261,7 @@
 
 <div class="form-control" style="margin-bottom: 10px;">
   <label class="label" for="famliar_cancer"><b style="color: red;">*</b> ¿TIENE ALGÚN FAMILIAR ENFERMO DE CANCER? ESPECIFIQUE PARENTESCO:</label><br/>
-  <input class="input input-accent w-full max-w-md" type="text" id="familiar_cancer" name="familiar_cancer" value="NINGUNO" 
+  <input class="input input-accent w-full max-w-md" type="text" id="familiar_cancer" name="familiar_cancer" value="<?= $medico->familiar_cancer ?>" 
    required
    data-parsley-maxlength="50"
    data-parsley-maxlength-message="No debe exceder los 50 caracteres" 
