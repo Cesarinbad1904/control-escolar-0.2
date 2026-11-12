@@ -10,11 +10,11 @@
   <div class="card w-full max-w-2xl bg-base-100 shadow-xl border border-base-300">
     <div class="card-body">
 
-<form class="space-y-6" action="update/<?= $alumno->id_alumno ?>" method="post" data-parsley-validate>
+<form class="space-y-6" action="<?= base_url('inscripciones/update/'. $alumno->id_alumno) ?>" method="post" data-parsley-validate>
 
         <label for="grado"><b style="color: red;">*</b> GRADO AL QUE SE INSCRIBIRÁ:</label>
             <select class="form-control" id="grado" name="grado" style="width: 100px;" >
-                  <option value="<?php  ?>" selected="selected"><?php  ?>°</option>
+                  <option value="<?= $alumno->grado ?>"><?= $alumno->grado ?></option>
                   <option value="1">1°</option>
                   <option value="2">2°</option>
                   <option value="3">3°</option>
@@ -41,7 +41,7 @@
    
 <div class="form-control" style="margin-bottom: 10px;">
    <label class="label" for="curp_alumno">CURP DEL ALUMNO (SOLO LECTURA)</label><br />
-    <input class="input input-neutral" type="text" id="curp_alumno" name="curp_alumno" readonly value="AEAA190507MMCRRTA9" />
+    <input class="input input-neutral" type="text" id="curp_alumno" name="curp_alumno" value="<?= $alumno->curp ?>"  />
 </div>
 
 <div role="alert" class="alert alert-success">
