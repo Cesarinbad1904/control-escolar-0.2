@@ -5,6 +5,12 @@ use CodeIgniter\Router\RouteCollection;
 /** @var RouteCollection $routes */
 $routes->get('/', 'Home::index');
 
+// Prueba de PdfDom 
+$routes->get('pdf/generar', 'PdfController::generar'); //prueba
+$routes->get('pdf/ficha_inscripcion/(:segment)', 'PdfController::generarfi/$1'); // Generar ficha de inscripción
+$routes->get('pdf/historial_medico', 'PdfController::generarhm'); // Generar historial médico
+
+
 // End Point Ruta para las localidades (recibe la clave del municipio)
 $routes->get('api/localidades/(:segment)', 'LocalidadesController::getByMunicipio/$1');
 

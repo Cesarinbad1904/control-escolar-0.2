@@ -12,8 +12,8 @@
 
 <form class="space-y-6" action="<?= base_url('inscripciones/update/'. $alumno->id_alumno) ?>" method="post" data-parsley-validate>
 
-        <label for="grado"><b style="color: red;">*</b> GRADO AL QUE SE INSCRIBIRÁ:</label>
-            <select class="form-control" id="grado" name="grado" style="width: 100px;" >
+        <label class="label" for="grado"><b style="color: red;">*</b> GRADO AL QUE SE INSCRIBIRÁ:</label><br />
+            <select class="select select-secondary" id="grado" name="grado" style="width: 100px;" >
                   <option value="<?= $alumno->grado ?>"><?= $alumno->grado ?></option>
                   <option value="1">1°</option>
                   <option value="2">2°</option>

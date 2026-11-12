@@ -3512,6 +3512,9 @@
   .shrink-0 {
     flex-shrink: 0;
   }
+  .border-collapse {
+    border-collapse: collapse;
+  }
   @layer daisyui.l1.l2 {
     .swap .swap-on {
       opacity: 0%;
