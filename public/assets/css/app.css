@@ -3697,6 +3697,11 @@
     text-align: center;
   }
   @layer daisyui.l1.l2 {
+    .alert-info {
+      color: var(--color-info-content);
+      --alert-border-color: var(--color-info);
+      --alert-color: var(--color-info);
+    }
     .alert-success {
       color: var(--color-success-content);
       --alert-border-color: var(--color-success);

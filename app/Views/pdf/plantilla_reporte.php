@@ -2,6 +2,8 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+<!--  esc() es una función global nativa de CodeIgniter 4 que significa escape 
+  (escapar). Su propósito es proteger contra ataques XSS (Cross-Site Scripting) -->
     <title><?= esc($titulo) ?></title>
     <style>
         body { font-family: Arial, sans-serif; font-size: 14px; }

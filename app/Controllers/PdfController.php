@@ -4,6 +4,8 @@ namespace App\Controllers;
 use App\Models\AlumnoModel;
 use App\Models\TutorModel;
 use App\Models\HistorialMedicoModel;
+use App\Models\EscuelaModel;
+
 
 use Dompdf\Dompdf;
 use Dompdf\Options;
@@ -52,20 +54,23 @@ public function generar()
         // Instanciar los tres modelos necesarios
         $alumnoModel  = new AlumnoModel();
         $tutorModel   = new TutorModel();
+        $escuelaModel   = new EscuelaModel();
 
-         $curp = strtoupper(trim($curp));
-        
-
+             
         // Buscar los datos del alumno
         $alumno = $alumnoModel->where('curp', $curp)->first();
 
-        // --- CÓDIGO DE DEPURACIÓN TEMPORAL ---
-    echo "CURP recibida: [" . $curp . "]<br>";
-    echo "Consulta SQL ejecutada: " . $alumnoModel->getLastQuery() . "<br>";
-    dd($alumno);
+        // Buscar los datos de la escuela
+        $escuela = $escuela = $escuelaModel->where('id_escuela', 1)->first();
+
+
+    // --- CÓDIGO DE DEPURACIÓN TEMPORAL ---
+    //echo "CURP recibida: [" . $curp . "]<br>";
+    //echo "Consulta SQL ejecutada: " . $alumnoModel->getLastQuery() . "<br>";
+    //dd($alumno);
     // -------------------------------------
 
-/*        
+    
         // Validar si el alumno existe
     if (!$alumno) {
         return redirect()->back()->with('error', 'No se encontró ningún alumno con esa CURP.');
@@ -74,11 +79,12 @@ public function generar()
 
 // Preparar el arreglo de datos para la vista    
     $datos = [
+        'escuela' => $escuela, 
         'alumno' => $alumno,
         'tutor'  => $tutorModel->find($alumno->id_alumno)
       ];
 
-      $html = view('pdf/plantilla_reporte', $datos);
+      $html = view('pdf/comprobante_fi', $datos);
       $dompdf->loadHtml($html);
 
 
@@ -91,7 +97,7 @@ public function generar()
         // 6. Enviar el PDF al navegador ('Attachment' => false lo abre en pestaña, true lo descarga)
         $dompdf->stream('ficha_inscripcion.pdf', ['Attachment' => false]);
         exit(); // Evita que CodeIgniter agregue datos extra de depuración al archivo PDF
-        */
+        
 
     }
         
