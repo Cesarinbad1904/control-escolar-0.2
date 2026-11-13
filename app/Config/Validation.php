@@ -622,7 +622,7 @@ class Validation extends BaseConfig
         
 
         'rs_tutor2' => [ 
-            'label' => 'Red social del tutor', 
+            'label' => 'Red social del segundo tutor', 
             'rules' => [
                 'required'
             ],
@@ -632,7 +632,7 @@ class Validation extends BaseConfig
         ], 
 
         'rs_user_tutor2' => [ 
-            'label' => 'Nombre de usuario de la red social del tutor', 
+            'label' => 'Nombre de usuario de la red social del segundo tutor', 
             'rules' => [
                 'required',
                 'max_length[20]'

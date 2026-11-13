@@ -60,6 +60,7 @@ float: right;
 <p style="text-align: center; font-size: 12px; color: #145a32;"><b>FICHA DE INSCRIPCIÓN</b></p>
 </div>
 
+
 <!-- ====================================================================== -->
 <div style="font-size: 9px; border: 1px solid #1C1917;">
 <table style="font-size: 9px; width: 100%;">   

@@ -1,6 +1,9 @@
 <?php
 namespace App\Controllers;
 
+// Incluir phpqrcode
+require_once APPPATH . 'ThirdParty/phpqrcode/qrlib.php'; 
+
 use App\Models\AlumnoModel;
 use App\Models\TutorModel;
 use App\Models\HistorialMedicoModel;
@@ -44,11 +47,11 @@ public function generar()
 
      public function generarfi($curp)
     {
-        // 1. Configurar opciones (opcional, útil para habilitar imágenes externas o rutas)
+        // Configurar opciones (opcional, útil para habilitar imágenes externas o rutas)
         $options = new Options();
         $options->set('isRemoteEnabled', true);
 
-        // 2. Instanciar Dompdf
+        // Instanciar Dompdf
         $dompdf = new Dompdf($options);
         
         // Instanciar los tres modelos necesarios
@@ -57,7 +60,7 @@ public function generar()
         $escuelaModel   = new EscuelaModel();
 
              
-        // Buscar los datos del alumno
+        // Buscar los datos del alumno por su CURP
         $alumno = $alumnoModel->where('curp', $curp)->first();
 
         // Buscar los datos de la escuela
@@ -75,7 +78,7 @@ public function generar()
     if (!$alumno) {
         return redirect()->back()->with('error', 'No se encontró ningún alumno con esa CURP.');
     }
-
+    
 
 // Preparar el arreglo de datos para la vista    
     $datos = [
