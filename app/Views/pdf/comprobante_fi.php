@@ -222,7 +222,7 @@ float: right;
    
 
     <td style="text-align: center; width: 15%;">
-    NOMBRE USUARIO RS: 
+    USUARIO RS: 
     </td>
     </tr>
 
@@ -276,9 +276,7 @@ float: right;
       CURP:
     </td>
 
-    <td style="text-align: center; width: 10%;">
-    FECHA DE NACIMIENTO:
-    </td>
+  
 
     <td style="text-align: center; width: 10%;">
     SEXO: 
@@ -310,11 +308,7 @@ float: right;
     <b><?= esc($tutor->curp_tutor ) ?></b>
     </td>
 
-    <td style="text-align: center;">
-    <b><?= esc($tutor->fec_nac_tutor ) ?></b>
-    </td>
-
-
+  
     <td style="text-align: center;">
     <b><?= esc($tutor->sexo_tutor ) ?></b>
     </td>
@@ -408,6 +402,9 @@ float: right;
       CURP:
     </td>
 
+    <td style="text-align: center; width: 10%;">
+    SEXO: 
+    </td>
     
 
     <td style="text-align: center; width: 10%;">
@@ -430,9 +427,16 @@ float: right;
     <b><?= esc($tutor->primer_apellido_tutor2 ) ?> <?= esc($tutor->segundo_apellido_tutor2 ) ?> <?= esc($tutor->nombre_tutor2 ) ?></b>
     </td>
 
+
     <td style="text-align: center;">
     <b><?= esc($tutor->curp_tutor2 ) ?></b>
     </td>
+
+
+    <td style="text-align: center;">
+    <b><?= esc($tutor->sexo_tutor2 ) ?></b>
+    </td>
+
 
    
     <td style="text-align: center;">
@@ -468,6 +472,16 @@ float: right;
     <td style="text-align: center;">
     e-mail: 
     </td>
+
+    <td style="text-align: center;">
+    RED SOCIAL: 
+    </td>
+
+
+    <td style="text-align: center;">
+    USUARIO RS: 
+    </td>
+
     </tr>
 
 
@@ -484,6 +498,16 @@ float: right;
     <td style="text-align: center;">
     <b><?= esc($tutor->email_tutor2 ) ?></b>
     </td>
+
+    <td style="text-align: center;">
+    <b><?= esc($tutor->rs_tutor2 ) ?></b>
+    </td>
+
+
+    <td style="text-align: center;">
+    <b><?= esc($tutor->rs_user_tutor2 ) ?></b>
+    </td>
+
 
     </tr>
 </table>

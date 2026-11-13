@@ -145,6 +145,14 @@ class Tutores extends Migration
                     'null'       => FALSE
                 ],
 
+
+                'sexo_tutor2' => [ // Se obtiene de la CURP
+                'type'       => 'ENUM',
+                'constraint' => ['HOMBRE', 'MUJER'],
+                'null'       => FALSE
+                ],
+
+
                 'ocupacion_tutor2' => [ 
                     'type'       => 'VARCHAR',
                     'constraint' => 40,
@@ -181,13 +189,13 @@ class Tutores extends Migration
                     'null'       => FALSE
                 ],
 
-                   'rs_tutor' => [
+                   'rs_tutor2' => [
                     'type'       => 'VARCHAR',
                     'constraint' => 20,
                     'null'       => FALSE
                 ],
 
-                   'rs_user_tutor' => [
+                   'rs_user_tutor2' => [
                     'type'       => 'VARCHAR',
                     'constraint' => 20,
                     'null'       => FALSE
@@ -206,6 +214,7 @@ class Tutores extends Migration
                 'default'    => 'SI',
                 'null'       => FALSE
                 ],
+                
 
                 'mov_f' => [ // movimiento final (B = BAJA)
                 'type'       => 'CHAR',

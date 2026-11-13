@@ -732,6 +732,30 @@
 
 
 <div class="form-control" style="margin-bottom: 10px;">
+    <label class="label" for="rs_tutor2"><b style="color: red;">*</b> RED SOCIAL:</label><br/>
+        <select class="select select-secondary" style="width: 250px;" id="rs_tutor2" name="rs_tutor2" required >
+            <option disabled selected>SELECCIONAR</option>
+            <option>FACEBOOK</option>
+            <option>INSTAGRAM</option>
+            <option>X</option>
+                                        
+        </select>
+</div>
+
+
+        
+<div class="form-control" style="margin-bottom: 10px;">
+     <label class="label" for="rs_user_tutor2"><b style="color: red;">*</b> NOMBRE DE USUARIO DE LA RED SOCIAL:</label><br/>
+         <input class="input input-info" style="width: 300px;" type="text" id="rs_user_tutor2" name="rs_user_tutor2" 
+            required
+            data-parsley-maxlength="20"
+            data-parsley-maxlength-message="No debe exceder los 20 caracteres" 
+            data-parsley-trigger="keyup" /> 
+</div>
+
+
+
+<div class="form-control" style="margin-bottom: 10px;">
     <label class="label" for="responsabilidad"><b style="color: red;">*</b> RESPONSABILIDAD DEL MENOR:</label><br/>
         <select class="select select-info" id="responsabilidad" name="responsabilidad" style="width: 100px;" >
               <option value="SI" selected="selected">SI</option>

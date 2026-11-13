@@ -468,6 +468,7 @@ class Validation extends BaseConfig
             ]
         ], 
 
+
         'rs_tutor' => [ 
             'label' => 'Red social del tutor', 
             'rules' => [
@@ -478,7 +479,7 @@ class Validation extends BaseConfig
             ]
         ], 
 
-        'rs_tutor' => [ 
+        'rs_user_tutor' => [ 
             'label' => 'Nombre de usuario de la red social del tutor', 
             'rules' => [
                 'required',
@@ -616,6 +617,29 @@ class Validation extends BaseConfig
                 'required'    => 'El campo {field} es obligatorio.',
                 'valid_email' => 'Por favor, introduzca una dirección de correo válida.',
                 'max_length'  => 'El {field} no puede exceder los 50 caracteres.'
+            ]
+        ], 
+        
+
+        'rs_tutor2' => [ 
+            'label' => 'Red social del tutor', 
+            'rules' => [
+                'required'
+            ],
+            'errors' => [
+                'required'    => 'El campo {field} es obligatorio.'
+            ]
+        ], 
+
+        'rs_user_tutor2' => [ 
+            'label' => 'Nombre de usuario de la red social del tutor', 
+            'rules' => [
+                'required',
+                'max_length[20]'
+            ],
+            'errors' => [
+                'required'    => 'El campo {field} es obligatorio.',
+                'max_length' => 'El campo {field} no puede exceder los 20 caracteres.'
             ]
         ], 
 

@@ -167,6 +167,9 @@ public function create() {
         $curp_tutor = $this->request->getPost('curp_tutor');
         $datos_curp_tutor = datosCurp($curp_tutor);
 
+        $curp_tutor2 = $this->request->getPost('curp_tutor2');
+        $datos_curp_tutor2 = datosCurp($curp_tutor2);
+
         $datosTutor = [
             'id_alumno'    => $idAlumnoGenerado, // Vinculamos con el ID recién creado
             'curp_tutor'     => $this->request->getPost('curp_tutor'),
@@ -190,12 +193,15 @@ public function create() {
             'nombre_tutor2' => $this->request->getPost('nombre_tutor2'),
             'primer_apellido_tutor2' => $this->request->getPost('primer_apellido_tutor2'),
             'segundo_apellido_tutor2' => $this->request->getPost('segundo_apellido_tutor2'),
+            'sexo_tutor2'     => $datos_curp_tutor2['sexo'],
             'ocupacion_tutor2' => $this->request->getPost('ocupacion_tutor2'),
             'estudios_tutor2' => $this->request->getPost('estudios_tutor2'),
             'parentesco_tutor2' => $this->request->getPost('parentesco_tutor2'),
             'salario_tutor2' => $this->request->getPost('salario_tutor2'),
             'estado_civil_tutor2' => $this->request->getPost('estado_civil_tutor2'),
             'email_tutor2' => strtolower(trim($this->request->getPost('email_tutor2'))),
+            'rs_tutor2' => $this->request->getPost('rs_tutor2'),
+            'rs_user_tutor2' => $this->request->getPost('rs_user_tutor2'),
             'responsabilidad' => $this->request->getPost('responsabilidad'),
             'recoge' => $this->request->getPost('recoge')            
 
@@ -396,6 +402,9 @@ public function update($id) {
         $curp_tutor = $this->request->getPost('curp_tutor');
         $datos_curp_tutor = datosCurp($curp_tutor);
 
+        $curp_tutor2 = $this->request->getPost('curp_tutor2');
+        $datos_curp_tutor2 = datosCurp($curp_tutor2);
+
         $datosTutor = [
             'curp_tutor'     => $this->request->getPost('curp_tutor'),
             'nombre_tutor' => $this->request->getPost('nombre_tutor'),
@@ -418,12 +427,15 @@ public function update($id) {
             'nombre_tutor2' => $this->request->getPost('nombre_tutor2'),
             'primer_apellido_tutor2' => $this->request->getPost('primer_apellido_tutor2'),
             'segundo_apellido_tutor2' => $this->request->getPost('segundo_apellido_tutor2'),
+            'sexo_tutor2'     => $datos_curp_tutor2['sexo'],
             'ocupacion_tutor2' => $this->request->getPost('ocupacion_tutor2'),
             'estudios_tutor2' => $this->request->getPost('estudios_tutor2'),
             'parentesco_tutor2' => $this->request->getPost('parentesco_tutor2'),
             'salario_tutor2' => $this->request->getPost('salario_tutor2'),
             'estado_civil_tutor2' => $this->request->getPost('estado_civil_tutor2'),
             'email_tutor2' => strtolower(trim($this->request->getPost('email_tutor2'))),
+            'rs_tutor2' => $this->request->getPost('rs_tutor2'),
+            'rs_user_tutor2' => $this->request->getPost('rs_user_tutor2'),
             'responsabilidad' => $this->request->getPost('responsabilidad'),
             'recoge' => $this->request->getPost('recoge')            
 
