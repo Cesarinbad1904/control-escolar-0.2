@@ -2,13 +2,119 @@
 namespace App\Controllers;
 
 use App\Models\AlumnoModel;
+use App\Models\AlumnoBaseModel;
 use App\Models\TutorModel;
 use App\Models\HistorialMedicoModel;
 use App\Models\CalificacionModel;
+use App\Models\EscuelaModel;
 
-class Alumno extends BaseController {
+class AlumnoController extends BaseController {
 
 
+// ======================= Página inicial, muestra todos los alumnos ==========
+public function index() {
+
+return view('alumno/buscar_inscripciones');
+
+}
+// =============================================================================
+
+
+// =========== Buscar si el alumno ya está registrado en alumnos_inscritos ====
+
+public function buscar_inscrito() {
+
+    // Ejecuta la validación llamando al grupo centralizado
+    if (! $this->validate('inscripcion_curp')) {
+        // Si falla, regresa con los errores personalizados en español
+        return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+    } else {
+
+// Instanciar los modelos de las tablas alumnos_inscritos y alumnos_base
+        $alumnoModel  = new AlumnoModel();
+        $alumnoBaseModel = new AlumnoBaseModel();
+        $escuelaModel   = new EscuelaModel();
+
+// recuperar datos provenientes del formulario
+   $curp = $this->request->getPost('curp'); 
+
+
+// Buscar alumno en la tabla alumnos_inscritos
+  $alumno_inscrito = $alumnoModel->where('curp', $curp)->first();
+
+   if (!$alumno_inscrito) { // Alumno no encontrado en la tabla alumnos_inscritos
+        //echo "Alumno no encontrado en alumnos inscritos<br/>";
+
+        //buscar en alumnos base
+         $alumno_base = $alumnoBaseModel->where('curp', $curp)->first(); 
+       
+         if (!$alumno_base) { // No existe en la tabla alumnos_base 
+            //echo "Alumno no encontrado en alumnos base";
+            return redirect()->to('/inscripciones/registro')->with('error', 'Alumno no encontrado.');
+            //return view('/alumno/buscar_inscripciones');
+            
+        } 
+        else { // Existe en la tabla alumos_base 
+            //echo "Alumno encontrado en alumnos base";
+            // Mostrar el formulario de inscripción
+            // Recuperar datos de la tabla alumnos_base  
+            $nombre = $alumno_base->nombre;
+            $curp = $alumno_base->curp;
+            $grado = $alumno_base->grado + 1;
+            $grupo = $alumno_base->grupo;
+            $origen = $alumno_base->origen;
+            $mov_i = $alumno_base->mov_i;
+            $fecha_alta = $alumno_base->fecha_alta;
+
+            // buscar y recuperar datos de la tabla escuela
+            $datos_escuela = $escuelaModel->where('id_escuela', 1)->first();   
+            $nombre_escuela = $datos_escuela->nombre;
+
+            // Preparar el arreglo de datos para la vista    
+            $data = [
+                'curp' => $curp,
+                'nombre' => $nombre,
+                'grado' => $grado,
+                'grupo' => $grupo,
+                'origen' => $origen,
+                'mov_i' => $mov_i,
+                'fecha_alta' => $fecha_alta ?? null,
+                'nombre_escuela' => $nombre_escuela
+        ];
+
+// enviar todo el arreglo de datos a la vista del formulario de inscripción
+    return view('/alumno/new', $data);
+
+        }
+
+    } 
+    else { // Existe en la tabla alumnos_inscritos
+    // Mostrar aquí el formulario para opciones de comprobantes y actualización
+        //echo "Alumno encontrado en alumnos inscritos";
+        $curp = $alumno_inscrito->curp;
+        $id_alumno = $alumno_inscrito->id_alumno;
+        $nombre_alumno = $alumno_inscrito->nombre_alumno;
+        $primer_apellido_alumno = $alumno_inscrito->primer_apellido_alumno;
+        $segundo_apellido_alumno = $alumno_inscrito->segundo_apellido_alumno;
+        $nombre_completo_alumno = $primer_apellido_alumno.' '.$segundo_apellido_alumno.' '.$nombre_alumno; 
+
+        $data = [
+            'curp' => $curp,
+            'id_alumno' => $id_alumno,
+            'nombre_completo_alumno' => $nombre_completo_alumno
+        ];
+       
+        return view('/alumno/comprobantes_pdf', $data);
+    }
+    
+    
+  }
+}
+// =========================================================================
+
+
+
+/*
 // ======================= Página inicial, muestra todos los alumnos ==========
 public function index() {
 
@@ -27,7 +133,7 @@ return view ('alumno/index', $data);
 
 }
 // =============================================================================
-
+*/
 
 
 
@@ -41,7 +147,14 @@ public function new() {
 
 // =========== Método para mostrar la página de edición de un alumno existente 
 
-public function edit($id) {
+public function edit() {
+
+    // Recibir el id_alumno enviado por POST
+    $id = $this->request->getPost('id_alumno');
+
+    if (!$id) {
+        return redirect()->to('/alumno')->with('error', 'ID no proporcionado');
+    }
 
 // Instanciar los tres modelos necesarios
         $alumnoModel  = new AlumnoModel();
@@ -50,8 +163,7 @@ public function edit($id) {
 
 // Buscar los datos del alumno
     $alumno = $alumnoModel->find($id);
-
-
+    
 // Validar si el alumno existe antes de continuar
     if (!$alumno) {
         return redirect()->to('/alumno')->with('error', 'Alumno no encontrado');
@@ -61,12 +173,12 @@ public function edit($id) {
 // Preparar el arreglo de datos para la vista    
     $data = [
         'alumno' => $alumno,
-        'tutor'  => $tutorModel->find($alumno->id_alumno ?? null),
-        'medico' => $medicoModel->find($alumno->id_alumno ?? null)
+        'tutor'  => $tutorModel->where('id_alumno', $id)->first(),
+        'medico' => $medicoModel->where('id_alumno', $id)->first()
     ];
 
 // enviar todo el arreglo a la vista
-return view('/alumno/edit', $data);
+return view('alumno/edit', $data);
    
 }
 // =========================================================================
@@ -90,6 +202,7 @@ public function create() {
         $tutorModel   = new TutorModel();
         $medicoModel  = new HistorialMedicoModel();
         $calificacionModel  = new CalificacionModel();
+       
 
         // 2. Iniciar la transacción de la Base de Datos
         $db = \Config\Database::connect();
@@ -318,7 +431,7 @@ public function create() {
             return redirect()->back()->withInput()->with('error', 'Ocurrió un error al registrar al alumno.');
         } else {
             // Si todo fue exitoso, los datos ya están distribuidos de forma permanente
-            return redirect()->to('/alumnos')->with('success', 'Alumno, tutor e historial registrados correctamente.');
+            return redirect()->to('/inscripciones')->with('success', 'Alumno, tutor e historial registrados correctamente.');
         }
             
   
@@ -329,24 +442,33 @@ public function create() {
 
 // =========== Método para actualizar un alumno =======================
 
-public function update($id) {
+public function update($id_alumno = null) {
+ 
+helper('funciones');
+
+    if (!$id_alumno) {
+        return redirect()->to('/alumno')->with('error', 'ID no válido');
+    }
+
+// Instanciar los tres modelos necesarios
+        $alumnoModel  = new AlumnoModel();
+        $tutorModel   = new TutorModel();
+        $medicoModel  = new HistorialMedicoModel();
+
+
+// Verificar que el alumno realmente exista
+    if (!$alumnoModel->find($id_alumno)) {
+        return redirect()->to('/alumno')->with('error', 'Alumno no encontrado.');
+    }
+
+
    // Ejecuta la validación llamando al grupo centralizado
     if (! $this->validate('registroAlumno')) {
         // Si falla, regresa con los errores personalizados en español
         return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
     } else {
 
-    helper('funciones');
-
-// Instanciar los tres modelos necesarios
-        $alumnoModel  = new AlumnoModel();
-        $tutorModel   = new TutorModel();
-        $medicoModel  = new HistorialMedicoModel();
-        
-// Buscar al alumno actual para obtener los IDs de sus tablas relacionadas
-    $alumnoActual = $alumnoModel->find($id);
-    
-
+   
 // Preparar e Insertar los datos del Alumno (Tabla Padre)
         $curp_alumno = $this->request->getPost('curp_alumno');
         $datos_curp_alumno = datosCurp($curp_alumno);
@@ -507,31 +629,25 @@ public function update($id) {
         //$db->transStart(); // Para producción
         $db->transException(true)->transStart(); //Solo para desarrollo
 
-  // Actualizar Tutor (usando la llave foránea guardada en el alumno)
-    if (!empty($alumnoActual->id_alumno)) {
-        $tutorModel->update($alumnoActual->id_alumno, $datosTutor);
-    }
+// Actualizar Alumno
+  $alumnoModel->update($id_alumno, $datosAlumno);
 
-    // Actualizar Médico (usando la llave foránea guardada en el alumno)
-    if (!empty($alumnoActual->id_alumno)) {
-        $medicoModel->update($alumnoActual->id_alumno, $datosMedico);
-    }
+// Actualizar tutor
+  $tutorModel->where('id_alumno', $id_alumno)->set($datosTutor)->update();
 
-    // Actualizar Alumno
-    $alumnoModel->update($id, $datosAlumno);
-
+// Actualizar historial médico
+  $medicoModel->where('id_alumno', $id_alumno)->set($datosMedico)->update();
+    
     // Completar la transacción
     $db->transComplete();
         
-
 
     // Verificar si todo salió bien o hubo algún fallo en SQL
     if ($db->transStatus() === false) {
         return redirect()->back()->withInput()->with('error', 'Ocurrió un error al actualizar los datos. No se guardaron cambios.');
     }
 
-    return redirect()->to('/inscripciones')->with('mensaje', '¡Datos actualizados correctamente!');
-            
+    return redirect()->to('/inscripciones/registro')->with('success', '¡Datos actualizados correctamente!');
   
     }
 }

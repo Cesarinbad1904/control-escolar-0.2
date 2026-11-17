@@ -11,26 +11,17 @@
     <div class="card-body">
 
 <form class="space-y-6" action="<?= base_url('inscripciones/update/'. $alumno->id_alumno) ?>" method="post" data-parsley-validate>
+  <?= csrf_field() ?>
 
-        <label class="label" for="grado"><b style="color: red;">*</b> GRADO AL QUE SE INSCRIBIRÁ:</label><br />
-            <select class="select select-secondary" id="grado" name="grado" style="width: 100px;" >
-                  <option value="<?= $alumno->grado ?>"><?= $alumno->grado ?></option>
-                  <option value="1">1°</option>
-                  <option value="2">2°</option>
-                  <option value="3">3°</option>
-                  <option value="4">4°</option>
-                  <option value="5">5°</option>
-                  <option value="6">6°</option>
-                                       
-             </select>
-
+<label for="entidad_dom">GRADO QUE CURSARÁ: (SOLO LECTURA)</label><br />
+<input class="input input-primary" type="text" id="grado" name="grado" readonly value="<?= $alumno->grado ?>°" style="width: 50px;" />
 
 <!-- Se envían los datos de movimiento inicial y fecha de alta en su caso (ocultos) --> 
-  <input type='hidden' name='grupo' value="<?php echo "A";  ?>" />
-  <input type='hidden' name='mov_i' value="<?php echo "I" ?>" />
-  <input type='hidden' name='fecha_alta' value="<?php  ?>" />
-  <input type='hidden' name='reprobado' value="NO" />
-  <input type='hidden' name='origen' value="<?php echo "ME" ?>" />
+  <input type='hidden' name='grupo' value="<?= $alumno->grupo ?>" />
+  <input type='hidden' name='origen' value="<?= $alumno->origen ?>" />
+  <input type='hidden' name='mov_i' value="<?= $alumno->mov_i ?>" />
+  <input type='hidden' name='fecha_alta' value="<?= $alumno->fecha_alta ?>" />
+  <input type='hidden' name='reprobado' value="<?= $alumno->reprobado ?>" />
 
 
 <!-- ========= Datos de nacimiento  ================== -->
@@ -41,7 +32,7 @@
    
 <div class="form-control" style="margin-bottom: 10px;">
    <label class="label" for="curp_alumno">CURP DEL ALUMNO (SOLO LECTURA)</label><br />
-    <input class="input input-neutral" type="text" id="curp_alumno" name="curp_alumno" value="<?= $alumno->curp ?>"  />
+    <input class="input input-neutral" type="text" id="curp_alumno" name="curp_alumno" readonly value="<?= $alumno->curp ?>" />
 </div>
 
 <div role="alert" class="alert alert-success">
@@ -1296,8 +1287,6 @@
 <p class="mx-auto w-1/2"><input class="btn btn-success btn-wide" type="submit" value="Actualizar" /></p>
 
 </form>
-<br />
-    <a href="../" >Regresar</a>
 
 
 </div>

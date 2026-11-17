@@ -9,28 +9,25 @@
   
   <div class="card w-full max-w-2xl bg-base-100 shadow-xl border border-base-300">
     <div class="card-body">
+    
+      <div class="flex justify-center">
+        <div class="badge badge-accent"><?= $nombre ?></div>
+      </div><br/>
 
-<form class="space-y-6" action="create" method="post" data-parsley-validate>
+<form class="space-y-6" action="<?= base_url('inscripciones/create') ?>" method="post" data-parsley-validate>
+<?= csrf_field() ?>
 
-        <label for="grado"><b style="color: red;">*</b> GRADO AL QUE SE INSCRIBIRÁ:</label>
-            <select class="form-control" id="grado" name="grado" style="width: 100px;" >
-                  <option value="<?php  ?>" selected="selected"><?php  ?>°</option>
-                  <option value="1">1°</option>
-                  <option value="2">2°</option>
-                  <option value="3">3°</option>
-                  <option value="4">4°</option>
-                  <option value="5">5°</option>
-                  <option value="6">6°</option>
-                                       
-             </select>
-
+<label for="entidad_dom">GRADO QUE CURSARÁ: (SOLO LECTURA)</label><br />
+<input class="input input-primary" type="text" id="grado" name="grado" readonly value="<?= $grado ?>°" style="width: 50px;" />
+      
 
 <!-- Se envían los datos de movimiento inicial y fecha de alta en su caso (ocultos) --> 
-  <input type='hidden' name='grupo' value="<?php echo "A";  ?>" />
-  <input type='hidden' name='mov_i' value="<?php echo "I" ?>" />
-  <input type='hidden' name='fecha_alta' value="<?php  ?>" />
+  <input type='hidden' name='grupo' value="<?= $grupo ?>" />
+  <input type='hidden' name='origen' value="<?= $origen ?>" />
+  <input type='hidden' name='mov_i' value="<?= $mov_i ?>" />
+  <input type='hidden' name='fecha_alta' value="<?= $fecha_alta ?>" />
   <input type='hidden' name='reprobado' value="NO" />
-  <input type='hidden' name='origen' value="<?php echo "ME" ?>" />
+  
 
 
 <!-- ========= Datos de nacimiento  ================== -->
@@ -41,7 +38,7 @@
    
 <div class="form-control" style="margin-bottom: 10px;">
    <label class="label" for="curp_alumno">CURP DEL ALUMNO (SOLO LECTURA)</label><br />
-    <input class="input input-neutral" type="text" id="curp_alumno" name="curp_alumno" readonly value="AEAA190507MMCRRTA9" />
+    <input class="input input-neutral" type="text" id="curp_alumno" name="curp_alumno" readonly value="<?= $curp ?>" />
 </div>
 
 <div role="alert" class="alert alert-success">
@@ -318,7 +315,7 @@
 
      <div class="form-control" style="margin-bottom: 10px;">
         <label class="label" for="nombre_escuela_procedencia">NOMBRE DE LA ESCUELA DE PROCEDENCIA:</label><br/>
-        <input class="input input-accent" type="text" id="nombre_escuela_procedencia" name="nombre_escuela_procedencia" value=""
+        <input class="input input-accent" type="text" id="nombre_escuela_procedencia" name="nombre_escuela_procedencia" value="<?= $nombre_escuela ?>"
         required
         data-parsley-maxlength="40"
         data-parsley-maxlength-message="No debe exceder los 40 caracteres" 

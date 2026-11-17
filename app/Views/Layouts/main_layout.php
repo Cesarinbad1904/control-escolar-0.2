@@ -60,7 +60,24 @@
   </svg>
 </label>
     </div>
-  
+
+<!-- Código para poder mostrar la variable de sesión flash success-->
+<?php if (session()->getFlashdata('success')): ?>
+    <div class="alert alert-success w-full text-center justify-center">
+        <?= esc(session()->getFlashdata('success')) ?>
+    </div>
+<?php endif; ?>
+
+
+<!-- Código para poder mostrar la variable de sesión flash warning-->
+ <?php if (session()->getFlashdata('error')): ?>
+    
+    <div class="alert alert-error w-full text-center justify-center">
+        <?= esc(session()->getFlashdata('error')) ?>
+    </div>
+    
+<?php endif; ?>
+
 
 <section>
     <?= $this->renderSection('contenido') ?>

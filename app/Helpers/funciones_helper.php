@@ -49,31 +49,18 @@ function datosCurp(string $curp): array
         'entidad_nac'      => $entidad_nac
     ];
 }
+// =============================================================================================
 
 
-// ============== Función edad  (Actualizada 2026) ==================================
-function edad($dianac, $mesnac, $anionac, $diaact, $mesact, $anioact): array {
-
-// Nota: la variable $anionac se recibe en 2 dígitos y la variable $anioact son 4 dígitos (año completo)
 
 
-// =================================================================================
-    // Convertimos la variable $anonac a 4 dígitos ..
- $anioActual = (int)date('y'); // Obtiene los últimos dos dígitos del año actual (ej. 26)
+// ================= Función edad  (Actualizada 2026) ==========================================
+function calculaEdad($fecha_nacimiento, $fecha_comparacion): array {
 
- // Si el año de la CURP es menor o igual al año actual, es del 2000. Si no, es de 1900.
-    if ($anionac <= $anioActual) {
-        $anionac += 2000;
-    } else {
-        $anionac += 1900;
-    }
-//=================================================================================
+// Nota: La fecha de comparación puede ser cualquiera
 
-$nacimiento = $anionac."-".$mesnac."-".$dianac;
-$comparacion = $anioact."-".$mesact."-".$diaact;
-
-$nacimiento_date = new DateTime($nacimiento);
-$comparacion_date = new DateTime($comparacion);
+$nacimiento_date = new DateTime($fecha_nacimiento);
+$comparacion_date = new DateTime($fecha_comparacion);
 
 
 // Calculamos la diferencia entre ambas fechas

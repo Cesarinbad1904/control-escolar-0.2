@@ -50,7 +50,7 @@ float: right;
 <body>
 <section>
 
-<img style="position: absolute; top: -30px;" src="'.$qr_base64.'" widht="120" height="120" />
+<img style="position: absolute; top: -30px;" src="<?= $qr_url ?>" />
 
 <p style="position: absolute; top: -30px; right: 50px; font-size: 0.8em;">ID DEL ALUMNO: <b><?= esc($alumno->id_alumno) ?></b></p>
 
@@ -64,7 +64,7 @@ float: right;
 <!-- ====================================================================== -->
 <div style="font-size: 9px; border: 1px solid #1C1917;">
 <table style="font-size: 9px; width: 100%;">   
-<tr><td colspan="7" style="background-color: #FFDF20; text-align: center; font-size: 9pt; padding: 3px; border: 1px solid #71717B;"><b>DATOS DEL ALUMNO</b></td></tr> 
+<tr><td colspan="7" style="background-color: #FFDF20; text-align: center; font-size: 9pt; padding: 3px; border: 1px solid #71717B;"><b>DATOS DE NACIMIENTO Y DOMICILIO DEL ALUMNO</b></td></tr> 
     
     <tr>
     <td style="text-align: center; width: 32%;">
@@ -552,7 +552,7 @@ float: right;
 
 <br />
 <br />
-<p style="text-align: center; font-size: 10px;">FECHA DE REGISTRO: <?= esc($alumno->fecha_registro ) ?></p>
+<p style="text-align: center; font-size: 10px;">FECHA Y HORA DE REGISTRO: <?= esc($alumno->fecha_registro ) ?></p>
 
 </section>
 </body>

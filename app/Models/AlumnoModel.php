@@ -13,6 +13,7 @@ class AlumnoModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
+'id_alumno',
 'curp', 
 'nombre_alumno', 
 'primer_apellido_alumno',

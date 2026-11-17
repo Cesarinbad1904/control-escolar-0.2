@@ -94,6 +94,13 @@ class Escuela extends Migration
                 'constraint' => 20,
                 'default'    => '0000-0000',
                 'null'       => FALSE, 
+                ],
+
+
+                'fecha_referencia' => [ // Fecha de comparación para la edad (normalmente el 1° de septiembre)
+                    'type'    => 'DATETIME',
+                    'null'    => FALSE,
+                    'default' => new \CodeIgniter\Database\RawSql('CURRENT_TIMESTAMP'), // Captura la fecha y hora actual automáticamente
                 ]
                                     
             ]);
