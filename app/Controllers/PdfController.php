@@ -138,7 +138,7 @@ if (ob_get_length()) {
         $dompdf->render();
 
         // 6. Enviar el PDF al navegador ('Attachment' => false lo abre en pestaña, true lo descarga)
-        $dompdf->stream('ficha_inscripcion.pdf', ['Attachment' => false]);
+        $dompdf->stream('ficha_inscripcion.pdf', ['Attachment' => true]); // true, no se muestra en el navegador, solo se descarga
         exit(); // Evita que CodeIgniter agregue datos extra de depuración al archivo PDF
        
 
@@ -234,7 +234,7 @@ if (ob_get_length()) {
         $dompdf->render();
 
         // 6. Enviar el PDF al navegador ('Attachment' => false lo abre en pestaña, true lo descarga)
-        $dompdf->stream('historial_medico.pdf', ['Attachment' => false]);
+        $dompdf->stream('historial_medico.pdf', ['Attachment' => true]); // true, no se muestra en el navegador, solo se descarga
         exit(); // Evita que CodeIgniter agregue datos extra de depuración al archivo PDF
 
       

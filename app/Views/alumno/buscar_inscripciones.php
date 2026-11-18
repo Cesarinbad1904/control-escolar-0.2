@@ -5,7 +5,8 @@
 <?= view('partials/_form-error'); ?>
 
 
-<div class="flex min-h-screen items-center justify-center bg-base-200 p-4">
+<!--<div class="flex min-h-screen items-center justify-center bg-base-200 p-4">--> <!-- items-center para mostrar el div centrado verticalmente -->
+<div class="flex min-h-screen items-start justify-center bg-base-200 p-4"> <!-- items-start para mostrar el div en la parte de arriba -->
   
   <div class="card w-full max-w-2xl bg-base-100 shadow-xl border border-base-300">
     <div class="card-body">
@@ -34,7 +35,7 @@
 
 </fieldset>
 
-<p class="mx-auto w-1/2"><input class="btn btn-success btn-wide" type="submit" value="Enviar" /></p>
+<p class="mx-auto w-1/2"><input class="btn btn-dash btn-circle btn-wide" type="submit" value="Enviar" /></p>
 
 </form>
 
