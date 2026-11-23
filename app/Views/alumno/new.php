@@ -1248,9 +1248,6 @@
 <p class="mx-auto w-1/2"><input class="btn btn-success btn-wide" type="submit" value="Enviar" /></p>
 
 </form>
-<br />
-    <a href="../" >Regresar</a>
-
 
 </div>
 </div>

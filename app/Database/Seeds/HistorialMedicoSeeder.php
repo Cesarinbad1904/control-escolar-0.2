@@ -81,3 +81,5 @@ class HistorialMedicoSeeder extends Seeder
         }
     }
 }
+
+?>

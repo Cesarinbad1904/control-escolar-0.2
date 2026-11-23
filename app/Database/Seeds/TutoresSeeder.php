@@ -9,7 +9,7 @@ class TutoresSeeder extends Seeder
 {
     public function run()
     {
-        $faker = Factory::create('es_MX');
+        $faker = Factory::create('es_ES');
         $db = \Config\Database::connect();
 
         // Obtenemos todos los IDs de alumnos existentes
@@ -23,14 +23,38 @@ class TutoresSeeder extends Seeder
         $salarios = ['$4,000 - $8,000', '$8,001 - $15,000', 'Más de $15,000'];
         $siNo = ['NO', 'SI'];
 
-        foreach ($alumnos as $alumno) {
-            $sexo1 = $faker->randomElement($sexos);
-            $fechaNac1 = $faker->dateTimeBetween('-50 years', '-25 years');
-            $curp1 = strtoupper($faker->lexify('????')) . $fechaNac1->format('ymd') . ($sexo1 === 'HOMBRE' ? 'H' : 'M') . 'MC' . strtoupper($faker->lexify('???')) . $faker->numerify('##');
+        // Catálogo oficial de entidades de tu expresión regular
+        $entidadesCurp = [
+            'AS', 'BC', 'BS', 'CC', 'CS', 'CH', 'CL', 'CM', 'DF', 'DG', 
+            'GT', 'GR', 'HG', 'JC', 'MC', 'MN', 'MS', 'NT', 'NL', 'OC', 
+            'PL', 'QT', 'QR', 'SP', 'SL', 'SR', 'TC', 'TS', 'TL', 'VZ', 
+            'YN', 'ZS', 'NE'
+        ];
 
+        foreach ($alumnos as $alumno) {
+            // Generación de datos y CURP válida para el Tutor 1
+            $sexo1 = $faker->randomElement($sexos);
+            $letraSexo1 = ($sexo1 === 'HOMBRE') ? 'H' : 'M';
+            $fechaNac1 = $faker->dateTimeBetween('-50 years', '-25 years');
+            
+            $curp1 = strtoupper($faker->regexify('[A-Z][XAEIOU][A-Z]{2}'))
+                   . $fechaNac1->format('ymd')
+                   . $letraSexo1
+                   . $faker->randomElement($entidadesCurp)
+                   . strtoupper($faker->regexify('[B-DF-HJ-NP-TV-Z]{3}'))
+                   . strtoupper($faker->regexify('[0-9A-Z][0-9]'));
+
+            // Generación de datos y CURP válida para el Tutor 2
             $sexo2 = $faker->randomElement($sexos);
+            $letraSexo2 = ($sexo2 === 'HOMBRE') ? 'H' : 'M';
             $fechaNac2 = $faker->dateTimeBetween('-50 years', '-25 years');
-            $curp2 = strtoupper($faker->lexify('????')) . $fechaNac2->format('ymd') . ($sexo2 === 'HOMBRE' ? 'H' : 'M') . 'MC' . strtoupper($faker->lexify('???')) . $faker->numerify('##');
+            
+            $curp2 = strtoupper($faker->regexify('[A-Z][XAEIOU][A-Z]{2}'))
+                   . $fechaNac2->format('ymd')
+                   . $letraSexo2
+                   . $faker->randomElement($entidadesCurp)
+                   . strtoupper($faker->regexify('[B-DF-HJ-NP-TV-Z]{3}'))
+                   . strtoupper($faker->regexify('[0-9A-Z][0-9]'));
 
             $data = [
                 'id_alumno'               => $alumno['id_alumno'],
@@ -75,4 +99,3 @@ class TutoresSeeder extends Seeder
         }
     }
 }
-

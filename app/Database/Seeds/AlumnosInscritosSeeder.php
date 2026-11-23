@@ -9,7 +9,7 @@ class AlumnosInscritosSeeder extends Seeder
 {
     public function run()
     {
-        $faker = Factory::create('es_MX');
+        $faker = Factory::create('es_ES');
         $db = \Config\Database::connect();
         $builder = $db->table('alumnos_inscritos');
 
@@ -19,19 +19,27 @@ class AlumnosInscritosSeeder extends Seeder
         $origenes = ['ME', 'SA', 'NI'];
         $grupos = ['A', 'B', 'C'];
         $redes = ['Facebook', 'Instagram', 'TikTok', 'WhatsApp'];
+        
+        // Catálogo oficial de entidades de tu expresión regular
+        $entidadesCurp = [
+            'AS', 'BC', 'BS', 'CC', 'CS', 'CH', 'CL', 'CM', 'DF', 'DG', 
+            'GT', 'GR', 'HG', 'JC', 'MC', 'MN', 'MS', 'NT', 'NL', 'OC', 
+            'PL', 'QT', 'QR', 'SP', 'SL', 'SR', 'TC', 'TS', 'TL', 'VZ', 
+            'YN', 'ZS', 'NE'
+        ];
 
-        for ($i = 0; $i < 20; $i++) { // Cambiar aquí el número de registros de prueba que queremos
+        for ($i = 0; $i < 20; $i++) {
             $sexo = $faker->randomElement($sexos);
             $letraSexo = ($sexo === 'HOMBRE') ? 'H' : 'M';
             $fechaNac = $faker->dateTimeBetween('-15 years', '-6 years');
             
-            // Construcción de CURP única de 18 caracteres
-            $curp = strtoupper($faker->lexify('????')) 
-                  . $fechaNac->format('ymd') 
-                  . $letraSexo 
-                  . 'MC' 
-                  . strtoupper($faker->lexify('???')) 
-                  . $faker->numerify('##');
+            // Construcción de CURP 100% compatible con tu expresión regular
+            $curp = strtoupper($faker->regexify('[A-Z][XAEIOU][A-Z]{2}'))
+                  . $fechaNac->format('ymd')
+                  . $letraSexo
+                  . $faker->randomElement($entidadesCurp)
+                  . strtoupper($faker->regexify('[B-DF-HJ-NP-TV-Z]{3}'))
+                  . strtoupper($faker->regexify('[0-9A-Z][0-9]'));
 
             $data = [
                 'curp'                       => $curp,
@@ -85,4 +93,3 @@ class AlumnosInscritosSeeder extends Seeder
         }
     }
 }
-

@@ -1,5 +1,6 @@
 <?php 
-namespace App\Controllers;
+namespace App\Controllers\Inscripciones;
+use App\Controllers\BaseController;
 
 use App\Models\AlumnoModel;
 use App\Models\AlumnoBaseModel;
@@ -8,7 +9,7 @@ use App\Models\HistorialMedicoModel;
 use App\Models\CalificacionModel;
 use App\Models\EscuelaModel;
 
-class AlumnoController extends BaseController {
+class RegistroController extends BaseController {
 
 
 // ======================= Página inicial, muestra todos los alumnos ==========
@@ -137,20 +138,17 @@ return view ('alumno/index', $data);
 
 
 
-// =========== Mostrar formulario para crear un nuevo alumno ============
-
-public function new() {
-   return view('alumno/new');
-}
-// =========================================================================
-
 
 // =========== Método para mostrar la página de edición de un alumno existente 
 
-public function edit() {
+public function edit($id = null) {
 
     // Recibir el id_alumno enviado por POST
-    $id = $this->request->getPost('id_alumno');
+    //$id = $this->request->getPost('id_alumno');
+
+    // 1. Obtener id desde GET (parámetro de URL) o desde POST (formulario)
+    $id = $id ?? $this->request->getPost('id_alumno');
+    $id = strtoupper(trim((string) $id));
 
     if (!$id) {
         return redirect()->to('/alumno')->with('error', 'ID no proporcionado');
@@ -431,7 +429,7 @@ public function create() {
             return redirect()->back()->withInput()->with('error', 'Ocurrió un error al registrar al alumno.');
         } else {
             // Si todo fue exitoso, los datos ya están distribuidos de forma permanente
-            return redirect()->to('/inscripciones')->with('success', 'Alumno, tutor e historial registrados correctamente.');
+            return redirect()->to('/inscripciones/registro')->with('success', 'Alumno, tutor e historial médico registrados correctamente.');
         }
             
   
