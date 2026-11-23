@@ -67,7 +67,7 @@
 
             <!-- Botones de Acción -->
             <div class="flex gap-2">
-                <button type="submit" class="btn btn-primary btn-sm">Filtrar</button>
+                <button type="submit" class="btn btn-primary btn-sm">Buscar</button>
                 <?php if (!empty($filtros['q']) || !empty($filtros['grado']) || !empty($filtros['grupo']) || !empty($filtros['estatus'])): ?>
                     <a href="<?= site_url('direccion/alumnos') ?>" class="btn btn-ghost btn-sm">Limpiar</a>
                 <?php endif; ?>

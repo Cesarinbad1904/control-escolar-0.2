@@ -50,6 +50,9 @@ $routes->get('panel', 'DashboardController::index');
     $routes->post('alumnos/eliminar', 'AlumnosController::eliminar');
     $routes->get('alumnos/constancia-ins/(:num)', 'AlumnosController::constIns/$1');
 
+    // Módulo de Tutores
+    $routes->get('tutores', 'TutoresController::index');
+   
 });
 
 
