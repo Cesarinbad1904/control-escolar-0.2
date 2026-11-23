@@ -24,10 +24,10 @@ class HistorialMedicoSeeder extends Seeder
         foreach ($alumnos as $alumno) {
             $data = [
                 'id_alumno'               => $alumno['id_alumno'],
-                'estatura'                => (string) $faker->numberBetween(110, 175),
-                'peso'                    => (string) $faker->numberBetween(20, 75),
+                'estatura'                => (string) $faker->numberBetween(110, 165),
+                'peso'                    => (string) $faker->numberBetween(20, 65),
                 'tipo_sangre'             => $faker->randomElement($tiposSangre),
-                'talla_zapato'            => (string) $faker->numberBetween(18, 27),
+                'talla_zapato'            => (string) $faker->numberBetween(18, 25),
                 'zapato_orto'             => $faker->randomElement($siNo),
                 'lentes'                  => $faker->randomElement($siNo),
                 'vacunas'                 => 'Esquema básico completo',
