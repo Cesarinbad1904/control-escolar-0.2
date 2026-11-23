@@ -70,6 +70,7 @@ class AlumnosBase extends Migration
             ]);
 
         $this->forge->addKey('id_alumno', TRUE);
+        $this->forge->addUniqueKey('curp'); // único para evitar duplicados
         $this->forge->createTable('alumnos_base');
     }
 
