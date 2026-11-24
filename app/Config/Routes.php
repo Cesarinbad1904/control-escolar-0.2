@@ -52,6 +52,10 @@ $routes->get('panel', 'DashboardController::index');
 
     // Módulo de Tutores
     $routes->get('tutores', 'TutoresController::index');
+
+    // Módulo de Alumnos Base (Autorización de Inscripción / Alta)
+    $routes->get('alumnos-base/nuevo', 'AlumnosBaseController::nuevo');
+    $routes->post('alumnos-base/guardar', 'AlumnosBaseController::guardar');
    
 });
 

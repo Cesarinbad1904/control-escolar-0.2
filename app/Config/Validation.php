@@ -948,4 +948,97 @@ class Validation extends BaseConfig
  ];
  // --------------------------------------------------------------------
 
+
+  // --------------------------------------------------------------------
+
+        public array $nuevoAlumno = [
+        'curp' => [ 
+            'label' => 'CURP del alumno', 
+            'rules' => [
+                'required',
+                'exact_length[18]',
+                'is_unique[alumnos_base.curp]',
+                'regex_match[/^[A-Z]{1}[XAEIOU]{1}[A-Z]{2}[0-9]{2}(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])[HM]{1}(AS|BC|BS|CC|CS|CH|CL|CM|DF|DG|GT|GR|HG|JC|MC|MN|MS|NT|NL|OC|PL|QT|QR|SP|SL|SR|TC|TS|TL|VZ|YN|ZS|NE)[B-DF-HJ-NP-TV-Z]{3}[0-9A-Z]{1}[0-9]{1}$/i]' 
+            ],
+            'errors' => [
+                'required'     => 'El campo {field} es obligatorio.',
+                'exact_length' => 'El campo {field} debe tener exactamente 18 caracteres.',
+                'is_unique'    => 'Esta CURP ya se encuentra autorizada en el padrón base.',
+                'regex_match'  => 'Formato de CURP inválido en {field}.'
+            ]
+        ], 
+
+        'primer_apellido' => [ 
+            'label' => 'Primer apellido', 
+            'rules' => ['required', 'max_length[25]'],
+            'errors' => [
+                'required'   => 'El campo {field} es obligatorio.',
+                'max_length' => 'El campo {field} no puede exceder los 25 caracteres.'
+            ]
+        ],
+
+        'segundo_apellido' => [ 
+            'label' => 'Segundo apellido', 
+            'rules' => ['required', 'max_length[25]'],
+            'errors' => [
+                'required'   => 'El campo {field} es obligatorio.',
+                'max_length' => 'El campo {field} no puede exceder los 25 caracteres.'
+            ]
+        ],
+
+        'nombres' => [ 
+            'label' => 'Nombre(s) del alumno', 
+            'rules' => ['required', 'max_length[25]'],
+            'errors' => [
+                'required'   => 'El campo {field} es obligatorio.',
+                'max_length' => 'El campo {field} no puede exceder los 25 caracteres.'
+            ]
+        ],
+
+        'grado' => [ 
+            'label' => 'Grado', 
+            'rules' => ['required', 'in_list[1,2,3,4,5,6]'],
+            'errors' => [
+                'required' => 'El campo {field} es obligatorio.',
+                'in_list'  => 'El campo {field} debe ser un número entre 1 y 6.'
+            ]
+        ],
+
+        'grupo' => [
+            'label' => 'Grupo', 
+            'rules' => ['permit_empty', 'max_length[5]'],
+            'errors' => [
+                'max_length' => 'El campo {field} no puede exceder los 5 caracteres.'
+            ]
+        ], 
+
+        'origen' => [ 
+            'label' => 'Origen', 
+            'rules' => ['required', 'in_list[ME,SA,NI]'],
+            'errors' => [
+                'required' => 'El campo {field} es obligatorio.',
+                'in_list'  => 'El campo {field} debe ser ME, SA o NI.'
+            ]
+        ],
+
+        'mov_i' => [
+            'label' => 'Movimiento inicial',
+            'rules' => ['required', 'in_list[I,A]'],
+            'errors' => [
+                'required' => 'El campo {field} es obligatorio.',
+                'in_list'  => 'El campo {field} debe ser Inscripción (I) o Alta (A).'
+            ]
+        ],
+
+        'fecha_alta' => [
+            'label' => 'Fecha de alta',
+            'rules' => ['permit_empty', 'valid_date'],
+            'errors' => [
+                'valid_date' => 'El campo {field} debe contener una fecha válida.'
+            ]
+        ]
+    ];
+
+ // --------------------------------------------------------------------
+
 }

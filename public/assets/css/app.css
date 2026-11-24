@@ -15,6 +15,7 @@
     --container-lg: 32rem;
     --container-xl: 36rem;
     --container-2xl: 42rem;
+    --container-3xl: 48rem;
     --text-xs: 0.75rem;
     --text-xs--line-height: calc(1 / 0.75);
     --text-sm: 0.875rem;
@@ -4101,6 +4102,9 @@
   .mt-0\.5 {
     margin-top: calc(var(--spacing) * 0.5);
   }
+  .mt-1 {
+    margin-top: var(--spacing);
+  }
   .mt-2 {
     margin-top: calc(var(--spacing) * 2);
   }
@@ -4286,6 +4290,12 @@
       padding-block: 0.25rem;
       --mask-chat: url("data:image/svg+xml,%3csvg width='13' height='13' xmlns='http://www.w3.org/2000/svg'%3e%3cpath fill='black' d='M0 11.5004C0 13.0004 2 13.0004 2 13.0004H12H13V0.00036329L12.5 0C12.5 0 11.977 2.09572 11.8581 2.50033C11.6075 3.35237 10.9149 4.22374 9 5.50036C6 7.50036 0 10.0004 0 11.5004Z'/%3e%3c/svg%3e");
     }
+    .card-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: calc(0.25rem * 2);
+    }
     .card-title {
       display: flex;
       align-items: center;
@@ -4380,6 +4390,9 @@
   .h-6 {
     height: calc(var(--spacing) * 6);
   }
+  .h-7 {
+    height: calc(var(--spacing) * 7);
+  }
   .h-8 {
     height: calc(var(--spacing) * 8);
   }
@@ -4413,6 +4426,9 @@
   .w-6 {
     width: calc(var(--spacing) * 6);
   }
+  .w-7 {
+    width: calc(var(--spacing) * 7);
+  }
   .w-8 {
     width: calc(var(--spacing) * 8);
   }
@@ -4433,6 +4449,9 @@
   }
   .max-w-2xl {
     max-width: var(--container-2xl);
+  }
+  .max-w-3xl {
+    max-width: var(--container-3xl);
   }
   .max-w-lg {
     max-width: var(--container-lg);
@@ -4594,6 +4613,12 @@
   .resize-y {
     resize: vertical;
   }
+  .list-inside {
+    list-style-position: inside;
+  }
+  .list-disc {
+    list-style-type: disc;
+  }
   @layer daisyui.l1.l2 {
     .stats-vertical {
       grid-auto-flow: row;
@@ -4623,6 +4648,9 @@
   }
   .items-center {
     align-items: center;
+  }
+  .items-end {
+    align-items: flex-end;
   }
   .items-start {
     align-items: flex-start;
@@ -5008,6 +5036,9 @@
   }
   .px-4 {
     padding-inline: calc(var(--spacing) * 4);
+  }
+  .px-8 {
+    padding-inline: calc(var(--spacing) * 8);
   }
   .py-1 {
     padding-block: var(--spacing);
@@ -5551,6 +5582,29 @@
       }
     }
   }
+  @layer daisyui.l1.l2 {
+    :is(.focus\:select-primary:focus) {
+      --input-color: var(--color-primary);
+    }
+    .focus\:select-primary:focus:focus {
+      --input-color: var(--color-primary);
+    }
+    .focus\:select-primary:focus:focus-within {
+      --input-color: var(--color-primary);
+    }
+    .focus\:select-primary:focus:open {
+      --input-color: var(--color-primary);
+    }
+    :is(.focus\:input-primary:focus) {
+      --input-color: var(--color-primary);
+    }
+    .focus\:input-primary:focus:focus {
+      --input-color: var(--color-primary);
+    }
+    .focus\:input-primary:focus:focus-within {
+      --input-color: var(--color-primary);
+    }
+  }
   .focus\:outline-none:focus {
     --tw-outline-style: none;
     outline-style: none;
@@ -5562,11 +5616,17 @@
     .sm\:inline-flex {
       display: inline-flex;
     }
+    .sm\:w-2\/3 {
+      width: calc(2 / 3 * 100%);
+    }
     .sm\:w-48 {
       width: calc(var(--spacing) * 48);
     }
     .sm\:grid-cols-2 {
       grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .sm\:grid-cols-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
     .sm\:grid-cols-4 {
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -5588,6 +5648,9 @@
     }
     .sm\:p-6 {
       padding: calc(var(--spacing) * 6);
+    }
+    .sm\:p-8 {
+      padding: calc(var(--spacing) * 8);
     }
     @layer daisyui.l1.l2 {
       .sm\:table-sm :not(thead, tfoot) tr {
@@ -5620,6 +5683,9 @@
     }
     .md\:grid-cols-2 {
       grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .md\:grid-cols-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
     .md\:flex-row {
       flex-direction: row;
