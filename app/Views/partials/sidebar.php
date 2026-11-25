@@ -11,6 +11,8 @@
                 <li><a href="<?= site_url('direccion/panel') ?>" class="active">Dashboard</a></li>
                 <li><a href="<?= site_url('direccion/alumnos') ?>">Búsqueda de alumnos inscritos</a></li>
                 <li><a href="<?= site_url('direccion/alumnos/por-grupo') ?>">Listas por Grupo</a></li>
+                <li><a href="<?= site_url('direccion/listas/generador') ?>">Listas personalizadas</a></li>
+
                 <li><a href="<?= site_url('direccion/tutores') ?>">Directorio de Tutores</a></li>
                 <li><a href="<?= site_url('direccion/calificaciones') ?>">Calificaciones</a></li>
                 <li class="menu-title text-neutral-content/60 mt-4">Procesos</li>

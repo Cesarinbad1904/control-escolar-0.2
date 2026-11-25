@@ -3024,11 +3024,17 @@
   .w-8 {
     width: calc(var(--spacing) * 8);
   }
+  .w-10 {
+    width: calc(var(--spacing) * 10);
+  }
   .w-12 {
     width: calc(var(--spacing) * 12);
   }
   .w-14 {
     width: calc(var(--spacing) * 14);
+  }
+  .w-20 {
+    width: calc(var(--spacing) * 20);
   }
   .w-64 {
     width: calc(var(--spacing) * 64);
@@ -3056,6 +3062,12 @@
   }
   .max-w-xl {
     max-width: var(--container-xl);
+  }
+  .min-w-\[140px\] {
+    min-width: 140px;
+  }
+  .min-w-\[180px\] {
+    min-width: 180px;
   }
   .flex-1 {
     flex: 1;
@@ -3162,6 +3174,9 @@
   .justify-end {
     justify-content: flex-end;
   }
+  .justify-start {
+    justify-content: flex-start;
+  }
   .gap-1 {
     gap: var(--spacing);
   }
@@ -3257,6 +3272,10 @@
   .border-b {
     border-bottom-style: var(--tw-border-style);
     border-bottom-width: 1px;
+  }
+  .border-l {
+    border-left-style: var(--tw-border-style);
+    border-left-width: 1px;
   }
   @layer daisyui.l1.l2 {
     .badge-ghost {
@@ -3473,6 +3492,10 @@
     stroke: currentcolor;
   }
   @layer daisyui.l1.l2 {
+    .checkbox-xs {
+      padding: 0.125rem;
+      --size: calc(var(--size-selector, 0.25rem) * 4);
+    }
     .radio-sm {
       padding: 0.1875rem;
     }
@@ -3548,6 +3571,9 @@
   .px-5 {
     padding-inline: calc(var(--spacing) * 5);
   }
+  .px-6 {
+    padding-inline: calc(var(--spacing) * 6);
+  }
   .px-8 {
     padding-inline: calc(var(--spacing) * 8);
   }
@@ -3601,6 +3627,9 @@
   }
   .pr-6 {
     padding-right: calc(var(--spacing) * 6);
+  }
+  .pb-1 {
+    padding-bottom: var(--spacing);
   }
   .pb-2 {
     padding-bottom: calc(var(--spacing) * 2);
@@ -3689,6 +3718,9 @@
     --tw-tracking: var(--tracking-wider);
     letter-spacing: var(--tracking-wider);
   }
+  .whitespace-nowrap {
+    white-space: nowrap;
+  }
   @layer daisyui.l1.l2 {
     .alert-error {
       color: var(--color-error-content);
@@ -3723,6 +3755,12 @@
   }
   .text-base-content {
     color: var(--color-base-content);
+  }
+  .text-base-content\/30 {
+    color: var(--color-base-content);
+    @supports (color: color-mix(in lab, red, red)) {
+      color: color-mix(in oklab, var(--color-base-content) 30%, transparent);
+    }
   }
   .text-base-content\/40 {
     color: var(--color-base-content);
@@ -3975,6 +4013,9 @@
     .radio-info {
       --input-color: var(--color-info);
     }
+    .radio-primary {
+      --input-color: var(--color-primary);
+    }
     .radio-secondary {
       --input-color: var(--color-secondary);
     }
@@ -4039,6 +4080,9 @@
     }
     .sm\:w-48 {
       width: calc(var(--spacing) * 48);
+    }
+    .sm\:w-52 {
+      width: calc(var(--spacing) * 52);
     }
     .sm\:w-56 {
       width: calc(var(--spacing) * 56);
@@ -4160,6 +4204,12 @@
         }
       }
     }
+    .lg\:col-span-5 {
+      grid-column: span 5 / span 5;
+    }
+    .lg\:col-span-7 {
+      grid-column: span 7 / span 7;
+    }
     .lg\:hidden {
       display: none;
     }
@@ -4185,6 +4235,9 @@
     .lg\:grid-cols-2 {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+    .lg\:grid-cols-12 {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+    }
     .lg\:flex-row {
       flex-direction: row;
     }
@@ -4209,6 +4262,20 @@
   @media print {
     .print\:hidden {
       display: none;
+    }
+    .print\:border-none {
+      --tw-border-style: none;
+      border-style: none;
+    }
+    .print\:bg-transparent {
+      background-color: transparent;
+    }
+    .print\:px-0 {
+      padding-inline: 0px;
+    }
+    .print\:shadow-none {
+      --tw-shadow: 0 0 #0000;
+      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
     }
   }
 }

@@ -63,6 +63,9 @@ $routes->get('panel', 'DashboardController::index'); // Dashboard
     $routes->get('alumnos-base/estadistica', 'AlumnosBaseController::estadistica'); // Estadística por grado y grupo en Padrón Autorizado (alumnos_base)
     // Eliminar alumno autorizado del padrón base (solo si no está inscrito)
     $routes->post('alumnos-base/eliminar', 'AlumnosBaseController::eliminar');
+
+    // Generador de Listas Personalizadas
+    $routes->get('listas/generador', 'ListasController::generador');
    
 });
 
