@@ -61,7 +61,7 @@ public function buscar_inscrito() {
             // Recuperar datos de la tabla alumnos_base  
             $nombre = $alumno_base->nombre;
             $curp = $alumno_base->curp;
-            $grado = $alumno_base->grado + 1;
+            $grado = $alumno_base->grado;
             $grupo = $alumno_base->grupo;
             $origen = $alumno_base->origen;
             $mov_i = $alumno_base->mov_i;

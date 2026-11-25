@@ -39,7 +39,7 @@ $routes->group('direccion', [
     //'filter'    => 'authRole:direccion' // Filtro que valida sesión y rol
 ], static function ($routes) {
    
-$routes->get('panel', 'DashboardController::index');
+$routes->get('panel', 'DashboardController::index'); // Dashboard
 
 // Módulo de Alumnos Inscritos
     $routes->get('alumnos', 'AlumnosController::index');
@@ -53,9 +53,16 @@ $routes->get('panel', 'DashboardController::index');
     // Módulo de Tutores
     $routes->get('tutores', 'TutoresController::index');
 
+
     // Módulo de Alumnos Base (Autorización de Inscripción / Alta)
     $routes->get('alumnos-base/nuevo', 'AlumnosBaseController::nuevo');
     $routes->post('alumnos-base/guardar', 'AlumnosBaseController::guardar');
+    $routes->get('alumnos-base', 'AlumnosBaseController::index');
+    $routes->post('alumnos-base/grado-grupo', 'AlumnosBaseController::actualizarGradoGrupo');
+    $routes->get('alumnos-base/por-grupo', 'AlumnosBaseController::porGrupo'); // Consulta por grupo en Padrón Autorizado (alumnos_base)
+    $routes->get('alumnos-base/estadistica', 'AlumnosBaseController::estadistica'); // Estadística por grado y grupo en Padrón Autorizado (alumnos_base)
+    // Eliminar alumno autorizado del padrón base (solo si no está inscrito)
+    $routes->post('alumnos-base/eliminar', 'AlumnosBaseController::eliminar');
    
 });
 

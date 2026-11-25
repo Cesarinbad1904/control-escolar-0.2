@@ -46,7 +46,7 @@ class AlumnosBaseSeeder extends Seeder
             $data = [
                 'nombre'     => mb_substr($nombreCompleto, 0, 50),
                 'curp'       => $curp,
-                'grado'      => (string) $faker->numberBetween(1, 5),
+                'grado'      => (string) $faker->numberBetween(1, 6),
                 'grupo'      => $faker->randomElement($grupos),
                 'origen'     => $faker->randomElement($origenes),
                 'mov_i'      => 'I',

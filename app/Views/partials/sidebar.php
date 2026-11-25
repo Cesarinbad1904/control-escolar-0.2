@@ -15,6 +15,9 @@
                 <li><a href="<?= site_url('direccion/calificaciones') ?>">Calificaciones</a></li>
                 <li class="menu-title text-neutral-content/60 mt-4">Procesos</li>
                 <li><a href="<?= site_url('direccion/alumnos-base/nuevo') ?>">Nueva Inscripción</a></li>
+                <li><a href="<?= site_url('direccion/alumnos-base') ?>">Alumnos autorizados</a></li>
+                <li><a href="<?= site_url('direccion/alumnos-base/por-grupo') ?>">Alumnos autorizados por grupo</a></li>
+                <li><a href="<?= site_url('direccion/alumnos-base/estadistica') ?>">Estadística de alumnos autorizados</a></li>
             <?php //elseif (session('rol') === 'docente'): ?>
                 <li class="menu-title text-neutral-content/60">Docencia</li>
                 <li><a href="<?= site_url('docentes/panel') ?>">Mi Panel</a></li>
