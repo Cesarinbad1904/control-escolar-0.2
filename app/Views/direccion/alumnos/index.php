@@ -109,7 +109,7 @@
                                 <!-- Nombre con iniciales -->
                                 <td>
                                     <div class="flex items-center gap-3">
-                                        <div class="avatar placeholder">
+                                        <div class="avatar avatar-placeholder">
                                             <div class="bg-neutral text-neutral-content rounded-full w-8 text-xs font-bold">
                                                 <span><?= esc(mb_substr($alumno->nombre_alumno, 0, 1) . mb_substr($alumno->primer_apellido_alumno, 0, 1)) ?></span>
                                             </div>

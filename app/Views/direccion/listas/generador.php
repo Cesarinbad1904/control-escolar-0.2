@@ -67,71 +67,109 @@
         </div>
 
     <?php else: ?>
-        <!-- Paso 2: Panel de Personalización (Se oculta al imprimir) -->
+        
+            <!-- Paso 2: Panel de Personalización (Se oculta al imprimir) -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-6 print:hidden">
             
-            <!-- Configuración del Nombre -->
+            <!-- Configuración de Formatos con Pestañas (Alumno / Tutor) -->
             <div class="card bg-base-100 shadow-sm border border-base-200 lg:col-span-5">
-                <div class="card-body p-5 space-y-4">
-                    <h2 class="text-sm font-bold uppercase tracking-wider text-primary">2. Formato del Nombre</h2>
-
-                    <!-- Mayúsculas / Tipo Título -->
-                    <div>
-                        <span class="text-xs font-semibold text-base-content/70 block mb-1.5">Capitalización:</span>
-                        <div class="flex flex-col gap-1.5">
-                            <label class="label cursor-pointer justify-start gap-2 py-1">
-                                <input type="radio" name="opt_case" value="upper" class="radio radio-primary radio-sm" checked onchange="renderizarTabla()">
-                                <span class="label-text text-sm">TODO EN MAYÚSCULAS</span>
-                            </label>
-                            <label class="label cursor-pointer justify-start gap-2 py-1">
-                                <input type="radio" name="opt_case" value="title" class="radio radio-primary radio-sm" onchange="renderizarTabla()">
-                                <span class="label-text text-sm">Minúsculas con Iniciales en Mayúscula</span>
-                            </label>
+                <div class="card-body p-5">
+                    <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                        <h2 class="text-sm font-bold uppercase tracking-wider text-primary">2. Formato de Nombres</h2>
+                        
+                        <!-- Selector de Pestañas DaisyUI -->
+                        <div role="tablist" class="tabs tabs-boxed tabs-xs bg-base-200">
+                            <button type="button" role="tab" id="tab_alumno" class="tab tab-active font-semibold" onclick="cambiarTabFormato('alumno')">
+                                Alumno
+                            </button>
+                            <button type="button" role="tab" id="tab_tutor" class="tab font-semibold" onclick="cambiarTabFormato('tutor')">
+                                Tutor
+                            </button>
                         </div>
                     </div>
 
-                    <!-- Orden -->
-                    <div>
-                        <span class="text-xs font-semibold text-base-content/70 block mb-1.5">Orden de aparición:</span>
-                        <div class="flex flex-col gap-1.5">
-                            <label class="label cursor-pointer justify-start gap-2 py-1">
-                                <input type="radio" name="opt_order" value="apellidos_nombre" class="radio radio-primary radio-sm" checked onchange="renderizarTabla()">
-                                <span class="label-text text-sm">Apellidos primero (Paterno Materno Nombre)</span>
-                            </label>
-                            <label class="label cursor-pointer justify-start gap-2 py-1">
-                                <input type="radio" name="opt_order" value="nombre_apellidos" class="radio radio-primary radio-sm" onchange="renderizarTabla()">
-                                <span class="label-text text-sm">Nombre primero (Nombre Paterno Materno)</span>
-                            </label>
-                        </div>
+                    <div class="bg-base-200/40 px-3 py-1.5 rounded-md text-xs text-base-content/70 mb-2">
+                        Configurando formato para: <strong id="etiqueta_target" class="text-primary uppercase">Alumno</strong>
                     </div>
 
-                    <!-- Símbolo separador -->
-                    <div>
-                        <label class="text-xs font-semibold text-base-content/70 block mb-1.5" for="opt_sep">Símbolo separador:</label>
-                        <div class="flex gap-2">
-                            <select id="opt_sep" class="select select-bordered select-sm flex-1" onchange="toggleSepCustom()">
-                                <option value=" ">Espacio normal (Ej: PÉREZ LÓPEZ JUAN)</option>
-                                <option value=" * ">Asterisco entre bloques (Ej: PÉREZ * LÓPEZ * JUAN)</option>
-                                <option value=", ">Coma entre bloques (Ej: PÉREZ LÓPEZ, JUAN)</option>
-                                <option value=" - ">Guion (Ej: PÉREZ - LÓPEZ - JUAN)</option>
-                                <option value=" / ">Diagonal (Ej: PÉREZ / LÓPEZ / JUAN)</option>
-                                <option value=" | ">Barra vertical (Ej: PÉREZ | LÓPEZ | JUAN)</option>
-                                <option value="custom">Otro símbolo personalizado...</option>
-                            </select>
-                            <input 
-                                type="text" 
-                                id="opt_sep_custom" 
-                                maxlength="5" 
-                                placeholder="Ej: *" 
-                                class="input input-bordered input-sm w-20 hidden text-center font-bold"
-                                oninput="renderizarTabla()"
-                            >
+                    <div class="space-y-3.5">
+                        <!-- Presentación: Unificado vs Separado -->
+                        <div>
+                            <span class="text-xs font-semibold text-base-content/70 block mb-1">Presentación en tabla:</span>
+                            <div class="flex flex-col gap-1">
+                                <label class="label cursor-pointer justify-start gap-2 py-0.5">
+                                    <input type="radio" name="opt_split" value="unified" class="radio radio-primary radio-xs" checked onchange="actualizarEstadoDesdeUI()">
+                                    <span class="label-text text-xs">En una sola columna (Nombre completo)</span>
+                                </label>
+                                <label class="label cursor-pointer justify-start gap-2 py-0.5">
+                                    <input type="radio" name="opt_split" value="separated" class="radio radio-primary radio-xs" onchange="actualizarEstadoDesdeUI()">
+                                    <span class="label-text text-xs">Separado en 3 columnas (Paterno | Materno | Nombre)</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Capitalización -->
+                        <div>
+                            <span class="text-xs font-semibold text-base-content/70 block mb-1">Capitalización:</span>
+                            <div class="flex flex-col gap-1">
+                                <label class="label cursor-pointer justify-start gap-2 py-0.5">
+                                    <input type="radio" name="opt_case" value="upper" class="radio radio-primary radio-xs" checked onchange="actualizarEstadoDesdeUI()">
+                                    <span class="label-text text-xs">TODO EN MAYÚSCULAS</span>
+                                </label>
+                                <label class="label cursor-pointer justify-start gap-2 py-0.5">
+                                    <input type="radio" name="opt_case" value="title" class="radio radio-primary radio-xs" onchange="actualizarEstadoDesdeUI()">
+                                    <span class="label-text text-xs">Minúsculas con Iniciales en Mayúscula</span>
+                                </label>
+                                <label class="label cursor-pointer justify-start gap-2 py-0.5">
+                                    <input type="radio" name="opt_case" value="lower" class="radio radio-primary radio-xs" onchange="actualizarEstadoDesdeUI()">
+                                    <span class="label-text text-xs">todo en minúsculas</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Orden -->
+                        <div>
+                            <span class="text-xs font-semibold text-base-content/70 block mb-1">Orden de aparición:</span>
+                            <div class="flex flex-col gap-1">
+                                <label class="label cursor-pointer justify-start gap-2 py-0.5">
+                                    <input type="radio" name="opt_order" value="apellidos_nombre" class="radio radio-primary radio-xs" checked onchange="actualizarEstadoDesdeUI()">
+                                    <span class="label-text text-xs">Apellidos primero (Paterno Materno Nombre)</span>
+                                </label>
+                                <label class="label cursor-pointer justify-start gap-2 py-0.5">
+                                    <input type="radio" name="opt_order" value="nombre_apellidos" class="radio radio-primary radio-xs" onchange="actualizarEstadoDesdeUI()">
+                                    <span class="label-text text-xs">Nombre primero (Nombre Paterno Materno)</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Símbolo separador -->
+                        <div id="contenedor_sep">
+                            <label class="text-xs font-semibold text-base-content/70 block mb-1" for="opt_sep">Símbolo separador:</label>
+                            <div class="flex gap-2">
+                                <select id="opt_sep" class="select select-bordered select-sm flex-1" onchange="actualizarEstadoDesdeUI()">
+                                    <option value=" ">Espacio normal (Ej: PÉREZ LÓPEZ JUAN)</option>
+                                    <option value=" * ">Asterisco (Ej: PÉREZ * LÓPEZ * JUAN)</option>
+                                    <option value=", ">Coma entre bloques (Ej: PÉREZ LÓPEZ, JUAN)</option>
+                                    <option value=" - ">Guion (Ej: PÉREZ - LÓPEZ - JUAN)</option>
+                                    <option value=" / ">Diagonal (Ej: PÉREZ / LÓPEZ / JUAN)</option>
+                                    <option value=" | ">Barra vertical (Ej: PÉREZ | LÓPEZ | JUAN)</option>
+                                    <option value="custom">Otro símbolo personalizado...</option>
+                                </select>
+                                <input 
+                                    type="text" 
+                                    id="opt_sep_custom" 
+                                    maxlength="5" 
+                                    placeholder="Ej: *" 
+                                    class="input input-bordered input-sm w-20 hidden text-center font-bold"
+                                    oninput="actualizarEstadoDesdeUI()"
+                                >
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-                       <!-- Selector de Columnas -->
+            <!-- Selector de Columnas -->
             <div class="card bg-base-100 shadow-sm border border-base-200 lg:col-span-7">
                 <div class="card-body p-5">
                     <div class="flex items-center justify-between mb-2">
@@ -161,12 +199,12 @@
                             </label>
                         </div>
 
-                        <!-- Grupo: Contacto y Domicilio -->
+                            <!-- Grupo: Contacto y Domicilio -->
                         <div class="space-y-1">
                             <p class="text-xs font-bold text-base-content/60 uppercase border-b pb-1">Contacto / Domicilio</p>
                             <label class="label cursor-pointer justify-start gap-2 py-1">
-                                <input type="checkbox" class="checkbox checkbox-xs checkbox-primary col-check" value="tutor" onchange="renderizarTabla()">
-                                <span class="label-text text-xs">Nombre del Tutor</span>
+                                <input type="checkbox" id="chk_tutor" class="checkbox checkbox-xs checkbox-primary col-check" value="tutor" onchange="renderizarTabla()">
+                                <span class="label-text text-xs font-medium">Nombre del Tutor</span>
                             </label>
                             <label class="label cursor-pointer justify-start gap-2 py-1">
                                 <input type="checkbox" class="checkbox checkbox-xs checkbox-primary col-check" value="tel1" onchange="renderizarTabla()">
@@ -221,7 +259,7 @@
                             <svg xmlns="http://w3.org" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
                             </svg>
-                            Copiar Nombres
+                            Copiar Nombres (<span id="lbl_btn_copiar">Alumnos</span>)
                         </button>
 
                         <button type="button" onclick="exportarCSV()" class="btn btn-sm btn-success text-white gap-1.5">
@@ -255,14 +293,18 @@
             const gradoActual = "<?= esc($grado, 'js') ?>";
             const grupoActual = "<?= esc($grupo, 'js') ?>";
 
-                     
-            // Diccionario de definiciones de columnas opcionales
+            // Estado independiente para Alumno y Tutor
+            let targetActual = 'alumno';
+            const configFormato = {
+                alumno: { split: 'unified', case: 'upper', order: 'apellidos_nombre', sep: ' ', sepCustom: '' },
+                tutor:  { split: 'unified', case: 'upper', order: 'apellidos_nombre', sep: ' ', sepCustom: '' }
+            };
+
             const definicionColumnas = {
                 curp:          { label: 'CURP', getValue: a => a.curp || '' },
                 sexo:          { label: 'Sexo', getValue: a => a.sexo_alumno || '' },
                 fec_nac:       { label: 'Fec. Nacimiento', getValue: a => a.fec_nac_alumno || '' },
                 sangre:        { label: 'Tipo Sangre', getValue: a => a.tipo_sangre || 'NR' },
-                tutor:         { label: 'Tutor Principal', getValue: a => [a.nombre_tutor, a.primer_apellido_tutor, a.segundo_apellido_tutor].filter(Boolean).join(' ') },
                 tel1:          { label: 'Teléfono', getValue: a => a.telefono_1 || '' },
                 tel_emer:      { label: 'Tel. Emergencia', getValue: a => a.telefono_emer || '' },
                 domicilio:     { label: 'Domicilio', getValue: a => [a.calle_num_dom, a.colonia_dom, a.municipio_dom].filter(Boolean).join(', ') },
@@ -270,16 +312,61 @@
                 observaciones: { label: 'Observaciones', getValue: () => '', minWidth: 'min-w-[180px]' }
             };
 
-            function toggleSepCustom() {
-                const select = document.getElementById('opt_sep');
+            function cambiarTabFormato(nuevoTarget) {
+                targetActual = nuevoTarget;
+
+                // Actualizar estilos de pestañas
+                document.getElementById('tab_alumno').classList.toggle('tab-active', nuevoTarget === 'alumno');
+                document.getElementById('tab_tutor').classList.toggle('tab-active', nuevoTarget === 'tutor');
+                document.getElementById('etiqueta_target').textContent = (nuevoTarget === 'alumno') ? 'Alumno' : 'Tutor Principal';
+                document.getElementById('lbl_btn_copiar').textContent = (nuevoTarget === 'alumno') ? 'Alumnos' : 'Tutores';
+
+                // Si cambia a Tutor, marcar automáticamente la casilla de Nombre del Tutor para ver cambios en vivo
+                if (nuevoTarget === 'tutor') {
+                    const chkTutor = document.getElementById('chk_tutor');
+                    if (!chkTutor.checked) chkTutor.checked = true;
+                }
+
+                // Cargar valores guardados en los controles de la UI
+                const cfg = configFormato[nuevoTarget];
+                document.querySelector(`input[name="opt_split"][value="${cfg.split}"]`).checked = true;
+                document.querySelector(`input[name="opt_case"][value="${cfg.case}"]`).checked = true;
+                document.querySelector(`input[name="opt_order"][value="${cfg.order}"]`).checked = true;
+                document.getElementById('opt_sep').value = cfg.sep;
+                document.getElementById('opt_sep_custom').value = cfg.sepCustom;
+
+                sincronizarVisibilidadControles();
+                renderizarTabla();
+            }
+
+            function actualizarEstadoDesdeUI() {
+                const cfg = configFormato[targetActual];
+                cfg.split     = document.querySelector('input[name="opt_split"]:checked').value;
+                cfg.case      = document.querySelector('input[name="opt_case"]:checked').value;
+                cfg.order     = document.querySelector('input[name="opt_order"]:checked').value;
+                cfg.sep       = document.getElementById('opt_sep').value;
+                cfg.sepCustom = document.getElementById('opt_sep_custom').value;
+
+                sincronizarVisibilidadControles();
+                renderizarTabla();
+            }
+
+            function sincronizarVisibilidadControles() {
+                const cfg = configFormato[targetActual];
+                const contenedorSep = document.getElementById('contenedor_sep');
                 const customInput = document.getElementById('opt_sep_custom');
-                if (select.value === 'custom') {
+
+                if (cfg.split === 'separated') {
+                    contenedorSep.classList.add('opacity-40', 'pointer-events-none');
+                } else {
+                    contenedorSep.classList.remove('opacity-40', 'pointer-events-none');
+                }
+
+                if (cfg.sep === 'custom' && cfg.split === 'unified') {
                     customInput.classList.remove('hidden');
-                    customInput.focus();
                 } else {
                     customInput.classList.add('hidden');
                 }
-                renderizarTabla();
             }
 
             function aTipoTitulo(texto) {
@@ -291,41 +378,39 @@
                 }).join(' ');
             }
 
-            function formatearNombre(alumno) {
-                const modoCase  = document.querySelector('input[name="opt_case"]:checked').value;
-                const modoOrden = document.querySelector('input[name="opt_order"]:checked').value;
-                const sepSelect = document.getElementById('opt_sep').value;
-                const separador = (sepSelect === 'custom') 
-                    ? (document.getElementById('opt_sep_custom').value || ' ') 
-                    : sepSelect;
+            function aplicarCapitalizacion(texto, modoCase) {
+                if (!texto) return '';
+                if (modoCase === 'upper') return texto.toUpperCase();
+                if (modoCase === 'lower') return texto.toLowerCase();
+                return aTipoTitulo(texto);
+            }
 
-                let nom = (alumno.nombre_alumno || '').trim();
-                let pat = (alumno.primer_apellido_alumno || '').trim();
-                let mat = (alumno.segundo_apellido_alumno || '').trim();
+            function obtenerPartesPersona(alumno, tipo) {
+                const cfg = configFormato[tipo];
+                const nomRaw = (tipo === 'alumno') ? alumno.nombre_alumno : alumno.nombre_tutor;
+                const patRaw = (tipo === 'alumno') ? alumno.primer_apellido_alumno : alumno.primer_apellido_tutor;
+                const matRaw = (tipo === 'alumno') ? alumno.segundo_apellido_alumno : alumno.segundo_apellido_tutor;
 
-                if (modoCase === 'upper') {
-                    nom = nom.toUpperCase();
-                    pat = pat.toUpperCase();
-                    mat = mat.toUpperCase();
-                } else {
-                    nom = aTipoTitulo(nom);
-                    pat = aTipoTitulo(pat);
-                    mat = aTipoTitulo(mat);
-                }
+                return {
+                    nom: aplicarCapitalizacion((nomRaw || '').trim(), cfg.case),
+                    pat: aplicarCapitalizacion((patRaw || '').trim(), cfg.case),
+                    mat: aplicarCapitalizacion((matRaw || '').trim(), cfg.case)
+                };
+            }
 
-                // Si el separador es coma ", ", se coloca entre el bloque de apellidos y el nombre
+            function formatearPersonaUnificada(alumno, tipo) {
+                const cfg = configFormato[tipo];
+                const separador = (cfg.sep === 'custom') ? (cfg.sepCustom || ' ') : cfg.sep;
+                const { nom, pat, mat } = obtenerPartesPersona(alumno, tipo);
+
                 if (separador === ', ') {
                     const apellidos = [pat, mat].filter(Boolean).join(' ');
-                    return modoOrden === 'apellidos_nombre'
+                    return cfg.order === 'apellidos_nombre'
                         ? [apellidos, nom].filter(Boolean).join(', ')
                         : [nom, apellidos].filter(Boolean).join(', ');
                 }
 
-                // Para cualquier otro separador (espacio, guion, diagonal, personalizado)
-                const partes = (modoOrden === 'apellidos_nombre')
-                    ? [pat, mat, nom]
-                    : [nom, pat, mat];
-
+                const partes = (cfg.order === 'apellidos_nombre') ? [pat, mat, nom] : [nom, pat, mat];
                 return partes.filter(Boolean).join(separador);
             }
 
@@ -337,11 +422,30 @@
                 const thead = document.getElementById('tabla_head');
                 const tbody = document.getElementById('tabla_body');
                 const colsActivas = obtenerColumnasActivas();
+                const cfgAlumno = configFormato.alumno;
+                const cfgTutor  = configFormato.tutor;
 
-                // Construir encabezados
-                let headHtml = '<tr><th class="w-10 text-center">#</th><th>Nombre del Alumno</th>';
+                // 1. Encabezados
+                let headHtml = '<tr><th class="w-10 text-center">#</th>';
+
+                if (cfgAlumno.split === 'separated') {
+                    headHtml += (cfgAlumno.order === 'apellidos_nombre')
+                        ? '<th>Primer Apellido</th><th>Segundo Apellido</th><th>Nombre(s)</th>'
+                        : '<th>Nombre(s)</th><th>Primer Apellido</th><th>Segundo Apellido</th>';
+                } else {
+                    headHtml += '<th>Nombre del Alumno</th>';
+                }
+
                 colsActivas.forEach(col => {
-                    if (col === 'asistencia_5') {
+                    if (col === 'tutor') {
+                        if (cfgTutor.split === 'separated') {
+                            headHtml += (cfgTutor.order === 'apellidos_nombre')
+                                ? '<th>1er Apellido Tutor</th><th>2do Apellido Tutor</th><th>Nombre(s) Tutor</th>'
+                                : '<th>Nombre(s) Tutor</th><th>1er Apellido Tutor</th><th>2do Apellido Tutor</th>';
+                        } else {
+                            headHtml += '<th>Tutor Principal</th>';
+                        }
+                    } else if (col === 'asistencia_5') {
                         headHtml += '<th class="text-center w-8">L</th><th class="text-center w-8">M</th><th class="text-center w-8">M</th><th class="text-center w-8">J</th><th class="text-center w-8">V</th>';
                     } else if (definicionColumnas[col]) {
                         const extraClass = definicionColumnas[col].minWidth || '';
@@ -351,16 +455,31 @@
                 headHtml += '</tr>';
                 thead.innerHTML = headHtml;
 
-                // Construir filas
+                // 2. Filas
                 let bodyHtml = '';
                 alumnosData.forEach((alumno, index) => {
-                    const nombreFormateado = formatearNombre(alumno);
-                    bodyHtml += `<tr class="hover">
-                        <td class="text-center font-medium text-base-content/60">${index + 1}</td>
-                        <td class="font-medium whitespace-nowrap">${escapeHtml(nombreFormateado)}</td>`;
+                    bodyHtml += `<tr class="hover"><td class="text-center font-medium text-base-content/60">${index + 1}</td>`;
+
+                    if (cfgAlumno.split === 'separated') {
+                        const { nom, pat, mat } = obtenerPartesPersona(alumno, 'alumno');
+                        bodyHtml += (cfgAlumno.order === 'apellidos_nombre')
+                            ? `<td class="font-medium whitespace-nowrap">${escapeHtml(pat)}</td><td class="font-medium whitespace-nowrap">${escapeHtml(mat)}</td><td class="font-medium whitespace-nowrap">${escapeHtml(nom)}</td>`
+                            : `<td class="font-medium whitespace-nowrap">${escapeHtml(nom)}</td><td class="font-medium whitespace-nowrap">${escapeHtml(pat)}</td><td class="font-medium whitespace-nowrap">${escapeHtml(mat)}</td>`;
+                    } else {
+                        bodyHtml += `<td class="font-medium whitespace-nowrap">${escapeHtml(formatearPersonaUnificada(alumno, 'alumno'))}</td>`;
+                    }
 
                     colsActivas.forEach(col => {
-                        if (col === 'asistencia_5') {
+                        if (col === 'tutor') {
+                            if (cfgTutor.split === 'separated') {
+                                const t = obtenerPartesPersona(alumno, 'tutor');
+                                bodyHtml += (cfgTutor.order === 'apellidos_nombre')
+                                    ? `<td class="text-xs whitespace-nowrap">${escapeHtml(t.pat)}</td><td class="text-xs whitespace-nowrap">${escapeHtml(t.mat)}</td><td class="text-xs whitespace-nowrap">${escapeHtml(t.nom)}</td>`
+                                    : `<td class="text-xs whitespace-nowrap">${escapeHtml(t.nom)}</td><td class="text-xs whitespace-nowrap">${escapeHtml(t.pat)}</td><td class="text-xs whitespace-nowrap">${escapeHtml(t.mat)}</td>`;
+                            } else {
+                                bodyHtml += `<td class="text-xs whitespace-nowrap">${escapeHtml(formatearPersonaUnificada(alumno, 'tutor'))}</td>`;
+                            }
+                        } else if (col === 'asistencia_5') {
                             bodyHtml += '<td class="border-l border-base-300"></td><td class="border-l border-base-300"></td><td class="border-l border-base-300"></td><td class="border-l border-base-300"></td><td class="border-l border-base-300"></td>';
                         } else if (definicionColumnas[col]) {
                             const valor = definicionColumnas[col].getValue(alumno);
@@ -381,7 +500,15 @@
             }
 
             function copiarNombres() {
-                const nombres = alumnosData.map(a => formatearNombre(a)).join('\n');
+                const cfg = configFormato[targetActual];
+                const nombres = alumnosData.map(a => {
+                    if (cfg.split === 'separated') {
+                        const { nom, pat, mat } = obtenerPartesPersona(a, targetActual);
+                        return cfg.order === 'apellidos_nombre' ? `${pat}\t${mat}\t${nom}` : `${nom}\t${pat}\t${mat}`;
+                    }
+                    return formatearPersonaUnificada(a, targetActual);
+                }).join('\n');
+
                 navigator.clipboard.writeText(nombres).then(() => {
                     const btn = document.getElementById('btn_copiar');
                     const original = btn.innerHTML;
@@ -396,32 +523,68 @@
 
             function exportarCSV() {
                 const colsActivas = obtenerColumnasActivas();
-                let headers = ['#', 'Nombre del Alumno'];
+                const cfgAlumno = configFormato.alumno;
+                const cfgTutor  = configFormato.tutor;
+                const escCsv    = val => `"${String(val).replace(/"/g, '""')}"`;
+
+                let headers = ['#'];
+                if (cfgAlumno.split === 'separated') {
+                    headers.push(...(cfgAlumno.order === 'apellidos_nombre'
+                        ? ['Primer Apellido', 'Segundo Apellido', 'Nombre(s)']
+                        : ['Nombre(s)', 'Primer Apellido', 'Segundo Apellido']));
+                } else {
+                    headers.push('Nombre del Alumno');
+                }
                 
                 colsActivas.forEach(col => {
-                    if (col === 'asistencia_5') {
+                    if (col === 'tutor') {
+                        if (cfgTutor.split === 'separated') {
+                            headers.push(...(cfgTutor.order === 'apellidos_nombre'
+                                ? ['1er Apellido Tutor', '2do Apellido Tutor', 'Nombre(s) Tutor']
+                                : ['Nombre(s) Tutor', '1er Apellido Tutor', '2do Apellido Tutor']));
+                        } else {
+                            headers.push('Tutor Principal');
+                        }
+                    } else if (col === 'asistencia_5') {
                         headers.push('L', 'M', 'M', 'J', 'V');
                     } else if (definicionColumnas[col]) {
                         headers.push(definicionColumnas[col].label);
                     }
                 });
 
-                let filas = [headers.map(h => `"${h}"`).join(',')];
+                let filas = [headers.map(h => escCsv(h)).join(',')];
 
                 alumnosData.forEach((alumno, index) => {
-                    let fila = [index + 1, `"${formatearNombre(alumno).replace(/"/g, '""')}"`];
+                    let fila = [index + 1];
+
+                    if (cfgAlumno.split === 'separated') {
+                        const { nom, pat, mat } = obtenerPartesPersona(alumno, 'alumno');
+                        fila.push(...(cfgAlumno.order === 'apellidos_nombre'
+                            ? [escCsv(pat), escCsv(mat), escCsv(nom)]
+                            : [escCsv(nom), escCsv(pat), escCsv(mat)]));
+                    } else {
+                        fila.push(escCsv(formatearPersonaUnificada(alumno, 'alumno')));
+                    }
+
                     colsActivas.forEach(col => {
-                        if (col === 'asistencia_5') {
+                        if (col === 'tutor') {
+                            if (cfgTutor.split === 'separated') {
+                                const t = obtenerPartesPersona(alumno, 'tutor');
+                                fila.push(...(cfgTutor.order === 'apellidos_nombre'
+                                    ? [escCsv(t.pat), escCsv(t.mat), escCsv(t.nom)]
+                                    : [escCsv(t.nom), escCsv(t.pat), escCsv(t.mat)]));
+                            } else {
+                                fila.push(escCsv(formatearPersonaUnificada(alumno, 'tutor')));
+                            }
+                        } else if (col === 'asistencia_5') {
                             fila.push('""', '""', '""', '""', '""');
                         } else if (definicionColumnas[col]) {
-                            const val = String(definicionColumnas[col].getValue(alumno)).replace(/"/g, '""');
-                            fila.push(`"${val}"`);
+                            fila.push(escCsv(definicionColumnas[col].getValue(alumno)));
                         }
                     });
                     filas.push(fila.join(','));
                 });
 
-                // BOM UTF-8 para que Excel abra acentos y Ñ correctamente
                 const csvContent = "\uFEFF" + filas.join('\n');
                 const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
                 const url = URL.createObjectURL(blob);
@@ -433,11 +596,9 @@
                 document.body.removeChild(link);
             }
 
-            // Inicializar tabla al cargar
             document.addEventListener('DOMContentLoaded', renderizarTabla);
         </script>
     <?php endif; ?>
 
 </div>
 <?= $this->endSection() ?>
-
