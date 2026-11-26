@@ -9,6 +9,7 @@
             <?php //if (session('rol') === 'direccion'): ?>
                 <li class="menu-title text-neutral-content/60">Administración</li>
                 <li><a href="<?= site_url('direccion/panel') ?>" class="active">Dashboard</a></li>
+                <li><a href="<?= site_url('direccion/alumnos/estadistica-edades') ?>" class="active">Estadística por edades</a></li>
                 <li><a href="<?= site_url('direccion/alumnos') ?>">Búsqueda de alumnos inscritos</a></li>
                 <li><a href="<?= site_url('direccion/alumnos/por-grupo') ?>">Listas por Grupo</a></li>
                 <li><a href="<?= site_url('direccion/listas/generador') ?>">Listas personalizadas</a></li>

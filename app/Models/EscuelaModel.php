@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class EscuelaModel extends Model
 {
     protected $table            = 'escuela';
-    protected $primaryKey       = 'id';
+    protected $primaryKey       = 'id_escuela';
     protected $useAutoIncrement = true;
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
@@ -23,7 +23,8 @@ class EscuelaModel extends Model
         'municipio', 
         'telefono', 
         'email',
-        'ciclo_escolar'
+        'ciclo_escolar',
+        'fecha_referencia'
     ];
 
     protected bool $allowEmptyInserts = false;

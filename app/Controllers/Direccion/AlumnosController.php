@@ -384,4 +384,110 @@ class AlumnosController extends BaseController
 
 
 
+    public function estadisticaEdades()
+    {
+        $db = \Config\Database::connect();
+        $gradoSeleccionado = $this->request->getGet('grado') ?? 'todos'; // Por defecto muestra de 1° a 6°
+
+        // 1. Obtener fecha_referencia de la tabla escuela
+        $escuela = $db->table('escuela')->select('fecha_referencia, ciclo_escolar')->get()->getRow();
+        $fechaReferencia = $escuela->fecha_referencia ?? date('Y-09-01');
+
+        // 2. Consultar alumnos elegibles (solo mov_i = 'I' y sin baja mov_f != 'B')
+        $builder = $db->table('alumnos_inscritos')
+            ->select('grado, fec_nac_alumno, sexo_alumno, reprobado')
+            ->where('mov_i', 'I')
+            ->groupStart()
+                ->where('mov_f IS NULL')
+                ->orWhere('mov_f !=', 'B')
+            ->groupEnd();
+
+        if ($gradoSeleccionado !== 'todos') {
+            $builder->where('grado', $gradoSeleccionado);
+        }
+
+        $alumnos = $builder->get()->getResult();
+
+        // 3. Definir estructura base de columnas y filas
+        $columnasEdad = ['menor_6', 6, 7, 8, 9, 10, 11, 12, 13, 14, '15_mas'];
+        $plantillaFila = array_fill_keys($columnasEdad, 0);
+        $plantillaFila['total'] = 0;
+
+        $plantillaBloque = [
+            'filas' => [
+                'HOMBRE_NO' => $plantillaFila, // Hom - Nuevo Ingreso
+                'HOMBRE_SI' => $plantillaFila, // Hom - Repetidores
+                'MUJER_NO'  => $plantillaFila, // Muj - Nuevo Ingreso
+                'MUJER_SI'  => $plantillaFila, // Muj - Repetidores
+            ],
+            'subtotal' => $plantillaFila,
+        ];
+
+        $gradosAMostrar = ($gradoSeleccionado === 'todos') ? ['1', '2', '3', '4', '5', '6'] : [$gradoSeleccionado];
+        $datosPorGrado = [];
+        foreach ($gradosAMostrar as $g) {
+            $datosPorGrado[$g] = $plantillaBloque;
+        }
+
+        // Bloque de Totales Generales (igual a la imagen adjunta)
+        $totalesGenerales = $plantillaBloque;
+
+        $refDate = new \DateTime($fechaReferencia);
+
+        // 4. Calcular edad exacta y acumular en su grado y en el total general
+        foreach ($alumnos as $al) {
+            if (empty($al->fec_nac_alumno) || !isset($datosPorGrado[$al->grado])) {
+                continue;
+            }
+
+            $nacDate = new \DateTime($al->fec_nac_alumno);
+            $edad = (int) $nacDate->diff($refDate)->y;
+
+            if ($edad < 6) {
+                $claveEdad = 'menor_6';
+            } elseif ($edad >= 15) {
+                $claveEdad = '15_mas';
+            } else {
+                $claveEdad = $edad;
+            }
+
+            $sexo      = strtoupper($al->sexo_alumno);
+            $rep       = strtoupper($al->reprobado ?? 'NO');
+            $llaveFila = "{$sexo}_{$rep}";
+            $g         = (string) $al->grado;
+
+            if (isset($datosPorGrado[$g]['filas'][$llaveFila])) {
+                // Acumular en el grado correspondiente
+                $datosPorGrado[$g]['filas'][$llaveFila][$claveEdad]++;
+                $datosPorGrado[$g]['filas'][$llaveFila]['total']++;
+                $datosPorGrado[$g]['subtotal'][$claveEdad]++;
+                $datosPorGrado[$g]['subtotal']['total']++;
+
+                // Acumular en el bloque de Totales Generales
+                $totalesGenerales['filas'][$llaveFila][$claveEdad]++;
+                $totalesGenerales['filas'][$llaveFila]['total']++;
+                $totalesGenerales['subtotal'][$claveEdad]++;
+                $totalesGenerales['subtotal']['total']++;
+            }
+        }
+
+        $data = [
+            'titulo'            => 'Estadística por Grado, Sexo y Edad',
+            'gradoSeleccionado' => $gradoSeleccionado,
+            'fechaReferencia'   => $fechaReferencia,
+            'cicloEscolar'      => $escuela->ciclo_escolar ?? '',
+            'columnasEdad'      => $columnasEdad,
+            'datosPorGrado'     => $datosPorGrado,
+            'totalesGenerales'  => $totalesGenerales,
+        ];
+
+        return view('direccion/alumnos/estadistica_edades', $data);
+    }
+
+
+       
+
+
+
+
 }
