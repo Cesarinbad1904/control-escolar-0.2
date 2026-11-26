@@ -79,7 +79,7 @@ $routes->get('panel', 'DashboardController::index'); // Dashboard
 
 
 
-
+/*
 // Grupo exclusivo para Docentes
 $routes->group('docentes', [
     'namespace' => 'App\Controllers\Docentes',
@@ -89,3 +89,22 @@ $routes->group('docentes', [
     $routes->post('calificaciones/subir', 'CalificacionesController::subir');
     $routes->get('asistencia/(:num)', 'AsistenciaController::pasarLista/$1');
 });
+*/
+
+
+// ========== Rutas públicas de acceso para Docentes ==========================
+$routes->group('docentes', ['namespace' => 'App\Controllers\Docentes'], static function ($routes) {
+    $routes->get('login', 'AuthController::login');
+    $routes->post('autenticar', 'AuthController::autenticar');
+    $routes->get('logout', 'AuthController::logout');
+});
+
+
+// Grupo exclusivo y protegido para Docentes
+$routes->group('docentes', [
+    'namespace' => 'App\Controllers\Docentes',
+    'filter'    => 'docenteAuth'
+], static function ($routes) {
+    $routes->get('panel', 'DashboardController::index');
+});
+// ==========================================================================
